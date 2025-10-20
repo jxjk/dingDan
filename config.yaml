@@ -1,0 +1,117 @@
+# 数控车床多订单宏变量管理与生产任务调度系统配置文件
+
+system:
+  name: "订单管理助手"
+  version: "1.0.0"
+  environment: "production"
+  language: "zh_CN"
+
+logging:
+  level: "INFO"
+  file_path: "logs/system.log"
+  max_size: "10MB"
+  backup_count: 5
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+database:
+  sqlite_path: "data/production.db"
+  backup_interval: 3600
+
+automation:
+  retry_attempts: 3
+  retry_delay: 2.0
+  timeout: 30.0
+  max_workers: 4
+
+file_monitoring:
+  onoff_file: "C:/DNC/status/onoff.txt"
+  macro_file: "C:/DNC/output/macro.txt"
+  scan_interval: 1.0
+
+dnc_system:
+  window_title: "DNC控制系统 V3.2"
+  process_name: "DNCApp.exe"
+  class_name: "WindowsForms10.Window.8.app.0.141b42a_r7_ad1"
+  timeout: 30
+
+  controls:
+    main_input:
+      - method: "auto_id"
+        value: "txtModelInput"
+      - method: "name"
+        value: "型号输入框"
+    submit_button:
+      - method: "auto_id"
+        value: "btnSubmit"
+      - method: "name"
+        value: "确认提交"
+
+browser_systems:
+  daily_report:
+    url: "http://192.168.1.100/dailyreport"
+    instruction_input:
+      - selector: "css"
+        value: "#instruction_id"
+      - selector: "name"
+        value: "order_number"
+    submit_button:
+      - selector: "css"
+        value: "button[type='submit']"
+
+  inspection_system:
+    url: "http://192.168.1.100/inspection"
+    instruction_input:
+      - selector: "id"
+        value: "ins_order_no"
+      - selector: "name"
+        value: "ins_order_no"
+
+machines:
+  CNC-01:
+    material: "S45C"
+    capabilities: ["turning", "facing"]
+    ip_address: "192.168.1.101"
+  CNC-02:
+    material: "AL6061"
+    capabilities: ["turning", "threading"]
+    ip_address: "192.168.1.102"
+  CNC-03:
+    material: "S45C"
+    capabilities: ["turning", "drilling"]
+    ip_address: "192.168.1.103"
+  CNC-04:
+    material: "SS304"
+    capabilities: ["turning", "threading"]
+    ip_address: "192.168.1.104"
+
+ui:
+  theme: "dark"
+  auto_save_interval: 300
+  refresh_interval: 5000
+
+material_mapping:
+  csv_path: "config/material_mapping.csv"
+  validation:
+    qr_text:
+      required: true
+      unique: true
+    std_material_code:
+      required: true
+    material_type:
+      required: true
+      enum: ["STEEL", "ALUMINUM", "STAINLESS_STEEL", "COPPER"]
+
+backup:
+  enabled: true
+  frequency: "daily"
+  retention_days: 30
+  paths:
+    tasks: "backup/tasks_{timestamp}.json"
+    config: "backup/config_{timestamp}.yaml"
+    database: "backup/production_{timestamp}.db"
+
+performance:
+  ui_automation_timeout: 5
+  file_monitoring_timeout: 1
+  task_scheduling_timeout: 2
+  material_check_timeout: 0.1

@@ -1,0 +1,36 @@
+2025-10-20 08:17:00 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-20 08:17:00 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-20 08:17:00 - main - INFO - 所有服务组件初始化成功
+2025-10-20 08:17:00 - main - INFO - 数控车床生产系统初始化完成
+2025-10-20 08:17:00 - services.task_scheduler - INFO - 任务 TASK_20251020_081700_VERIFY002 已添加到调度队列
+2025-10-20 08:17:00 - main - INFO - 新任务已添加: TASK_20251020_081700_VERIFY002
+2025-10-20 15:56:34 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-20 15:56:34 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-20 15:56:34 - main - INFO - 所有服务组件初始化成功
+2025-10-20 15:56:34 - main - INFO - 数控车床生产系统初始化完成
+2025-10-20 15:56:34 - services.task_scheduler - INFO - 任务 TASK_20251020_155634_INTEGRATION_TEST 已添加到调度队列
+2025-10-20 15:56:34 - main - INFO - 新任务已添加: TASK_20251020_155634_INTEGRATION_TEST
+2025-10-20 16:10:50 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-20 16:10:50 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-20 16:10:50 - main - INFO - 所有服务组件初始化成功
+2025-10-20 16:10:50 - main - INFO - 数控车床生产系统初始化完成
+2025-10-20 16:10:50 - services.task_scheduler - INFO - 任务 TASK_20251020_161050_INTEGRATION_TEST 已添加到调度队列
+2025-10-20 16:10:50 - main - INFO - 新任务已添加: TASK_20251020_161050_INTEGRATION_TEST
+2025-10-20 16:17:43 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-20 16:17:43 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-20 16:17:43 - main - INFO - 所有服务组件初始化成功
+2025-10-20 16:17:43 - main - INFO - 数控车床生产系统初始化完成
+2025-10-20 16:17:43 - services.task_scheduler - INFO - 任务 TASK_20251020_161743_INTEGRATION_TEST 已添加到调度队列
+2025-10-20 16:17:43 - main - INFO - 新任务已添加: TASK_20251020_161743_INTEGRATION_TEST
+2025-10-20 16:24:54 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-20 16:24:54 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-20 16:24:54 - main - INFO - 所有服务组件初始化成功
+2025-10-20 16:24:54 - main - INFO - 数控车床生产系统初始化完成
+2025-10-20 16:24:54 - services.task_scheduler - INFO - 任务 TASK_20251020_162454_INTEGRATION_TEST 已添加到调度队列
+2025-10-20 16:24:54 - main - INFO - 新任务已添加: TASK_20251020_162454_INTEGRATION_TEST
+2025-10-20 16:25:25 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-20 16:25:25 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-20 16:25:25 - main - INFO - 所有服务组件初始化成功
+2025-10-20 16:25:25 - main - INFO - 数控车床生产系统初始化完成
+2025-10-20 16:25:25 - services.task_scheduler - INFO - 任务 TASK_20251020_162525_INTEGRATION_TEST 已添加到调度队列
+2025-10-20 16:25:25 - main - INFO - 新任务已添加: TASK_20251020_162525_INTEGRATION_TEST

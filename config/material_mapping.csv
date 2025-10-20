@@ -1,0 +1,12 @@
+# 材料映射表 - material_mapping.csv
+# 编码: UTF-8
+# 列: 二维码文本,标准材料代码,材料名称,材料类型,库存数量
+
+S45C,S45C,碳素结构钢,STEEL,500
+45钢,S45C,碳素结构钢,STEEL,500
+AL6061,AL6061,铝合金,ALUMINUM,300
+SS304,SS304,不锈钢,STAINLESS_STEEL,200
+黄铜,C3604,铜合金,COPPER,150
+SUS304,SS304,不锈钢,STAINLESS_STEEL,180
+AL7075,AL7075,铝合金,ALUMINUM,250
+S35C,S35C,碳素结构钢,STEEL,400
