@@ -24,8 +24,8 @@ automation:
   max_workers: 4
 
 file_monitoring:
-  onoff_file: "C:/DNC/status/onoff.txt"
-  macro_file: "C:/DNC/output/macro.txt"
+  onoff_file: "C:/macro/onoff.txt"
+  macro_file: "C:/macro/macro.txt"
   scan_interval: 1.0
 
 dnc_system:
@@ -83,6 +83,30 @@ machines:
     material: "SS304"
     capabilities: ["turning", "threading"]
     ip_address: "192.168.1.104"
+
+machine_default_materials:
+  CNC-01: "S45C"
+  CNC-02: "AL6061"
+  CNC-03: "S45C"
+  CNC-04: "SS304"
+
+sample_tasks:
+  - task_id: "TASK_20241021_001_INS001"
+    instruction_id: "INS001"
+    product_model: "AX-100"
+    material_spec: "S45C"
+    order_quantity: 50
+    priority: "Normal"
+    estimated_duration: 120
+    program_available: true
+  - task_id: "TASK_20241021_002_INS002"
+    instruction_id: "INS002"
+    product_model: "BX-200"
+    material_spec: "AL6061"
+    order_quantity: 30
+    priority: "High"
+    estimated_duration: 90
+    program_available: true
 
 ui:
   theme: "dark"

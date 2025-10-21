@@ -67,17 +67,17 @@ class MacroFileHandler(FileSystemEventHandler):
 class FileMonitorManager:
     """文件监控管理器"""
     
-    def __init__(self, config: dict):
-        self.config = config
+    def __init__(self, config_manager):
+        self.config_manager = config_manager
         self.logger = logging.getLogger(__name__)
         self.observer = Observer()
         self.handlers = {}
         self.is_running = False
         
         # 文件路径
-        self.onoff_file_path = config['file_monitoring']['onoff_file']
-        self.macro_file_path = config['file_monitoring']['macro_file']
-        
+        self.onoff_file_path = config_manager.get('file_monitoring.onoff_file')
+        self.macro_file_path = config_manager.get('file_monitoring.macro_file')
+   
         # 回调函数
         self.onoff_callback = None
         self.macro_callback = None

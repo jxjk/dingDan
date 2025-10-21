@@ -70,3 +70,107 @@
 2025-10-21 08:17:40 - main - INFO - 数控车床生产系统初始化完成
 2025-10-21 08:17:40 - services.task_scheduler - INFO - 任务 TASK_20251021_081740_INTEGRATION_TEST 已添加到调度队列
 2025-10-21 08:17:40 - main - INFO - 新任务已添加: TASK_20251021_081740_INTEGRATION_TEST
+2025-10-21 08:20:18 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:20:18 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:20:18 - __main__ - INFO - 所有服务组件初始化成功
+2025-10-21 08:20:18 - __main__ - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:20:18 - services.file_monitor - INFO - 创建监控目录: C:/DNC/status
+2025-10-21 08:20:18 - services.file_monitor - INFO - 创建监控目录: C:/DNC/output
+2025-10-21 08:20:18 - services.file_monitor - INFO - 文件监控服务已配置
+2025-10-21 08:20:18 - services.file_monitor - INFO - 文件监控服务已启动
+2025-10-21 08:20:18 - services.file_monitor - WARNING - onoff.txt文件不存在: C:/DNC/status/onoff.txt
+2025-10-21 08:20:18 - services.file_monitor - INFO - 机床状态监控已启动
+2025-10-21 08:20:18 - __main__ - INFO - 共加载 0 个初始任务
+2025-10-21 08:20:18 - __main__ - INFO - 调度循环已启动
+2025-10-21 08:20:18 - __main__ - INFO - 数控车床生产系统已启动
+2025-10-21 08:20:30 - services.file_monitor - INFO - 文件监控服务已停止
+2025-10-21 08:20:30 - __main__ - INFO - 数控车床生产系统已停止
+2025-10-21 08:20:51 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:20:51 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:20:51 - main - INFO - 所有服务组件初始化成功
+2025-10-21 08:20:51 - main - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:20:51 - services.task_scheduler - INFO - 任务 TASK_20251021_082051_VERIFY002 已添加到调度队列
+2025-10-21 08:20:51 - main - INFO - 新任务已添加: TASK_20251021_082051_VERIFY002
+2025-10-21 08:22:48 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:22:48 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:22:48 - __main__ - INFO - 所有服务组件初始化成功
+2025-10-21 08:22:48 - __main__ - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:22:48 - services.file_monitor - INFO - 文件监控服务已配置
+2025-10-21 08:22:48 - services.file_monitor - INFO - 文件监控服务已启动
+2025-10-21 08:22:48 - services.file_monitor - WARNING - onoff.txt文件不存在: C:/DNC/status/onoff.txt
+2025-10-21 08:22:48 - services.file_monitor - INFO - 机床状态监控已启动
+2025-10-21 08:22:48 - __main__ - INFO - 共加载 0 个初始任务
+2025-10-21 08:22:48 - __main__ - INFO - 调度循环已启动
+2025-10-21 08:22:48 - __main__ - INFO - 数控车床生产系统已启动
+2025-10-21 08:25:20 - services.file_monitor - INFO - 文件监控服务已停止
+2025-10-21 08:25:20 - __main__ - INFO - 数控车床生产系统已停止
+2025-10-21 08:37:26 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:37:26 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:37:26 - main - INFO - 所有服务组件初始化成功
+2025-10-21 08:37:26 - main - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:42:47 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:42:47 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:42:47 - main - INFO - 所有服务组件初始化成功
+2025-10-21 08:42:47 - main - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:44:04 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:44:04 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:44:04 - main - INFO - 所有服务组件初始化成功
+2025-10-21 08:44:04 - main - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:45:23 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:45:23 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:45:23 - main - INFO - 所有服务组件初始化成功
+2025-10-21 08:45:23 - main - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:45:23 - services.file_monitor - INFO - 文件监控服务已配置
+2025-10-21 08:45:23 - services.file_monitor - INFO - 文件监控服务已启动
+2025-10-21 08:45:23 - services.file_monitor - INFO - 机床状态监控已启动
+2025-10-21 08:45:23 - services.file_monitor - INFO - 检测到onoff.txt文件变更
+2025-10-21 08:45:23 - services.task_scheduler - INFO - 任务 TASK_20241021_001_INS001 已添加到调度队列
+2025-10-21 08:45:23 - main - INFO - 加载初始任务: TASK_20241021_001_INS001
+2025-10-21 08:45:23 - services.task_scheduler - INFO - 任务 TASK_20241021_002_INS002 已添加到调度队列
+2025-10-21 08:45:23 - main - INFO - 加载初始任务: TASK_20241021_002_INS002
+2025-10-21 08:45:23 - main - INFO - 共加载 2 个初始任务
+2025-10-21 08:45:23 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:45:23 - main - INFO - 调度循环已启动
+2025-10-21 08:45:23 - main - INFO - 数控车床生产系统已启动
+2025-10-21 08:45:33 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:45:43 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:45:53 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:46:03 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:46:08 - services.file_monitor - INFO - 文件监控服务已停止
+2025-10-21 08:46:08 - main - INFO - 数控车床生产系统已停止
+2025-10-21 08:46:34 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:46:34 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:46:34 - main - INFO - 所有服务组件初始化成功
+2025-10-21 08:46:34 - main - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:46:34 - services.file_monitor - INFO - 文件监控服务已配置
+2025-10-21 08:46:34 - services.file_monitor - INFO - 文件监控服务已启动
+2025-10-21 08:46:34 - services.file_monitor - INFO - 机床状态监控已启动
+2025-10-21 08:46:34 - services.task_scheduler - INFO - 任务 TASK_20241021_001_INS001 已添加到调度队列
+2025-10-21 08:46:34 - main - INFO - 加载初始任务: TASK_20241021_001_INS001
+2025-10-21 08:46:34 - services.task_scheduler - INFO - 任务 TASK_20241021_002_INS002 已添加到调度队列
+2025-10-21 08:46:34 - main - INFO - 加载初始任务: TASK_20241021_002_INS002
+2025-10-21 08:46:34 - main - INFO - 共加载 2 个初始任务
+2025-10-21 08:46:34 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:46:34 - main - INFO - 调度循环已启动
+2025-10-21 08:46:34 - main - INFO - 数控车床生产系统已启动
+2025-10-21 08:46:44 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:46:54 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:47:04 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:47:14 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:47:24 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:47:34 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:47:44 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:47:54 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:48:04 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:48:10 - main - ERROR - 添加新任务失败: '0' is not a valid TaskPriority
+2025-10-21 08:48:14 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:48:24 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:48:34 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-10-21 08:48:42 - services.file_monitor - INFO - 文件监控服务已停止
+2025-10-21 08:48:42 - main - INFO - 数控车床生产系统已停止
+2025-10-21 08:57:12 - root - INFO - 日志系统已初始化，级别: 20, 文件: logs/system.log
+2025-10-21 08:57:12 - services.material_checker - ERROR - 加载材料映射表失败: '二维码文本'
+2025-10-21 08:57:12 - main - INFO - 所有服务组件初始化成功
+2025-10-21 08:57:12 - main - INFO - 数控车床生产系统初始化完成
+2025-10-21 08:57:12 - services.task_scheduler - INFO - 任务 TASK_20251021_085712_INTEGRATION_TEST 已添加到调度队列
+2025-10-21 08:57:12 - main - INFO - 新任务已添加: TASK_20251021_085712_INTEGRATION_TEST

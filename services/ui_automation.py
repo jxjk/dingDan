@@ -447,3 +447,94 @@ class QRCodeScanner:
         
         self.logger.info(f"批量扫描完成，共处理 {len(results)} 个二维码")
         return results
+
+
+class UIAutomation:
+    """UI自动化适配器类，保持向后兼容性"""
+    
+    def __init__(self, config_manager):
+        """
+        初始化UI自动化适配器
+        
+        Args:
+            config_manager: 配置管理器实例
+        """
+        self.config = config_manager.config
+        self.automation_manager = AutomationManager(self.config)
+        self.logger = logging.getLogger(__name__)
+    
+    def execute_operation(self, operation: str, **kwargs) -> Dict:
+        """
+        执行UI操作
+        
+        Args:
+            operation: 操作类型
+            **kwargs: 操作参数
+            
+        Returns:
+            操作结果字典
+        """
+        try:
+            if operation == "process_instruction":
+                instruction_id = kwargs.get('instruction_id')
+                model_number = kwargs.get('model_number')
+                
+                if instruction_id and model_number:
+                    result = self.automation_manager.process_instruction(
+                        instruction_id, model_number
+                    )
+                    return {
+                        'success': True,
+                        'result': result,
+                        'message': f"指示书 {instruction_id} 处理完成"
+                    }
+                else:
+                    return {
+                        'success': False,
+                        'error': '缺少必需的参数: instruction_id 或 model_number'
+                    }
+            
+            elif operation == "scan_qr_code":
+                qr_content = kwargs.get('qr_content')
+                if qr_content:
+                    qr_scanner = QRCodeScanner(self.config)
+                    result = qr_scanner.simulate_scan(qr_content)
+                    return {
+                        'success': result['success'],
+                        'result': result,
+                        'message': '二维码扫描完成' if result['success'] else result['error']
+                    }
+                else:
+                    return {
+                        'success': False,
+                        'error': '缺少二维码内容'
+                    }
+            
+            else:
+                return {
+                    'success': False,
+                    'error': f'不支持的操作类型: {operation}'
+                }
+                
+        except Exception as e:
+            self.logger.error(f"UI操作执行失败: {e}")
+            return {
+                'success': False,
+                'error': str(e)
+            }
+    
+    def connect_to_dnc(self) -> bool:
+        """连接到DNC系统"""
+        try:
+            dnc_automation = DNCSystemAutomation(self.config)
+            return dnc_automation.connect_to_dnc()
+        except Exception as e:
+            self.logger.error(f"连接DNC系统失败: {e}")
+            return False
+    
+    def close_resources(self):
+        """关闭所有资源"""
+        try:
+            self.automation_manager.cleanup()
+        except Exception as e:
+            self.logger.error(f"关闭资源失败: {e}")

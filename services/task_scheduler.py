@@ -10,13 +10,13 @@ from datetime import datetime
 from collections import defaultdict
 
 from models.production_task import ProductionTask, TaskStatus, TaskPriority, MachineState
-from services.material_checker import EnhancedMaterialChecker, MaterialCheckResult
+from services.material_checker import MaterialChecker
 
 
 class TaskScheduler:
     """任务调度器"""
     
-    def __init__(self, config: dict, material_checker: EnhancedMaterialChecker):
+    def __init__(self, config: dict, material_checker: MaterialChecker):
         self.config = config
         self.material_checker = material_checker
         self.logger = logging.getLogger(__name__)
@@ -39,10 +39,15 @@ class TaskScheduler:
         
         self.current_strategy = 'material_first'
         
-    def add_task(self, task: ProductionTask):
+    def add_task(self, task: ProductionTask) -> bool:
         """添加任务到调度队列"""
-        self.pending_tasks.append(task)
-        self.logger.info(f"任务 {task.task_id} 已添加到调度队列")
+        try:
+            self.pending_tasks.append(task)
+            self.logger.info(f"任务 {task.task_id} 已添加到调度队列")
+            return True
+        except Exception as e:
+            self.logger.error(f"添加任务失败: {e}")
+            return False
         
     def remove_task(self, task_id: str) -> bool:
         """从调度队列移除任务"""
@@ -208,7 +213,7 @@ class TaskScheduler:
     
     def _calculate_assignment_score(self, task: ProductionTask, machine_id: str, 
                                   current_material: str, 
-                                  material_check: MaterialCheckResult) -> float:
+                                  material_check: Dict) -> float:
         """计算任务分配得分"""
         score = 0.0
         
