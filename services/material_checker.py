@@ -119,7 +119,7 @@ class EnhancedMaterialChecker:
         """检查相同材料的情况"""
         # 材料库存检查
         inventory_check = self._check_material_inventory(task.material_spec, task.order_quantity)
-        if not inventory_check.sufficient:
+        if not inventory_check.compatible:
             return MaterialCheckResult(
                 compatible=False,
                 message=f"材料库存不足: 需要{task.order_quantity}, 可用{inventory_check.available}"

@@ -6,6 +6,7 @@ UI自动化服务
 import logging
 import time
 import subprocess
+import re
 from typing import Optional, Dict, Any, List
 from pathlib import Path
 
@@ -358,6 +359,14 @@ class QRCodeScanner:
             # 解析二维码内容
             parsed_data = self._parse_qr_content(qr_content)
             
+            # 检查是否有错误
+            if 'error' in parsed_data:
+                self.logger.info(f"二维码解析失败: {parsed_data['error']}")
+                return {
+                    'success': False,
+                    'error': parsed_data['error']
+                }
+            
             self.logger.info(f"模拟扫描二维码: {qr_content}")
             self.logger.info(f"解析结果: {parsed_data}")
             
@@ -376,19 +385,55 @@ class QRCodeScanner:
             }
     
     def _parse_qr_content(self, qr_content: str) -> Dict[str, str]:
-        """解析二维码内容"""
-        # 简单的解析逻辑，实际应用中可能需要更复杂的解析
-        parts = qr_content.split('|')
+        """解析二维码内容，添加严格验证"""
+        if not qr_content or not qr_content.strip():
+            return {'error': '二维码内容为空'}
+        
         parsed = {}
+        parts = qr_content.split('|')
         
-        for part in parts:
-            if ':' in part:
-                key, value = part.split(':', 1)
-                parsed[key.strip()] = value.strip()
+        # 检查是否为键值对格式
+        has_key_value_pairs = any(':' in part for part in parts)
         
-        # 如果没有分隔符，假设整个内容是指示书编号
-        if not parsed and qr_content:
-            parsed['instruction_id'] = qr_content
+        if has_key_value_pairs:
+            # 键值对格式解析
+            for part in parts:
+                if ':' in part:
+                    key, value = part.split(':', 1)
+                    parsed[key.strip().upper()] = value.strip()
+            
+            # 验证必需字段
+            if not parsed.get('INSTRUCTION') and not parsed.get('INSTRUCTION_ID'):
+                return {'error': '缺少必需的指示书编号字段'}
+        else:
+            # 纯文本格式，假设为指示书编号
+            instruction_id = qr_content.strip()
+            if instruction_id:
+                # 更严格的指示书编号格式验证
+                # 有效的指示书编号应该以INS、INS_、或类似的业务前缀开头
+                if re.match(r'^(INS|INS_|INSTRUCTION_)[A-Z0-9_]+$', instruction_id, re.IGNORECASE):
+                    parsed['INSTRUCTION_ID'] = instruction_id.upper()
+                else:
+                    return {'error': '指示书编号格式无效，应该以INS、INS_或INSTRUCTION_开头'}
+            else:
+                return {'error': '二维码内容格式无效'}
+        
+        # 验证数值字段
+        if 'QUANTITY' in parsed:
+            try:
+                int(parsed['QUANTITY'])
+            except ValueError:
+                return {'error': '数量字段格式无效'}
+        
+        # 验证材料字段（如果存在）
+        if 'MATERIAL' in parsed:
+            if not parsed['MATERIAL']:
+                return {'error': '材料字段不能为空'}
+        
+        # 验证型号字段（如果存在）
+        if 'MODEL' in parsed:
+            if not parsed['MODEL']:
+                return {'error': '型号字段不能为空'}
         
         return parsed
     

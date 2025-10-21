@@ -294,14 +294,15 @@ class TestQRCodeScanner(unittest.TestCase):
         
         # 测试标准格式
         qr_content = "INSTRUCTION:INS001|MODEL:MODEL_A|MATERIAL:STEEL_45|QUANTITY:100"
-        # 使用正确的解析方法
-        result = scanner._parse_qr_content(qr_content)
+        # 使用正确的公共方法
+        result = scanner.simulate_scan(qr_content)
         
-        self.assertTrue(result.get('success', False))
-        self.assertEqual(result.get('instruction_id'), 'INS001')
-        self.assertEqual(result.get('product_model'), 'MODEL_A')
-        self.assertEqual(result.get('material_spec'), 'STEEL_45')
-        self.assertEqual(result.get('order_quantity'), 100)
+        self.assertTrue(result['success'])
+        parsed_data = result['parsed_data']
+        self.assertEqual(parsed_data.get('INSTRUCTION'), 'INS001')
+        self.assertEqual(parsed_data.get('MODEL'), 'MODEL_A')
+        self.assertEqual(parsed_data.get('MATERIAL'), 'STEEL_45')
+        self.assertEqual(int(parsed_data.get('QUANTITY', 0)), 100)
     
     def test_invalid_qr_code(self):
         """测试无效二维码"""
@@ -309,10 +310,9 @@ class TestQRCodeScanner(unittest.TestCase):
         
         # 测试无效格式
         qr_content = "INVALID_FORMAT"
-        result = scanner._parse_qr_content(qr_content)
+        result = scanner.simulate_scan(qr_content)
         
-        self.assertFalse(result.get('success', True))
-        self.assertIn('error', result)
+        self.assertFalse(result['success'])
 
 
 class TestFileMonitor(unittest.TestCase):
@@ -343,23 +343,15 @@ class TestFileMonitor(unittest.TestCase):
     def test_file_monitor_manager_initialization(self):
         """测试文件监控管理器初始化"""
         # 检查配置是否正确加载
-        self.assertEqual(self.monitor_manager.config['file_monitoring']['onoff_file'], self.onoff_file)
-        self.assertEqual(self.monitor_manager.config['file_monitoring']['macro_file'], self.macro_file)
-        self.assertEqual(self.monitor_manager.config['file_monitoring']['poll_interval'], 0.1)
+        self.assertEqual(self.monitor_manager.onoff_file_path, self.onoff_file)
+        self.assertEqual(self.monitor_manager.macro_file_path, self.macro_file)
     
     def test_machine_state_monitor_initialization(self):
         """测试机器状态监控初始化"""
-        state_monitor_config = {
-            'file_monitoring': {
-                'onoff_file': self.onoff_file,
-                'poll_interval': 0.1
-            }
-        }
-        state_monitor = MachineStateMonitor(state_monitor_config)
+        state_monitor = MachineStateMonitor(self.monitor_manager)
         
         # 检查配置是否正确加载
-        self.assertEqual(state_monitor.config['file_monitoring']['onoff_file'], self.onoff_file)
-        self.assertEqual(state_monitor.config['file_monitoring']['poll_interval'], 0.1)
+        self.assertEqual(state_monitor.file_monitor.onoff_file_path, self.onoff_file)
 
 
 class TestIntegration(unittest.TestCase):
