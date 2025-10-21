@@ -10,6 +10,7 @@ from enum import Enum
 from config.config_manager import get_config_manager
 from services.material_checker import MaterialChecker
 from services.task_scheduler import TaskScheduler
+from services.task_executor import TaskExecutor
 from services.file_monitor import FileMonitorManager
 from services.ui_automation import UIAutomation
 from models.production_task import ProductionTask, TaskStatus
@@ -34,6 +35,7 @@ class SystemManager:
         # 系统组件
         self.material_checker: Optional[MaterialChecker] = None
         self.task_scheduler: Optional[TaskScheduler] = None
+        self.task_executor: Optional[TaskExecutor] = None  # 新增
         self.file_monitor: Optional[FileMonitorManager] = None
         self.ui_automation: Optional[UIAutomation] = None
         
@@ -79,6 +81,10 @@ class SystemManager:
             # 初始化UI自动化
             self.ui_automation = UIAutomation(self.config_manager)
             self.logger.info("✅ UI自动化初始化成功")
+            
+            # 初始化任务执行器
+            self.task_executor = TaskExecutor(self.task_scheduler, self.ui_automation)
+            self.logger.info("✅ 任务执行器初始化成功")
             
             # 更新系统状态
             self.status = SystemStatus.RUNNING
@@ -205,6 +211,10 @@ class SystemManager:
             if self.file_monitor:
                 self.file_monitor.start_monitoring()
             
+            # 启动任务执行器
+            if self.task_executor:
+                self.task_executor.start_execution()
+            
             self.status = SystemStatus.RUNNING
             self.start_time = time.time()
             
@@ -222,6 +232,10 @@ class SystemManager:
             if self.status == SystemStatus.STOPPED:
                 self.logger.info("系统已停止")
                 return True
+            
+            # 停止任务执行器
+            if self.task_executor:
+                self.task_executor.stop_execution()
             
             # 停止文件监控
             if self.file_monitor:
@@ -243,6 +257,10 @@ class SystemManager:
                 self.logger.warning("系统未运行，无法暂停")
                 return False
             
+            # 暂停任务执行器
+            if self.task_executor:
+                self.task_executor.pause_execution()
+            
             self.status = SystemStatus.PAUSED
             
             self.logger.info("⏸️ 系统已暂停")
@@ -258,6 +276,10 @@ class SystemManager:
             if self.status != SystemStatus.PAUSED:
                 self.logger.warning("系统未暂停，无法恢复")
                 return False
+            
+            # 恢复任务执行器
+            if self.task_executor:
+                self.task_executor.resume_execution()
             
             self.status = SystemStatus.RUNNING
             
@@ -284,12 +306,18 @@ class SystemManager:
         if self.material_checker:
             material_stats = self.material_checker.get_material_stock_report()
         
+        # 获取任务执行器状态
+        executor_stats = {}
+        if self.task_executor:
+            executor_stats = self.task_executor.get_execution_status()
+        
         return {
             'system_status': self.status.value,
             'uptime': uptime,
             'error_count': self.error_count,
             'task_statistics': task_stats,
             'material_statistics': material_stats,
+            'executor_statistics': executor_stats,  # 新增
             'system_statistics': self.stats
         }
     

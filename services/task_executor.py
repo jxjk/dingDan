@@ -1,0 +1,306 @@
+"""
+任务执行服务
+负责逐条执行生产任务，管理任务状态和进度
+"""
+
+import logging
+import time
+import threading
+from typing import Dict, List, Optional
+from datetime import datetime
+
+from models.production_task import ProductionTask, TaskStatus
+from services.task_scheduler import TaskScheduler
+from services.ui_automation import UIAutomation
+
+
+class TaskExecutor:
+    """任务执行器"""
+    
+    def __init__(self, task_scheduler: TaskScheduler, ui_automation: UIAutomation):
+        self.task_scheduler = task_scheduler
+        self.ui_automation = ui_automation
+        self.logger = logging.getLogger(__name__)
+        
+        # 执行状态
+        self.is_running = False
+        self.execution_thread: Optional[threading.Thread] = None
+        self.current_task: Optional[ProductionTask] = None
+        
+        # 执行配置
+        self.execution_interval = 5  # 执行间隔(秒)
+        self.max_retries = 3
+        
+        # 执行统计
+        self.execution_stats = {
+            'tasks_executed': 0,
+            'tasks_completed': 0,
+            'tasks_failed': 0,
+            'total_execution_time': 0
+        }
+    
+    def start_execution(self):
+        """开始任务执行"""
+        if self.is_running:
+            self.logger.warning("任务执行器已在运行中")
+            return
+        
+        self.is_running = True
+        self.execution_thread = threading.Thread(target=self._execution_loop, daemon=True)
+        self.execution_thread.start()
+        self.logger.info("任务执行器已启动")
+    
+    def stop_execution(self):
+        """停止任务执行"""
+        self.is_running = False
+        if self.execution_thread:
+            self.execution_thread.join(timeout=5)
+        self.logger.info("任务执行器已停止")
+    
+    def _execution_loop(self):
+        """任务执行循环"""
+        while self.is_running:
+            try:
+                # 检查是否有待执行的任务
+                if self._has_ready_tasks():
+                    self._execute_next_task()
+                else:
+                    # 没有任务时等待
+                    time.sleep(self.execution_interval)
+                    
+            except Exception as e:
+                self.logger.error(f"任务执行循环错误: {e}")
+                time.sleep(self.execution_interval)
+    
+    def _has_ready_tasks(self) -> bool:
+        """检查是否有就绪的任务"""
+        # 检查运行中的任务
+        for task in self.task_scheduler.running_tasks.values():
+            if task.status == TaskStatus.READY:
+                return True
+        
+        # 尝试调度新任务
+        scheduled_tasks = self.task_scheduler.schedule_tasks()
+        return len(scheduled_tasks) > 0
+    
+    def _execute_next_task(self):
+        """执行下一个任务"""
+        try:
+            # 查找就绪状态的任务
+            ready_task = None
+            for task in self.task_scheduler.running_tasks.values():
+                if task.status == TaskStatus.READY:
+                    ready_task = task
+                    break
+            
+            if not ready_task:
+                self.logger.debug("没有就绪的任务")
+                return
+            
+            # 设置当前任务
+            self.current_task = ready_task
+            self.logger.info(f"开始执行任务: {ready_task.task_id}")
+            
+            # 更新任务状态为运行中
+            ready_task.update_status(TaskStatus.RUNNING, "开始执行")
+            
+            # 执行任务
+            execution_success = self._execute_task(ready_task)
+            
+            if execution_success:
+                # 标记任务完成
+                self.task_scheduler.complete_task(ready_task.task_id)
+                self.execution_stats['tasks_completed'] += 1
+                self.logger.info(f"任务 {ready_task.task_id} 执行完成")
+            else:
+                # 任务执行失败
+                ready_task.update_status(TaskStatus.ERROR, "执行失败")
+                self.execution_stats['tasks_failed'] += 1
+                self.logger.error(f"任务 {ready_task.task_id} 执行失败")
+            
+            self.execution_stats['tasks_executed'] += 1
+            self.current_task = None
+            
+        except Exception as e:
+            self.logger.error(f"执行任务失败: {e}")
+            if self.current_task:
+                self.current_task.update_status(TaskStatus.ERROR, f"执行异常: {e}")
+                self.current_task = None
+    
+    def _execute_task(self, task: ProductionTask) -> bool:
+        """执行具体任务"""
+        try:
+            start_time = time.time()
+            self.logger.info(f"执行任务 {task.task_id}: {task.product_model} x {task.order_quantity}")
+            
+            # 1. 准备材料
+            if not self._prepare_material(task):
+                self.logger.error(f"任务 {task.task_id} 材料准备失败")
+                return False
+            
+            # 2. 加载程序
+            if not self._load_program(task):
+                self.logger.error(f"任务 {task.task_id} 程序加载失败")
+                return False
+            
+            # 3. 启动加工
+            if not self._start_machining(task):
+                self.logger.error(f"任务 {task.task_id} 加工启动失败")
+                return False
+            
+            # 4. 监控加工进度
+            if not self._monitor_progress(task):
+                self.logger.error(f"任务 {task.task_id} 加工监控失败")
+                return False
+            
+            # 5. 完成加工
+            if not self._complete_machining(task):
+                self.logger.error(f"任务 {task.task_id} 加工完成失败")
+                return False
+            
+            execution_time = time.time() - start_time
+            self.execution_stats['total_execution_time'] += execution_time
+            
+            self.logger.info(f"任务 {task.task_id} 执行成功，耗时: {execution_time:.2f}秒")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"任务 {task.task_id} 执行异常: {e}")
+            return False
+    
+    def _prepare_material(self, task: ProductionTask) -> bool:
+        """准备材料"""
+        try:
+            self.logger.info(f"准备材料: {task.material_spec}")
+            
+            # 模拟材料准备过程
+            time.sleep(2)
+            
+            # 更新材料检查状态
+            task.material_check = True
+            self.logger.info(f"材料 {task.material_spec} 准备完成")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"材料准备失败: {e}")
+            return False
+    
+    def _load_program(self, task: ProductionTask) -> bool:
+        """加载加工程序"""
+        try:
+            self.logger.info(f"加载程序: {task.program_name or '默认程序'}")
+            
+            # 模拟程序加载过程
+            time.sleep(1)
+            
+            # 更新程序可用状态
+            task.program_available = True
+            self.logger.info("程序加载完成")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"程序加载失败: {e}")
+            return False
+    
+    def _start_machining(self, task: ProductionTask) -> bool:
+        """启动加工"""
+        try:
+            self.logger.info(f"启动加工: {task.product_model}")
+            
+            # 模拟加工启动过程
+            time.sleep(1)
+            
+            self.logger.info("加工已启动")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"加工启动失败: {e}")
+            return False
+    
+    def _monitor_progress(self, task: ProductionTask) -> bool:
+        """监控加工进度"""
+        try:
+            self.logger.info(f"监控加工进度: {task.product_model}")
+            
+            # 模拟加工过程
+            total_steps = task.order_quantity
+            for step in range(total_steps):
+                if not self.is_running:
+                    self.logger.warning("任务执行器已停止，中断加工")
+                    return False
+                
+                # 更新完成数量
+                task.completed_quantity = step + 1
+                
+                # 模拟加工时间
+                time.sleep(0.5)
+                
+                # 记录进度
+                progress = (step + 1) / total_steps * 100
+                if (step + 1) % 5 == 0 or step == total_steps - 1:
+                    self.logger.info(f"加工进度: {progress:.1f}% ({step + 1}/{total_steps})")
+            
+            self.logger.info("加工进度监控完成")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"加工进度监控失败: {e}")
+            return False
+    
+    def _complete_machining(self, task: ProductionTask) -> bool:
+        """完成加工"""
+        try:
+            self.logger.info(f"完成加工: {task.product_model}")
+            
+            # 模拟加工完成过程
+            time.sleep(1)
+            
+            # 更新完成状态
+            task.completed_quantity = task.order_quantity
+            self.logger.info("加工完成")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"加工完成失败: {e}")
+            return False
+    
+    def get_execution_status(self) -> Dict:
+        """获取执行状态"""
+        current_task_info = None
+        if self.current_task:
+            current_task_info = {
+                'task_id': self.current_task.task_id,
+                'product_model': self.current_task.product_model,
+                'progress': self.current_task.progress,
+                'status': self.current_task.status.value
+            }
+        
+        return {
+            'is_running': self.is_running,
+            'current_task': current_task_info,
+            'execution_stats': self.execution_stats.copy(),
+            'execution_interval': self.execution_interval
+        }
+    
+    def get_execution_statistics(self) -> Dict:
+        """获取执行统计信息"""
+        return {
+            'tasks_executed': self.execution_stats['tasks_executed'],
+            'tasks_completed': self.execution_stats['tasks_completed'],
+            'tasks_failed': self.execution_stats['tasks_failed'],
+            'total_execution_time': self.execution_stats['total_execution_time'],
+            'current_task': self.current_task.task_id if self.current_task else None,
+            'is_running': self.is_running
+        }
+    
+    def pause_execution(self):
+        """暂停执行"""
+        if self.current_task:
+            self.task_scheduler.pause_task(self.current_task.task_id)
+            self.logger.info(f"任务 {self.current_task.task_id} 已暂停")
+    
+    def resume_execution(self):
+        """恢复执行"""
+        if self.current_task:
+            self.task_scheduler.resume_task(self.current_task.task_id)
+            self.logger.info(f"任务 {self.current_task.task_id} 已恢复")
