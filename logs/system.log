@@ -372,3 +372,80 @@
 2025-11-13 15:13:08,397 - services.task_scheduler - INFO - 任务 TASK_A2CBF132 已添加到调度队列
 2025-11-13 15:13:08,397 - services.system_manager - INFO - ✅ 任务添加成功: TASK_A2CBF132
 2025-11-13 16:28:51,192 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 16:48:06,446 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 16:48:06,524 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 16:48:06,549 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 16:48:06,563 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 16:48:06,570 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 16:48:06,583 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 16:48:06,594 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 16:48:06,603 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 16:48:34,768 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 16:48:34,788 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 16:48:34,788 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 16:48:34,788 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 16:48:34,789 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 16:48:34,789 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 16:48:34,790 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 16:48:34,790 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 16:48:37,103 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 16:49:03,257 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 2
+2025-11-13 16:49:03,259 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 16:49:03,259 - services.task_scheduler - INFO - 任务 TASK_260578DD 已添加到调度队列
+2025-11-13 16:49:03,260 - services.system_manager - INFO - ✅ 任务添加成功: TASK_260578DD
+2025-11-13 16:49:34,601 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 5
+2025-11-13 16:49:34,603 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 16:49:34,603 - services.task_scheduler - INFO - 任务 TASK_1099AD47 已添加到调度队列
+2025-11-13 16:49:34,603 - services.system_manager - INFO - ✅ 任务添加成功: TASK_1099AD47
+2025-11-13 16:52:08,577 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 16:52:08,665 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 16:52:08,666 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 16:52:08,667 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 16:52:08,667 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 16:52:08,668 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 16:52:08,669 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 16:52:08,673 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 16:52:14,834 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 16:52:14,853 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 16:52:14,854 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 16:52:14,854 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 16:52:14,854 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 16:52:14,855 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 16:52:14,855 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 16:52:14,855 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 16:52:20,983 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 16:52:47,122 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 2
+2025-11-13 16:52:47,125 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 16:52:47,126 - services.task_scheduler - INFO - 任务 TASK_E204BC81 已添加到调度队列
+2025-11-13 16:52:47,127 - services.system_manager - INFO - ✅ 任务添加成功: TASK_E204BC81
+2025-11-13 16:53:18,572 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 3
+2025-11-13 16:53:18,575 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 16:53:18,575 - services.task_scheduler - INFO - 任务 TASK_D5666BC3 已添加到调度队列
+2025-11-13 16:53:18,575 - services.system_manager - INFO - ✅ 任务添加成功: TASK_D5666BC3
+2025-11-13 16:57:54,950 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 16:57:54,978 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 16:57:54,978 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 16:57:54,979 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 16:57:54,979 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 16:57:54,980 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 16:57:54,980 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 16:57:54,981 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 16:58:01,114 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 16:58:01,143 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 16:58:01,144 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 16:58:01,144 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 16:58:01,145 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 16:58:01,146 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 16:58:01,146 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 16:58:01,147 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 16:58:28,825 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 3
+2025-11-13 16:58:28,827 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 16:58:28,828 - services.task_scheduler - INFO - 任务 TASK_E6B210E3 已添加到调度队列
+2025-11-13 16:58:28,828 - services.system_manager - INFO - ✅ 任务添加成功: TASK_E6B210E3
+2025-11-13 16:58:55,356 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 3
+2025-11-13 16:58:55,359 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 16:58:55,359 - services.task_scheduler - INFO - 任务 TASK_D4B0B556 已添加到调度队列
+2025-11-13 16:58:55,359 - services.system_manager - INFO - ✅ 任务添加成功: TASK_D4B0B556
+2025-11-13 17:00:07,215 - services.task_executor - INFO - 任务执行器已停止
+2025-11-13 17:00:07,216 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-13 17:00:07,216 - services.system_manager - INFO - 🛑 系统已停止

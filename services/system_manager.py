@@ -342,7 +342,8 @@ class SystemManager:
                 'order_quantity': task.order_quantity,
                 'priority': priority_value,  # 确保 priority 是字符串
                 'status': status_value,  # 确保 status 是字符串
-                'created_at': task.created_at.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'created_at') and task.created_at else '未知',
+                'created_at': task.create_time.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'create_time') and task.create_time else '未知',
+                'create_time': task.create_time.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'create_time') and task.create_time else '未知',
                 'assigned_machine': task.assigned_machine
             })
         
@@ -360,7 +361,8 @@ class SystemManager:
                 'order_quantity': task.order_quantity,
                 'priority': priority_value,  # 确保 priority 是字符串
                 'status': status_value,  # 确保 status 是字符串
-                'created_at': task.created_at.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'created_at') and task.created_at else '未知',
+                'created_at': task.create_time.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'create_time') and task.create_time else '未知',
+                'create_time': task.create_time.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'create_time') and task.create_time else '未知',
                 'assigned_machine': task.assigned_machine
             })
         
@@ -378,7 +380,8 @@ class SystemManager:
                 'order_quantity': task.order_quantity,
                 'priority': priority_value,  # 确保 priority 是字符串
                 'status': status_value,  # 确保 status 是字符串
-                'created_at': task.created_at.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'created_at') and task.created_at else '未知',
+                'created_at': task.create_time.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'create_time') and task.create_time else '未知',
+                'create_time': task.create_time.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'create_time') and task.create_time else '未知',
                 'assigned_machine': task.assigned_machine
             })
         
