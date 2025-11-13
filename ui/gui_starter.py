@@ -245,17 +245,44 @@ class SystemStarterGUI:
             return
         
         try:
-            status = self.system.get_system_status()
-            task_stats = status['task_statistics']
+            # 获取详细任务列表
+            task_list = self.system.get_task_list()
             
-            task_info = f"""任务统计:
-总计: {task_stats.get('total', 0)}
-待处理: {task_stats.get('pending', 0)}
-运行中: {task_stats.get('running', 0)}
-已完成: {task_stats.get('completed', 0)}
-错误: {task_stats.get('error', 0)}"""
+            if not task_list:
+                messagebox.showinfo("任务列表", "当前没有任务")
+                return
             
-            messagebox.showinfo("任务列表", task_info)
+            # 构建任务信息
+            task_info = "任务列表:\n\n"
+            for task in task_list:
+                task_info += f"任务ID: {task.get('task_id', '未知')}\n"
+                task_info += f"  指示书编号: {task.get('instruction_id', '未知')}\n"
+                task_info += f"  产品型号: {task.get('product_model', '未知')}\n"
+                task_info += f"  材料规格: {task.get('material_spec', '未知')}\n"
+                task_info += f"  订单数量: {task.get('order_quantity', 0)}\n"
+                task_info += f"  优先级: {task.get('priority', '未知')}\n"
+                task_info += f"  状态: {task.get('status', '未知')}\n"
+                task_info += f"  创建时间: {task.get('created_at', '未知')}\n"
+                task_info += "-" * 40 + "\n"
+            
+            # 创建新窗口显示任务列表
+            task_window = tk.Toplevel(self.root)
+            task_window.title("任务列表")
+            task_window.geometry("600x400")
+            
+            # 创建文本框和滚动条
+            text_frame = ttk.Frame(task_window)
+            text_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+            
+            text_widget = tk.Text(text_frame, wrap=tk.WORD)
+            scrollbar = ttk.Scrollbar(text_frame, orient=tk.VERTICAL, command=text_widget.yview)
+            text_widget.configure(yscrollcommand=scrollbar.set)
+            
+            text_widget.insert(tk.END, task_info)
+            text_widget.config(state=tk.DISABLED)  # 只读
+            
+            text_widget.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+            scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
             
         except Exception as e:
             messagebox.showerror("错误", f"获取任务信息失败: {e}")
@@ -267,15 +294,41 @@ class SystemStarterGUI:
             return
         
         try:
-            status = self.system.get_system_status()
-            material_stats = status['material_statistics']
+            # 获取详细材料列表
+            material_list = self.system.get_material_list()
             
-            material_info = f"""材料库存报告:
-材料总数: {material_stats.get('total_materials', 0)}
-低库存材料: {material_stats.get('low_stock_count', 0)}
-缺货材料: {material_stats.get('out_of_stock_count', 0)}"""
+            if not material_list:
+                messagebox.showinfo("材料库存", "没有材料数据")
+                return
             
-            messagebox.showinfo("材料库存", material_info)
+            # 构建材料信息
+            material_info = "材料库存列表:\n\n"
+            for material in material_list:
+                material_info += f"材料名称: {material.get('材料名称', '未知')}\n"
+                material_info += f"  规格: {material.get('材料规格', '未知')}\n"
+                material_info += f"  库存: {material.get('库存数量', 0)} {material.get('单位', '')}\n"
+                material_info += f"  供应商: {material.get('供应商', '未知')}\n"
+                material_info += f"  备注: {material.get('备注', '无')}\n"
+                material_info += "-" * 40 + "\n"
+            
+            # 创建新窗口显示材料列表
+            material_window = tk.Toplevel(self.root)
+            material_window.title("材料库存")
+            material_window.geometry("600x400")
+            
+            # 创建文本框和滚动条
+            text_frame = ttk.Frame(material_window)
+            text_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+            
+            text_widget = tk.Text(text_frame, wrap=tk.WORD)
+            scrollbar = ttk.Scrollbar(text_frame, orient=tk.VERTICAL, command=text_widget.yview)
+            text_widget.configure(yscrollcommand=scrollbar.set)
+            
+            text_widget.insert(tk.END, material_info)
+            text_widget.config(state=tk.DISABLED)  # 只读
+            
+            text_widget.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+            scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
             
         except Exception as e:
             messagebox.showerror("错误", f"获取材料信息失败: {e}")

@@ -320,14 +320,70 @@ class SystemManager:
             'executor_statistics': executor_stats,  # 新增
             'system_statistics': self.stats
         }
-    
+
     def get_task_list(self) -> List[Dict]:
         """获取任务列表"""
         if not self.task_scheduler:
             return []
         
-        return self.task_scheduler.get_task_list()
-    
+        task_list = []
+        
+        # 添加待处理任务
+        for task in self.task_scheduler.pending_tasks:
+            # 安全地获取priority和status的值
+            priority_value = getattr(task.priority, 'value', task.priority) if task.priority else 'Normal'
+            status_value = getattr(task.status, 'value', task.status) if task.status else 'Pending'
+            
+            task_list.append({
+                'task_id': task.task_id,
+                'instruction_id': task.instruction_id,
+                'product_model': task.product_model,
+                'material_spec': task.material_spec,
+                'order_quantity': task.order_quantity,
+                'priority': priority_value,  # 确保 priority 是字符串
+                'status': status_value,  # 确保 status 是字符串
+                'created_at': task.created_at.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'created_at') and task.created_at else '未知',
+                'assigned_machine': task.assigned_machine
+            })
+        
+        # 添加运行中任务
+        for task in self.task_scheduler.running_tasks.values():
+            # 安全地获取priority和status的值
+            priority_value = getattr(task.priority, 'value', task.priority) if task.priority else 'Normal'
+            status_value = getattr(task.status, 'value', task.status) if task.status else 'Running'
+            
+            task_list.append({
+                'task_id': task.task_id,
+                'instruction_id': task.instruction_id,
+                'product_model': task.product_model,
+                'material_spec': task.material_spec,
+                'order_quantity': task.order_quantity,
+                'priority': priority_value,  # 确保 priority 是字符串
+                'status': status_value,  # 确保 status 是字符串
+                'created_at': task.created_at.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'created_at') and task.created_at else '未知',
+                'assigned_machine': task.assigned_machine
+            })
+        
+        # 添加已完成任务
+        for task in self.task_scheduler.completed_tasks:
+            # 安全地获取priority和status的值
+            priority_value = getattr(task.priority, 'value', task.priority) if task.priority else 'Normal'
+            status_value = getattr(task.status, 'value', task.status) if task.status else 'Completed'
+            
+            task_list.append({
+                'task_id': task.task_id,
+                'instruction_id': task.instruction_id,
+                'product_model': task.product_model,
+                'material_spec': task.material_spec,
+                'order_quantity': task.order_quantity,
+                'priority': priority_value,  # 确保 priority 是字符串
+                'status': status_value,  # 确保 status 是字符串
+                'created_at': task.created_at.strftime('%Y-%m-%d %H:%M:%S') if hasattr(task, 'created_at') and task.created_at else '未知',
+                'assigned_machine': task.assigned_machine
+            })
+        
+        return task_list 
+        
     def get_material_list(self) -> List[Dict]:
         """获取材料列表"""
         if not self.material_checker:

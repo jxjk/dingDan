@@ -174,3 +174,201 @@
 2025-10-21 08:57:12 - main - INFO - 数控车床生产系统初始化完成
 2025-10-21 08:57:12 - services.task_scheduler - INFO - 任务 TASK_20251021_085712_INTEGRATION_TEST 已添加到调度队列
 2025-10-21 08:57:12 - main - INFO - 新任务已添加: TASK_20251021_085712_INTEGRATION_TEST
+2025-11-13 12:22:59,477 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:22:59,737 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:22:59,744 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:22:59,745 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:22:59,749 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:22:59,752 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:22:59,754 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:22:59,763 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:23:24,214 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:23:24,267 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:23:24,267 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:23:24,268 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:23:24,268 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:23:24,268 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:23:24,269 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:23:24,269 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:24:41,051 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-13 12:24:57,884 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-13 12:25:01,623 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-13 12:25:25,613 - services.material_checker - INFO - 检查材料兼容性: adf, 数量: 2
+2025-11-13 12:25:25,614 - services.material_mapper - WARNING - 未找到匹配的材料: adf
+2025-11-13 12:25:25,615 - services.material_checker - WARNING - 未找到材料: adf
+2025-11-13 12:25:25,615 - services.system_manager - ERROR - 材料不兼容: adf
+2025-11-13 12:25:29,746 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-13 12:26:05,926 - services.material_checker - INFO - 检查材料兼容性: ewr, 数量: 2
+2025-11-13 12:26:05,927 - services.material_mapper - WARNING - 未找到匹配的材料: ewr
+2025-11-13 12:26:05,928 - services.material_checker - WARNING - 未找到材料: ewr
+2025-11-13 12:26:05,928 - services.system_manager - ERROR - 材料不兼容: ewr
+2025-11-13 12:26:28,598 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-13 12:30:00,988 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:30:01,037 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:30:01,038 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:30:01,038 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:30:01,039 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:30:01,039 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:30:01,040 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:30:01,040 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:30:18,003 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:30:18,018 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:30:18,018 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:30:18,018 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:30:18,019 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:30:18,019 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:30:18,019 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:30:18,020 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:30:27,962 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 12:31:44,766 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 4
+2025-11-13 12:31:44,768 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 12:31:44,769 - services.task_scheduler - INFO - 任务 TASK_FFCF6F69 已添加到调度队列
+2025-11-13 12:31:44,769 - services.system_manager - INFO - ✅ 任务添加成功: TASK_FFCF6F69
+2025-11-13 12:34:28,588 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:34:28,618 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:34:28,619 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:34:28,619 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:34:28,620 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:34:28,620 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:34:28,621 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:34:28,621 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:34:39,481 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:34:39,508 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:34:39,508 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:34:39,509 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:34:39,510 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:34:39,510 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:34:39,512 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:34:39,512 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:34:44,408 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 12:35:47,167 - services.material_checker - INFO - 检查材料兼容性: AL6061, 数量: 3
+2025-11-13 12:35:47,168 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 12:35:47,169 - services.task_scheduler - INFO - 任务 TASK_AB0760D6 已添加到调度队列
+2025-11-13 12:35:47,169 - services.system_manager - INFO - ✅ 任务添加成功: TASK_AB0760D6
+2025-11-13 12:38:07,270 - services.task_executor - INFO - 任务执行器已停止
+2025-11-13 12:38:07,332 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-13 12:38:07,370 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-13 12:43:13,062 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:43:13,110 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:43:13,110 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:43:13,111 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:43:13,112 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:43:13,112 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:43:13,113 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:43:13,114 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:43:24,192 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:43:24,216 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:43:24,217 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:43:24,217 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:43:24,218 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:43:24,218 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:43:24,218 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:43:24,219 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:43:28,313 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 12:43:29,924 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 12:44:08,594 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 3
+2025-11-13 12:44:08,596 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 12:44:08,596 - services.task_scheduler - INFO - 任务 TASK_CD06F7E8 已添加到调度队列
+2025-11-13 12:44:08,596 - services.system_manager - INFO - ✅ 任务添加成功: TASK_CD06F7E8
+2025-11-13 12:44:23,643 - services.task_executor - INFO - 任务执行器已停止
+2025-11-13 12:44:23,644 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-13 12:44:23,644 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-13 12:47:55,884 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:47:55,932 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:47:55,932 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:47:55,933 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:47:55,933 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:47:55,934 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:47:55,934 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:47:55,935 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:48:07,984 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 12:48:08,007 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 12:48:08,008 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 12:48:08,009 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 12:48:08,010 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 12:48:08,010 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 12:48:08,011 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 12:48:08,011 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 12:48:12,103 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 12:48:37,934 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 3
+2025-11-13 12:48:37,936 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 12:48:37,936 - services.task_scheduler - INFO - 任务 TASK_5BE30122 已添加到调度队列
+2025-11-13 12:48:37,936 - services.system_manager - INFO - ✅ 任务添加成功: TASK_5BE30122
+2025-11-13 12:50:21,469 - services.task_executor - INFO - 任务执行器已停止
+2025-11-13 12:50:21,470 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-13 12:50:21,470 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-13 14:59:38,485 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 14:59:38,556 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 14:59:38,563 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 14:59:38,569 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 14:59:38,576 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 14:59:38,582 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 14:59:38,601 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 14:59:38,619 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 15:00:00,009 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 15:00:00,028 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 15:00:00,028 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 15:00:00,028 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 15:00:00,029 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 15:00:00,029 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 15:00:00,030 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 15:00:00,030 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 15:00:05,202 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 15:00:46,909 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 2
+2025-11-13 15:00:46,911 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 15:00:46,911 - services.task_scheduler - INFO - 任务 TASK_B66DEF22 已添加到调度队列
+2025-11-13 15:00:46,912 - services.system_manager - INFO - ✅ 任务添加成功: TASK_B66DEF22
+2025-11-13 15:02:36,054 - services.task_executor - INFO - 任务执行器已停止
+2025-11-13 15:02:36,055 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-13 15:02:36,055 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-13 15:06:59,009 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 15:06:59,131 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 15:06:59,136 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 15:06:59,159 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 15:06:59,211 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 15:06:59,229 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 15:06:59,241 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 15:06:59,280 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 15:07:13,463 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 15:07:13,485 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 15:07:13,485 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 15:07:13,485 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 15:07:13,486 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 15:07:13,486 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 15:07:13,487 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 15:07:13,487 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 15:07:17,323 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 15:07:18,552 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 15:07:43,564 - services.material_checker - INFO - 检查材料兼容性: SS45C, 数量: 1
+2025-11-13 15:07:43,566 - services.material_mapper - WARNING - 未找到匹配的材料: SS45C
+2025-11-13 15:07:43,566 - services.material_checker - WARNING - 未找到材料: SS45C
+2025-11-13 15:07:43,567 - services.system_manager - ERROR - 材料不兼容: SS45C
+2025-11-13 15:08:18,579 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 3
+2025-11-13 15:08:18,580 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 15:08:18,580 - services.task_scheduler - INFO - 任务 TASK_80752497 已添加到调度队列
+2025-11-13 15:08:18,581 - services.system_manager - INFO - ✅ 任务添加成功: TASK_80752497
+2025-11-13 15:10:59,900 - services.task_executor - INFO - 任务执行器已停止
+2025-11-13 15:10:59,900 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-13 15:10:59,901 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-13 15:12:28,438 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 15:12:28,600 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 15:12:28,684 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 15:12:28,786 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 15:12:28,912 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 15:12:28,999 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 15:12:29,032 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 15:12:29,048 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 15:12:37,077 - services.system_manager - INFO - 开始初始化系统...
+2025-11-13 15:12:37,119 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-13 15:12:37,123 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-13 15:12:37,129 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-13 15:12:37,130 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-13 15:12:37,137 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-13 15:12:37,144 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-13 15:12:37,145 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-13 15:12:43,077 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-13 15:13:08,393 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 3
+2025-11-13 15:13:08,396 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-13 15:13:08,397 - services.task_scheduler - INFO - 任务 TASK_A2CBF132 已添加到调度队列
+2025-11-13 15:13:08,397 - services.system_manager - INFO - ✅ 任务添加成功: TASK_A2CBF132
+2025-11-13 16:28:51,192 - services.material_checker - INFO - 获取所有材料: 共 8 种
