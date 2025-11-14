@@ -286,8 +286,9 @@ class TaskScheduler:
     
     def _find_best_machine_for_task(self, task: ProductionTask, 
                                   machine_materials: Dict[str, str]) -> Optional[str]:
-        """为任务寻找最佳机床"""
+        """为任务找到最佳机床"""
         self.logger.debug(f"为任务 {task.task_id} 寻找最佳机床")
+        self.logger.debug(f"任务材料: {task.material_spec}")
         self.logger.debug(f"可用机床材料: {machine_materials}")
         best_machine = None
         best_score = -1
@@ -299,7 +300,7 @@ class TaskScheduler:
                 task, machine_id, current_material)
             self.logger.debug(f"材料兼容性检查结果: {material_check}")
             
-            if material_check.compatible:
+            if material_check['compatible']:
                 score = self._calculate_assignment_score(task, machine_id, 
                                                        current_material, material_check)
                 self.logger.debug(f"机床 {machine_id} 得分: {score}")
@@ -318,22 +319,31 @@ class TaskScheduler:
         score = 0.0
         
         # 材料匹配得分
-        if not material_check.requires_change:
+        if not material_check['requires_change']:
             score += 100  # 材料完全匹配
         else:
-            score += max(0, 100 - material_check.change_cost)  # 考虑更换成本
+            score += max(0, 100 - material_check['change_cost'])  # 考虑更换成本
         
         # 优先级得分
-        priority_scores = {TaskPriority.URGENT: 50, TaskPriority.HIGH: 30, 
-                          TaskPriority.NORMAL: 10}
-        score += priority_scores.get(task.priority, 0)
+        # 处理priority可能是字符串或枚举的情况
+        priority_value = task.priority
+        if isinstance(priority_value, str):
+            priority_str = priority_value.upper()
+        elif hasattr(priority_value, 'value'):
+            priority_str = priority_value.value.upper()
+        else:
+            priority_str = str(priority_value).upper()
+            
+        priority_scores = {'URGENT': 50, 'HIGH': 30, 'NORMAL': 10}
+        score += priority_scores.get(priority_str, 10)
         
         # 机床能力匹配得分
         machine_state = self.machine_states.get(machine_id)
-        if machine_state and task.program_name:
-            if any(capability in machine_state.capabilities for capability in ['turning', 'facing']):
-                score += 20
+        if machine_state and hasattr(machine_state, 'capabilities'):
+            # 简单匹配，实际可根据任务需求和机床能力进行更复杂的匹配
+            score += len(machine_state.capabilities) * 2
         
+        self.logger.debug(f"任务 {task.task_id} 在机床 {machine_id} 上的得分: {score}")
         return score
     
     def _calculate_efficiency_score(self, task: ProductionTask, machine_id: str, 
