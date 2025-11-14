@@ -75,20 +75,38 @@ class TaskExecutor:
     def _has_ready_tasks(self) -> bool:
         """检查是否有就绪的任务"""
         # 检查运行中的任务
+        ready_tasks = 0
         for task in self.task_scheduler.running_tasks.values():
             if task.status == TaskStatus.READY:
-                return True
+                ready_tasks += 1
+        
+        self.logger.debug(f"发现 {ready_tasks} 个就绪任务")
+        
+        if ready_tasks > 0:
+            return True
         
         # 尝试调度新任务
+        self.logger.debug("尝试调度新任务")
+        pending_count = len(self.task_scheduler.pending_tasks)
+        self.logger.debug(f"当前待处理任务数: {pending_count}")
+        
+        # 获取可用机床信息
+        available_machines = self.task_scheduler.get_available_machines()
+        self.logger.debug(f"当前可用机床: {available_machines}")
+        
         scheduled_tasks = self.task_scheduler.schedule_tasks()
-        return len(scheduled_tasks) > 0
+        scheduled_count = len(scheduled_tasks)
+        self.logger.debug(f"调度了 {scheduled_count} 个新任务")
+        return scheduled_count > 0
     
     def _execute_next_task(self):
         """执行下一个任务"""
         try:
+            self.logger.debug("开始执行下一个任务")
             # 查找就绪状态的任务
             ready_task = None
             for task in self.task_scheduler.running_tasks.values():
+                self.logger.debug(f"检查任务 {task.task_id} 状态: {task.status}")
                 if task.status == TaskStatus.READY:
                     ready_task = task
                     break
@@ -103,6 +121,7 @@ class TaskExecutor:
             
             # 更新任务状态为运行中
             ready_task.update_status(TaskStatus.RUNNING, "开始执行")
+            self.logger.debug(f"任务 {ready_task.task_id} 状态已更新为: {ready_task.status}")
             
             # 执行任务
             execution_success = self._execute_task(ready_task)

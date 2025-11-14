@@ -449,3 +449,879 @@
 2025-11-13 17:00:07,215 - services.task_executor - INFO - 任务执行器已停止
 2025-11-13 17:00:07,216 - services.file_monitor - WARNING - 文件监控服务未在运行
 2025-11-13 17:00:07,216 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 08:03:41,657 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 08:03:41,675 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 08:03:41,675 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 08:03:41,675 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 08:03:41,676 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 08:03:41,676 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 08:03:41,676 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 08:03:41,676 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 08:03:53,577 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 08:03:53,593 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 08:03:53,593 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 08:03:53,594 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 08:03:53,594 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 08:03:53,594 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 08:03:53,595 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 08:03:53,595 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 08:04:21,300 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 2
+2025-11-14 08:04:21,303 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 08:04:21,303 - services.task_scheduler - INFO - 任务 TASK_A425264B 已添加到调度队列
+2025-11-14 08:04:21,304 - services.system_manager - INFO - ✅ 任务添加成功: TASK_A425264B
+2025-11-14 08:23:50,914 - services.task_executor - INFO - 任务执行器已停止
+2025-11-14 08:23:50,914 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-14 08:23:50,915 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 10:10:52,674 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 10:10:52,700 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 10:10:52,700 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 10:10:52,701 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 10:10:52,701 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 10:10:52,702 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 10:10:52,702 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 10:10:52,703 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 10:11:03,999 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 10:11:04,022 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 10:11:04,023 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 10:11:04,024 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 10:11:04,025 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 10:11:04,025 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 10:11:04,026 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 10:11:04,026 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 10:11:09,131 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 10:11:11,268 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 10:12:08,213 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 2
+2025-11-14 10:12:08,215 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 10:12:08,215 - services.task_scheduler - INFO - 任务 TASK_DBDA831E 已添加到调度队列
+2025-11-14 10:12:08,215 - services.system_manager - INFO - ✅ 任务添加成功: TASK_DBDA831E
+2025-11-14 10:14:09,928 - services.task_executor - INFO - 任务执行器已停止
+2025-11-14 10:14:09,928 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-14 10:14:09,928 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 10:20:46,562 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 10:20:46,593 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 10:20:46,594 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 10:20:46,594 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 10:20:46,595 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 10:20:46,595 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 10:20:46,596 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 10:20:46,596 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 10:21:08,231 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 10:21:08,249 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 10:21:08,250 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 10:21:08,250 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 10:21:08,251 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 10:21:08,251 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 10:21:08,251 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 10:21:08,252 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 10:21:32,010 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 3
+2025-11-14 10:21:32,012 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 10:21:32,013 - services.task_scheduler - INFO - 任务 TASK_DFA23D76 已添加到调度队列
+2025-11-14 10:21:32,013 - services.system_manager - INFO - ✅ 任务添加成功: TASK_DFA23D76
+2025-11-14 11:06:37,752 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 11:06:37,803 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 11:06:37,804 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 11:06:37,807 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 11:06:37,808 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 11:06:37,809 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 11:06:37,811 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 11:06:37,811 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 11:24:07,421 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 11:24:07,456 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 11:24:07,456 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 11:24:07,457 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 11:24:07,458 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 11:24:07,458 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 11:24:07,459 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 11:24:07,459 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 11:24:17,576 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 11:24:17,602 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 11:24:17,602 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 11:24:17,602 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 11:24:17,603 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 11:24:17,603 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 11:24:17,604 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 11:24:17,604 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 11:24:21,464 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 11:24:26,706 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 11:25:06,581 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 3
+2025-11-14 11:25:06,584 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 11:25:06,585 - services.task_scheduler - INFO - 任务 TASK_DBAC7322 已添加到调度队列
+2025-11-14 11:25:06,585 - services.system_manager - INFO - ✅ 任务添加成功: TASK_DBAC7322
+2025-11-14 11:25:28,338 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 5
+2025-11-14 11:25:28,340 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 11:25:28,343 - services.task_scheduler - INFO - 任务 TASK_69468811 已添加到调度队列
+2025-11-14 11:25:28,345 - services.system_manager - INFO - ✅ 任务添加成功: TASK_69468811
+2025-11-14 11:32:03,798 - services.task_executor - INFO - 任务执行器已停止
+2025-11-14 11:32:03,799 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-14 11:32:03,799 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 11:32:16,059 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 11:32:16,118 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 11:32:16,120 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 11:32:16,121 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 11:32:16,121 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 11:32:16,122 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 11:32:16,123 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 11:32:16,124 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 11:32:38,166 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 11:32:38,220 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 11:32:38,221 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 11:32:38,222 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 11:32:38,223 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 11:32:38,225 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 11:32:38,226 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 11:32:38,227 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 11:32:48,610 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 11:32:50,353 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 11:33:19,746 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 3
+2025-11-14 11:33:19,748 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 11:33:19,748 - services.task_scheduler - INFO - 任务 TASK_3995B9EB 已添加到调度队列
+2025-11-14 11:33:19,749 - services.system_manager - INFO - ✅ 任务添加成功: TASK_3995B9EB
+2025-11-14 11:33:52,831 - services.material_checker - INFO - 检查材料兼容性: SS304, 数量: 5
+2025-11-14 11:33:52,834 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 11:33:52,834 - services.task_scheduler - INFO - 任务 TASK_ED19FAA4 已添加到调度队列
+2025-11-14 11:33:52,834 - services.system_manager - INFO - ✅ 任务添加成功: TASK_ED19FAA4
+2025-11-14 12:25:28,014 - services.system_manager - INFO - 机床状态监控已停止
+2025-11-14 12:25:28,015 - services.task_executor - INFO - 任务执行器已停止
+2025-11-14 12:25:28,015 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-14 12:25:28,015 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 12:30:04,463 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 12:30:04,519 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 12:30:04,520 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 12:30:04,520 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 12:30:04,521 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 12:30:04,521 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 12:30:04,522 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 12:30:04,523 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 12:30:18,698 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 12:30:18,749 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 12:30:18,750 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 12:30:18,751 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 12:30:18,751 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 12:30:18,752 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 12:30:18,752 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 12:30:18,753 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 12:30:40,254 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 3
+2025-11-14 12:30:40,256 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 12:30:40,257 - services.task_scheduler - INFO - 任务 TASK_13EB42BE 已添加到调度队列
+2025-11-14 12:30:40,257 - services.system_manager - INFO - ✅ 任务添加成功: TASK_13EB42BE
+2025-11-14 12:39:19,947 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 12:39:20,006 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 12:39:20,007 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 12:39:20,008 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 12:39:20,009 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 12:39:20,010 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 12:39:20,015 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 12:39:20,016 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 12:39:27,892 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 12:39:27,925 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 12:39:27,925 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 12:39:27,926 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 12:39:27,926 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 12:39:27,927 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 12:39:27,927 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 12:39:27,928 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 12:39:50,687 - services.material_checker - INFO - 检查材料兼容性: S45C, 数量: 3
+2025-11-14 12:39:50,690 - services.material_checker - INFO - 材料检查结果: 兼容=True, 可用=True
+2025-11-14 12:39:50,691 - services.task_scheduler - INFO - 任务 TASK_06FA3BDB 已添加到调度队列
+2025-11-14 12:39:50,691 - services.system_manager - INFO - ✅ 任务添加成功: TASK_06FA3BDB
+2025-11-14 13:01:28,321 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:01:28,381 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:01:28,382 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:01:28,383 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:01:28,393 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:01:28,403 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:01:28,407 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:01:28,414 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:01:33,075 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:01:33,100 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:01:33,101 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:01:33,101 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:01:33,102 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:01:33,102 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:01:33,103 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:01:33,103 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:01:47,117 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 13:02:19,134 - services.system_manager - ERROR - 添加新任务失败: MaterialChecker.check_material_compatibility() missing 1 required positional argument: 'current_material'
+2025-11-14 13:02:46,741 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:02:46,777 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:02:46,778 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:02:46,779 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:02:46,779 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:02:46,780 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:02:46,780 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:02:46,781 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:02:55,235 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:02:55,291 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:02:55,291 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:02:55,292 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:02:55,293 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:02:55,293 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:02:55,294 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:02:55,294 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:03:14,001 - services.system_manager - ERROR - 添加新任务失败: MaterialChecker.check_material_compatibility() missing 1 required positional argument: 'current_material'
+2025-11-14 13:10:36,488 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:10:36,565 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:10:36,566 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:10:36,567 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:10:36,568 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:10:36,569 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:10:36,569 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:10:36,570 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:10:42,218 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:10:42,259 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:10:42,260 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:10:42,261 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:10:42,261 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:10:42,262 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:10:42,263 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:10:42,263 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:10:53,168 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 13:11:22,285 - services.system_manager - ERROR - 没有可用机床，无法添加任务
+2025-11-14 13:12:05,614 - services.system_manager - ERROR - 没有可用机床，无法添加任务
+2025-11-14 13:18:57,792 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:18:57,847 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:18:57,848 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:18:57,848 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:18:57,849 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:18:57,850 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:18:57,851 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:18:57,852 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:18:59,724 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:18:59,761 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:18:59,762 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:18:59,763 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:18:59,763 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:18:59,764 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:18:59,764 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:18:59,765 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:19:27,720 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 13:19:27,721 - services.system_manager - ERROR - 添加新任务失败: 'MaterialChecker' object has no attribute '_calculate_change_cost'
+2025-11-14 13:22:50,342 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:22:50,419 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:22:50,421 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:22:50,453 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:22:50,458 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:22:50,461 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:22:50,467 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:22:50,469 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:22:52,796 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:22:52,840 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:22:52,840 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:22:52,841 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:22:52,842 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:22:52,843 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:22:52,843 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:22:52,843 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:23:32,582 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 13:23:32,585 - services.material_mapper - WARNING - 未找到匹配的材料: 
+2025-11-14 13:23:32,587 - services.system_manager - ERROR - 材料不兼容: S45C
+2025-11-14 13:24:16,344 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 13:24:16,345 - services.material_mapper - WARNING - 未找到匹配的材料: 
+2025-11-14 13:24:16,347 - services.system_manager - ERROR - 材料不兼容: SS304
+2025-11-14 13:24:40,436 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 13:25:21,139 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:25:21,187 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:25:21,188 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:25:21,189 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:25:21,189 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:25:21,190 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:25:21,190 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:25:21,191 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:25:31,625 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:25:31,658 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:25:31,659 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:25:31,659 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:25:31,659 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:25:31,660 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:25:31,660 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:25:31,661 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:25:32,863 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 13:26:01,013 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 13:26:01,016 - services.material_mapper - WARNING - 未找到匹配的材料: 
+2025-11-14 13:26:01,019 - services.system_manager - ERROR - 材料不兼容: S45C
+2025-11-14 13:27:00,948 - services.system_manager - INFO - 机床状态监控已停止
+2025-11-14 13:27:00,950 - services.task_executor - INFO - 任务执行器已停止
+2025-11-14 13:27:00,950 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-14 13:27:00,951 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 13:29:15,020 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:29:15,110 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:29:15,112 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:29:15,114 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:29:15,115 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:29:15,116 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:29:15,121 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:29:15,126 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:29:19,628 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:29:19,729 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:29:19,729 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:29:19,730 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:29:19,730 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:29:19,731 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:29:19,732 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:29:19,732 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:29:51,078 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 13:29:51,079 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 13:29:51,079 - services.task_scheduler - INFO - 任务 TASK_5BF80DC9 已添加到调度队列
+2025-11-14 13:29:51,080 - services.system_manager - INFO - ✅ 任务添加成功: TASK_5BF80DC9
+2025-11-14 13:30:01,122 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 13:30:22,852 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 13:41:57,829 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:41:57,886 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:41:57,887 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:41:57,888 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:41:57,889 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:41:57,890 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:41:57,890 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:41:57,891 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:42:04,446 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:42:04,477 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:42:04,477 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:42:04,478 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:42:04,479 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:42:04,479 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:42:04,479 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:42:04,480 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:47:19,771 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:47:19,818 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:47:19,819 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:47:19,820 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:47:19,821 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:47:19,821 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:47:19,822 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:47:19,823 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:47:25,285 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:47:25,334 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:47:25,335 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:47:25,335 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:47:25,336 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:47:25,337 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:47:25,337 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:47:25,338 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:56:34,990 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:56:35,036 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:56:35,036 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:56:35,037 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:56:35,038 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:56:35,038 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:56:35,038 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:56:35,042 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:56:37,246 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:56:37,272 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:56:37,273 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:56:37,274 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:56:37,275 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:56:37,275 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:56:37,276 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:56:37,276 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:56:37,277 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 13:57:32,501 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:57:32,565 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:57:32,565 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:57:32,568 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:57:32,569 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:57:32,570 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:57:32,570 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:57:32,572 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:57:38,448 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 13:57:38,496 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 13:57:38,497 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 13:57:38,497 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 13:57:38,498 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 13:57:38,498 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 13:57:38,499 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 13:57:38,500 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 13:57:38,500 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 14:01:04,952 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:01:05,002 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:01:05,003 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:01:05,004 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:01:05,004 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:01:05,005 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:01:05,006 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:01:05,006 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:01:09,436 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:01:09,510 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:01:09,511 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:01:09,512 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:01:09,513 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:01:09,514 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:01:09,514 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:01:09,515 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:01:09,516 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 14:20:36,775 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:20:36,852 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:20:36,858 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:20:36,861 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:20:36,867 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:20:36,869 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:20:36,872 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:20:36,873 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:20:42,197 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:20:42,229 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:20:42,230 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:20:42,232 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:20:42,233 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:20:42,233 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:20:42,234 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:20:42,234 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:20:42,235 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 14:30:27,145 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:30:27,225 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:30:27,226 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:30:27,226 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:30:27,227 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:30:27,228 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:30:27,229 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:30:27,235 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:30:33,541 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:30:33,573 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:30:33,573 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:30:33,573 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:30:33,574 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:30:33,574 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:30:33,575 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:30:33,575 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:30:33,575 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 14:39:56,948 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:39:57,102 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:39:57,106 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:39:57,116 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:39:57,129 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:39:57,161 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:39:57,180 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:39:57,186 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:40:05,310 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:40:05,340 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:40:05,341 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:40:05,342 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:40:05,343 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:40:05,343 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:40:05,344 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:40:05,344 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:40:05,345 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 14:57:00,498 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:57:00,535 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:57:00,535 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:57:00,536 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:57:00,537 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:57:00,537 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:57:00,537 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:57:00,538 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:57:05,562 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 14:57:05,593 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 14:57:05,594 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 14:57:05,594 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 14:57:05,595 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 14:57:05,595 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 14:57:05,596 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 14:57:05,596 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 14:57:05,597 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 14:57:59,705 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 14:57:59,706 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 14:57:59,707 - services.task_scheduler - INFO - 任务 TASK_84767038 已添加到调度队列
+2025-11-14 14:57:59,707 - services.system_manager - INFO - ✅ 任务添加成功: TASK_84767038
+2025-11-14 14:58:15,756 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 15:23:34,874 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 15:23:34,908 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 15:23:34,909 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 15:23:34,909 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 15:23:34,910 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 15:23:34,910 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 15:23:34,911 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 15:23:34,911 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 15:23:36,204 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 15:23:37,563 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 15:23:38,893 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 15:23:55,924 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 15:23:55,924 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 15:23:55,925 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 15:24:17,704 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 15:24:17,749 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 15:24:17,750 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 15:24:17,750 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 15:24:17,751 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 15:24:17,751 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 15:24:17,752 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 15:24:17,752 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 15:24:17,857 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 15:24:17,961 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 15:24:18,065 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 15:24:35,097 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 15:24:35,098 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 15:24:35,098 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 15:24:35,098 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 15:24:42,778 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 15:24:42,779 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 15:24:42,780 - services.task_scheduler - INFO - 任务 TASK_8954F9DD 已添加到调度队列
+2025-11-14 15:24:42,781 - services.system_manager - INFO - ✅ 任务添加成功: TASK_8954F9DD
+2025-11-14 15:25:14,898 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 15:25:14,899 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'SS304'}
+2025-11-14 15:25:14,899 - services.task_scheduler - INFO - 任务 TASK_0DF49F8E 已添加到调度队列
+2025-11-14 15:25:14,900 - services.system_manager - INFO - ✅ 任务添加成功: TASK_0DF49F8E
+2025-11-14 15:31:36,437 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-14 15:31:47,795 - services.system_manager - INFO - 机床状态监控已停止
+2025-11-14 15:31:47,796 - services.system_manager - INFO - 所有CNC连接已断开
+2025-11-14 15:31:47,796 - services.task_executor - INFO - 任务执行器已停止
+2025-11-14 15:31:47,797 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-14 15:31:47,797 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 15:31:51,511 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 15:31:51,539 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 15:31:51,540 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 15:31:51,541 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 15:31:51,541 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 15:31:51,542 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 15:31:51,542 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 15:31:51,543 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 15:31:51,647 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 15:31:51,750 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 15:31:51,856 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 15:32:08,898 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 15:32:08,899 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 15:32:08,899 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 15:32:08,900 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 15:32:12,462 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 15:32:12,463 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 15:32:12,463 - services.task_scheduler - INFO - 任务 TASK_7582778A 已添加到调度队列
+2025-11-14 15:32:12,463 - services.system_manager - INFO - ✅ 任务添加成功: TASK_7582778A
+2025-11-14 15:34:27,091 - services.system_manager - INFO - 机床状态监控已停止
+2025-11-14 15:34:27,095 - services.system_manager - INFO - 所有CNC连接已断开
+2025-11-14 15:34:27,096 - services.task_executor - INFO - 任务执行器已停止
+2025-11-14 15:34:27,097 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-14 15:34:27,097 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-14 15:56:16,542 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 15:56:17,137 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 15:56:17,211 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 15:56:17,285 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 15:56:17,325 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 15:56:17,397 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 15:56:17,450 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 15:56:17,496 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 15:56:17,880 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 15:56:17,885 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 15:56:18,132 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 15:56:18,188 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 15:56:18,354 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 15:56:18,359 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 15:56:23,364 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 15:56:23,366 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:29,371 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 15:56:29,373 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:35,388 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 15:56:35,389 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:35,392 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 15:56:35,392 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 15:56:35,393 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 15:56:41,875 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 15:56:41,892 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 15:56:41,892 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:41,893 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 15:56:41,893 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:41,894 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 15:56:41,894 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:41,900 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 15:56:41,901 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 15:56:41,901 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 15:56:41,902 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 15:56:41,902 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 15:56:41,903 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 15:56:41,903 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 15:56:42,013 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 15:56:42,014 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 15:56:42,116 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 15:56:42,116 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 15:56:42,219 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 15:56:42,219 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 15:56:47,227 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 15:56:47,228 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:53,237 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 15:56:53,238 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:59,248 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 15:56:59,249 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 15:56:59,250 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 15:56:59,251 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 15:56:59,252 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 15:56:59,253 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 15:57:42,936 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 15:57:42,937 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 15:57:42,938 - services.task_scheduler - INFO - 任务 TASK_441D7053 已添加到调度队列
+2025-11-14 15:57:42,939 - services.system_manager - INFO - ✅ 任务添加成功: TASK_441D7053
+2025-11-14 15:57:55,290 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 15:58:23,299 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-11-14 16:04:48,414 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+2025-11-14 16:04:48,428 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+2025-11-14 16:04:48,445 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+2025-11-14 16:11:35,152 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:11:35,475 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:11:35,484 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:11:35,488 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:11:35,504 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:11:35,537 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:11:35,549 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:11:35,566 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:11:35,746 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:11:35,754 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:11:35,924 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:11:35,984 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:11:36,173 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:11:36,177 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:11:41,186 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:11:41,187 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:11:47,191 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:11:47,191 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:11:53,208 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:11:53,208 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:11:53,209 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:11:53,210 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:11:53,210 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:12:36,557 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:12:36,606 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:12:36,606 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:12:36,608 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:12:36,608 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:12:36,609 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:12:36,609 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:12:36,620 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:12:36,620 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:12:36,621 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:12:36,621 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:12:36,622 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:12:36,623 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:12:36,624 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:12:36,727 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:12:36,728 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:12:36,832 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:12:36,833 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:12:36,937 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:12:36,938 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:12:41,942 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:12:41,943 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:12:47,951 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:12:47,952 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:12:53,954 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:12:53,955 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:12:53,955 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:12:53,956 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:12:53,956 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:12:53,957 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 16:13:21,989 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 16:13:21,990 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 16:13:21,990 - services.task_scheduler - INFO - 任务 TASK_A63C233D 已添加到调度队列
+2025-11-14 16:13:21,991 - services.system_manager - INFO - ✅ 任务添加成功: TASK_A63C233D
+2025-11-14 16:13:39,103 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 16:14:05,938 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-11-14 16:14:38,075 - services.system_manager - ERROR - 更新机床 CNC-01 状态失败: MachineState.__init__() got an unexpected keyword argument 'last_updated'. Did you mean 'last_update'?
+2025-11-14 16:16:09,206 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:16:09,299 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:16:09,300 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:16:09,302 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:16:09,302 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:16:09,304 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:16:09,304 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:16:09,316 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:16:09,317 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:16:09,317 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:16:09,318 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:16:09,319 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:16:09,320 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:16:09,321 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:16:09,432 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:16:09,443 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:16:09,558 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:16:09,560 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:16:09,671 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:16:09,671 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:16:14,687 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:16:14,689 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:16:20,702 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:16:20,703 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:16:26,718 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:16:26,719 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:16:26,720 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:16:26,721 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:16:26,721 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:16:26,722 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 16:17:05,962 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 16:21:57,474 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:21:57,649 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:21:57,665 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:21:57,671 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:21:57,689 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:21:57,711 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:21:57,752 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:21:57,772 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:21:57,975 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:21:58,004 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:21:58,195 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:21:58,202 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:21:58,417 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:21:58,484 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:22:03,541 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:22:03,544 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:09,551 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:22:09,552 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:15,556 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:22:15,557 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:15,558 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:22:15,558 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:22:15,559 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:22:21,935 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:22:21,959 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:22:21,960 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:21,961 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:22:21,961 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:21,962 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:22:21,962 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:21,971 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:22:21,972 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:22:21,972 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:22:21,973 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:22:21,974 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:22:21,974 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:22:21,975 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:22:22,079 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:22:22,080 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:22:22,185 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:22:22,186 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:22:22,301 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:22:22,302 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:22:27,307 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:22:27,308 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:33,316 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:22:33,317 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:39,321 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:22:39,321 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:22:39,322 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:22:39,323 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:22:39,323 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:22:39,324 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 16:22:52,931 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 16:23:24,165 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 16:23:24,166 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 16:23:24,166 - services.task_scheduler - INFO - 任务 TASK_79C2C893 已添加到调度队列
+2025-11-14 16:23:24,167 - services.system_manager - INFO - ✅ 任务添加成功: TASK_79C2C893
+2025-11-14 16:23:29,033 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 16:23:55,094 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-14 16:24:19,716 - services.task_scheduler - WARNING - 没有可用机床，无法调度任务
+2025-11-14 16:27:23,462 - services.system_manager - ERROR - 更新机床 CNC-01 状态失败: name 'datetime' is not defined
+2025-11-14 16:31:29,913 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:31:30,057 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:31:30,080 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:31:30,105 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:31:30,279 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:31:30,406 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:31:30,432 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:31:30,478 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:31:30,762 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:31:30,763 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:31:30,875 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:31:30,893 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:31:31,006 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:31:31,008 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:31:36,025 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:31:36,027 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:31:42,030 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:31:42,031 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:31:48,048 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:31:48,049 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:31:48,049 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:31:48,050 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:31:48,050 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:31:52,178 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:31:52,238 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:31:52,238 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:31:52,240 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:31:52,240 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:31:52,241 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:31:52,242 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:31:52,253 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:31:52,255 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:31:52,258 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:31:52,259 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:31:52,260 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:31:52,261 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:31:52,264 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:31:52,370 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:31:52,371 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:31:52,477 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:31:52,477 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:31:52,582 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:31:52,583 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:31:57,598 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:31:57,599 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:32:03,612 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:32:03,614 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:32:09,628 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:32:09,629 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:32:09,630 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:32:09,630 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:32:09,630 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:32:09,631 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 16:32:33,653 - services.system_manager - WARNING - 系统中没有配置任何机床，使用默认机床信息进行材料检查
+2025-11-14 16:32:33,653 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-14 16:32:33,654 - services.task_scheduler - INFO - 任务 TASK_163237A7 已添加到调度队列
+2025-11-14 16:32:33,654 - services.system_manager - INFO - ✅ 任务添加成功: TASK_163237A7
+2025-11-14 16:32:57,961 - services.system_manager - INFO - ✅ 更新机床 CNC-01 状态: STOPPED
+2025-11-14 16:32:57,962 - services.system_manager - INFO - ✅ 更新机床 CNC-02 状态: STOPPED
+2025-11-14 16:32:57,963 - services.system_manager - INFO - ✅ 更新机床 CNC-03 状态: OFF
+2025-11-14 16:33:02,978 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:33:02,980 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:33:08,990 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:33:08,991 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:33:14,995 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:33:14,996 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:33:14,997 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
+2025-11-14 16:33:14,997 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-14 16:37:34,323 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:37:34,402 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:37:34,403 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:37:34,404 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:37:34,405 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:37:34,405 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:37:34,406 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:37:34,407 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:37:34,540 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:37:34,548 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:37:34,655 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:37:34,660 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:37:34,768 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:37:34,769 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:37:39,775 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:37:39,777 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:37:45,779 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:37:45,781 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:37:51,785 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:37:51,785 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:37:51,786 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:37:51,786 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:37:51,787 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:37:54,601 - services.system_manager - INFO - 开始初始化系统...
+2025-11-14 16:37:54,628 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:37:54,628 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:37:54,630 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:37:54,630 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:37:54,631 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-14 16:37:54,632 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:37:54,639 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-14 16:37:54,639 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-14 16:37:54,640 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-14 16:37:54,641 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-14 16:37:54,641 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-14 16:37:54,641 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-14 16:37:54,642 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-14 16:37:54,765 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-14 16:37:54,765 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-14 16:37:54,869 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-14 16:37:54,870 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-14 16:37:54,975 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-14 16:37:54,975 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-14 16:37:59,987 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:37:59,988 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:38:05,995 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:38:05,996 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:38:12,011 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-14 16:38:12,011 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-14 16:38:12,012 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-14 16:38:12,012 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-14 16:38:12,013 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-14 16:38:12,014 - services.system_manager - INFO - 系统已在运行中
+2025-11-14 16:38:34,947 - services.system_manager - ERROR - 添加新任务失败: name 'TaskPriority' is not defined

@@ -70,19 +70,23 @@ machines:
   CNC-01:
     material: "S45C"
     capabilities: ["turning", "facing"]
-    ip_address: "192.168.1.101"
+    ip_address: "127.0.0.1"
+    port: 8193
   CNC-02:
     material: "AL6061"
     capabilities: ["turning", "threading"]
-    ip_address: "192.168.1.102"
+    ip_address: "127.0.0.1"
+    port: 8194
   CNC-03:
     material: "S45C"
     capabilities: ["turning", "drilling"]
-    ip_address: "192.168.1.103"
+    ip_address: "127.0.0.1"
+    port: 8195
   CNC-04:
     material: "SS304"
     capabilities: ["turning", "threading"]
     ip_address: "192.168.1.104"
+    port: 8193
 
 machine_default_materials:
   CNC-01: "S45C"
@@ -139,3 +143,34 @@ performance:
   file_monitoring_timeout: 1
   task_scheduling_timeout: 2
   material_check_timeout: 0.1
+
+# 机床状态映射配置
+machine_status_mapping:
+  # CNC模拟器状态到系统内部状态的映射
+  cnc_simulator:
+    OFF: "OFF"
+    IDLE: "IDLE"
+    RUNNING: "RUNNING"
+    ALARM: "ERROR"
+    STOPPED: "STOPPED"
+    PAUSED: "PAUSED"
+  
+  # 系统内部状态定义（用于任务调度）
+  system_internal:
+    OFF: "OFF"          # 关机状态
+    IDLE: "IDLE"        # 空闲，可接受新任务
+    READY: "READY"      # 准备就绪，等待执行任务
+    RUNNING: "RUNNING"  # 正在运行任务
+    BUSY: "BUSY"        # 忙碌中
+    ERROR: "ERROR"      # 错误状态
+    STOPPED: "STOPPED"  # 已停止
+    PAUSED: "PAUSED"    # 已暂停
+    STANDBY: "STANDBY"  # 待机状态
+    UNKNOWN: "UNKNOWN"  # 未知状态
+  
+  # 可用状态定义（这些状态下的机床可以接受任务）
+  available_states:
+    - "OFF"
+    - "IDLE"
+    - "STANDBY"
+    - "READY"

@@ -92,6 +92,25 @@ class ConfigManager:
                 'file': 'logs/system.log',
                 'max_size': '10MB',
                 'backup_count': 5
+            },
+            'machine_status_mapping': {
+                'system_internal': {
+                    'OFF': '关机',
+                    'IDLE': '空闲',
+                    'STANDBY': '待机',
+                    'READY': '就绪',
+                    'RUNNING': '运行',
+                    'ALARM': '报警'
+                },
+                'available_states': ['OFF', 'IDLE', 'STANDBY', 'READY', 'RUNNING', 'ALARM'],
+                'cnc_simulator': {
+                    '0': 'OFF',
+                    '1': 'IDLE',
+                    '2': 'STANDBY',
+                    '3': 'READY',
+                    '4': 'RUNNING',
+                    '5': 'ALARM'
+                }
             }
         }
         
@@ -247,6 +266,34 @@ class ConfigManager:
     def get_priority_levels(self) -> list:
         """获取优先级级别"""
         return self.get('tasks.priority_levels', ['Normal', 'High', 'Urgent'])
+
+    def get_machine_status_mapping(self, source_system: str = "cnc_simulator") -> Dict[str, str]:
+        """获取机床状态映射配置
+        
+        Args:
+            source_system: 来源系统标识符
+            
+        Returns:
+            包含外部状态到内部状态映射的字典
+        """
+        mapping = self.get(f"machine_status_mapping.{source_system}", {})
+        return mapping if mapping else {}
+    
+    def get_internal_status_definitions(self) -> Dict[str, str]:
+        """获取系统内部状态定义
+        
+        Returns:
+            包含内部状态码及其描述的字典
+        """
+        return self.get("machine_status_mapping.system_internal", {})
+    
+    def get_available_states(self) -> list:
+        """获取可用状态列表
+        
+        Returns:
+            状态代码列表
+        """
+        return self.get("machine_status_mapping.available_states", ["OFF", "IDLE", "STANDBY", "READY"])
     
     def print_config_summary(self) -> None:
         """打印配置摘要"""

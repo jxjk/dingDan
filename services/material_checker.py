@@ -20,52 +20,35 @@ class MaterialChecker:
         if not self.material_mapper.load_material_mapping():
             self.logger.error("材料映射表加载失败")
     
-    def check_material_compatibility(self, material_spec: str, required_quantity: int) -> Dict:
-        """检查材料兼容性和库存"""
-        try:
-            self.logger.info(f"检查材料兼容性: {material_spec}, 数量: {required_quantity}")
-            
-            # 查找材料信息
-            material_info = self.material_mapper.get_material_by_name(material_spec)
-            
-            if not material_info:
-                self.logger.warning(f"未找到材料: {material_spec}")
-                return {
-                    'compatible': False,
-                    'available': False,
-                    'available_stock': 0,
-                    'required_quantity': required_quantity,
-                    'material_found': False,
-                    'message': f"材料 {material_spec} 未找到"
-                }
-            
-            # 检查库存
-            available_stock = material_info['库存数量']
-            has_sufficient_stock = available_stock >= required_quantity
-            
-            result = {
-                'compatible': True,
-                'available': has_sufficient_stock,
-                'available_stock': available_stock,
-                'required_quantity': required_quantity,
-                'material_found': True,
-                'material_info': material_info,
-                'message': self._generate_stock_message(material_spec, available_stock, required_quantity)
-            }
-            
-            self.logger.info(f"材料检查结果: 兼容={result['compatible']}, 可用={result['available']}")
-            return result
-            
-        except Exception as e:
-            self.logger.error(f"材料兼容性检查失败: {e}")
-            return {
-                'compatible': False,
-                'available': False,
-                'available_stock': 0,
-                'required_quantity': required_quantity,
-                'material_found': False,
-                'message': f"检查失败: {str(e)}"
-            }
+    def check_material_compatibility(self, task: ProductionTask, 
+                                   machine_id: str, current_material: str) -> Dict:
+        """检查材料兼容性"""
+        self.logger.debug(f"检查材料兼容性: 任务={task.task_id}, 机床={machine_id}, 当前材料='{current_material}', 任务材料={task.material_spec}")
+        
+        # 检查材料是否匹配
+        requires_change = current_material != task.material_spec
+        self.logger.debug(f"是否需要更换材料: {requires_change}")
+        
+        # 计算更换成本（如果需要）
+        change_cost = 0
+        if requires_change:
+            change_cost = self._calculate_change_cost(current_material, task.material_spec)
+            self.logger.debug(f"材料更换成本: {change_cost}")
+        
+        # 判断是否兼容
+        compatible = self._is_material_compatible(current_material, task.material_spec)
+        self.logger.debug(f"材料是否兼容: {compatible}")
+        
+        result = {
+            'compatible': compatible,
+            'requires_change': requires_change,
+            'change_cost': change_cost,
+            'current_material': current_material,
+            'task_material': task.material_spec
+        }
+        
+        self.logger.info(f"材料兼容性检查结果: {result}")
+        return result
     
     def _generate_stock_message(self, material_spec: str, available: int, required: int) -> str:
         """生成库存消息"""
@@ -233,3 +216,60 @@ class MaterialChecker:
         except Exception as e:
             self.logger.error(f"获取所有材料失败: {e}")
             return []
+    
+    def _is_material_compatible(self, current_material: str, task_material: str) -> bool:
+        """
+        检查材料是否兼容
+        
+        Args:
+            current_material: 当前机床材料
+            task_material: 任务所需材料
+            
+        Returns:
+            bool: 材料是否兼容
+        """
+        # 处理空字符串的情况
+        if not current_material:
+            self.logger.debug("当前机床材料为空，返回兼容")
+            return True
+            
+        # 简单实现：材料名称完全匹配即为兼容
+        # 在更复杂的实现中，可以根据材料分类体系判断兼容性
+        is_compatible = current_material == task_material
+        self.logger.debug(f"材料兼容性检查: {current_material} == {task_material} -> {is_compatible}")
+        return is_compatible
+    
+    def _calculate_change_cost(self, current_material: str, task_material: str) -> int:
+        """
+        计算材料更换成本（以分钟为单位）
+        
+        Args:
+            current_material: 当前机床材料
+            task_material: 任务所需材料
+            
+        Returns:
+            int: 更换成本（分钟）
+        """
+        # 如果材料相同或当前材料为空，则无需更换，成本为0
+        if current_material == task_material or not current_material:
+            return 0
+        
+        # 获取材料信息
+        current_mat_info = self.material_mapper.get_material_by_name(current_material)
+        task_mat_info = self.material_mapper.get_material_by_name(task_material)
+        
+        # 默认更换成本为10分钟
+        base_cost = 10
+        
+        # 如果能获取到材料信息，可以根据材料类型计算更精确的成本
+        if current_mat_info and task_mat_info:
+            # 示例：根据材料类型差异增加成本
+            # 这里只是一个简单的示例实现，实际情况可能会更加复杂
+            current_type = current_mat_info.get('材料规格', '').split('-')[0] if '-' in current_mat_info.get('材料规格', '') else ''
+            task_type = task_mat_info.get('材料规格', '').split('-')[0] if '-' in task_mat_info.get('材料规格', '') else ''
+            
+            # 如果材料类型不同，增加更换成本
+            if current_type != task_type:
+                base_cost += 5
+        
+        return base_cost
