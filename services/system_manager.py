@@ -19,7 +19,6 @@ from services.task_executor import TaskExecutor
 from services.file_monitor import FileMonitorManager
 from services.ui_automation import UIAutomation
 from models.production_task import ProductionTask, TaskStatus, TaskPriority, MachineState
-from cnc_machine_connector import CNCMachineManager
 
 
 class SystemStatus(Enum):
@@ -56,7 +55,6 @@ class SystemManager:
         self.task_executor = None
         self.file_monitor_manager = None
         self.ui_automation = None
-        self.cnc_connector = None
         
         # 定时调度相关
         self.auto_schedule_timer = None
@@ -81,10 +79,6 @@ class SystemManager:
             self.status_mapping = self.config_manager.get_machine_status_mapping()
             self.available_states = self.config_manager.get_available_states()
             
-            # 清理之前的CNC连接（如果存在）
-            if self.cnc_connector:
-                self.cnc_connector.disconnect_all_machines()
-            
             # 初始化材料检查器
             self.material_checker = MaterialChecker(self.config_manager)
             self.logger.info("✅ 材料检查器初始化成功")
@@ -105,12 +99,6 @@ class SystemManager:
             self.task_executor = TaskExecutor(self.task_scheduler, self.ui_automation)
             self.logger.info("✅ 任务执行器初始化成功")
             
-            # 初始化CNC连接器
-            self._initialize_cnc_connector()
-            
-            # 主动连接所有配置的机床
-            self._connect_all_machines()
-            
             # 启动定时自动调度
             self._start_auto_scheduling()
             
@@ -127,15 +115,6 @@ class SystemManager:
             self.status = SystemStatus.ERROR
             self.is_initialized = False
             return False
-    
-    def _initialize_cnc_connector(self):
-        """初始化CNC连接器"""
-        try:
-            self.cnc_connector = CNCMachineManager()
-            self.logger.info("✅ CNC连接器初始化成功")
-        except Exception as e:
-            self.logger.warning(f"⚠️ CNC连接器初始化失败: {e}")
-            self.cnc_connector = None
     
     def _start_auto_scheduling(self):
         """启动定时自动调度"""
@@ -454,77 +433,19 @@ class SystemManager:
         for machine_id, machine_info in machines_config.items():
             try:
                 self.logger.debug(f"处理机床 {machine_id}")
-                # 如果有CNC连接器，尝试获取实际状态
-                if self.cnc_connector:
-                    host = machine_info.get('ip_address', '127.0.0.1')
-                    port = machine_info.get('port', 8193)
-                    self.logger.debug(f"机床 {machine_id} 连接信息: {host}:{port}")
-                    
-                    # 检查是否已连接到该机床
-                    is_connected = self.cnc_connector.is_machine_connected(host, port)
-                    self.logger.debug(f"机床 {machine_id} 连接状态: {is_connected}")
-                    
-                    # 如果没有连接，则尝试连接
-                    if not is_connected:
-                        self.logger.debug(f"正在连接到机床 {machine_id} ({host}:{port})")
-                        connection_success = self.cnc_connector.connect_machine(host, port)
-                        self.logger.debug(f"机床 {machine_id} 连接结果: {connection_success}")
-                    else:
-                        connection_success = True
-                    
-                    if connection_success:
-                        # 获取机床状态
-                        status_response = self.cnc_connector.get_machine_status(host, port)
-                        self.logger.debug(f"机床 {machine_id} 状态响应: {status_response}")
-                        if status_response and status_response.get("success"):
-                            status_data = status_response["data"]
-                            raw_status = status_data.get("status", "UNKNOWN")
-                            
-                            # 映射到系统内部状态
-                            internal_status = self.map_machine_status(raw_status)
-                            self.logger.debug(f"机床 {machine_id} 原始状态: {raw_status}, 映射后状态: {internal_status}")
-                            
-                            # 创建机床状态对象
-                            machine_state = MachineState(
-                                machine_id=machine_id,
-                                current_state=internal_status,
-                                current_material=machine_info.get('material', ''),
-                                capabilities=machine_info.get('capabilities', []),
-                                current_task=None,
-                                last_update=datetime.now()
-                            )
-                            
-                            # 更新任务调度器中的机床状态
-                            self.task_scheduler.update_machine_state(machine_id, machine_state)
-                            self.logger.info(f"✅ 更新机床 {machine_id} 状态: {internal_status}")
-                            updated_machines += 1
-                        else:
-                            # 如果无法获取状态，设置为默认空闲状态
-                            self.logger.warning(f"无法获取机床 {machine_id} 状态，设置为默认 IDLE 状态")
-                            machine_state = MachineState(
-                                machine_id=machine_id,
-                                current_state="IDLE",
-                                current_material=machine_info.get('material', ''),
-                                capabilities=machine_info.get('capabilities', []),
-                                current_task=None,
-                                last_update=datetime.now()
-                            )
-                            self.task_scheduler.update_machine_state(machine_id, machine_state)
-                            updated_machines += 1
-                    else:
-                        self.logger.warning(f"连接机床 {machine_id} ({host}:{port}) 失败")
-                        # 即使连接失败，也要确保机床状态被设置为IDLE（根据容错规范）
-                        machine_state = MachineState(
-                            machine_id=machine_id,
-                            current_state="IDLE",  # 改为IDLE而不是UNKNOWN，确保机床可用
-                            current_material=machine_info.get('material', ''),
-                            capabilities=machine_info.get('capabilities', []),
-                            current_task=None,
-                            last_update=datetime.now()
-                        )
-                        self.task_scheduler.update_machine_state(machine_id, machine_state)
-                        updated_machines += 1
-                else:
+                # 使用配置中的默认状态
+                self.logger.debug("使用默认状态")
+                machine_state = MachineState(
+                    machine_id=machine_id,
+                    current_state="IDLE",  # 默认空闲状态
+                    current_material=machine_info.get('material', ''),
+                    capabilities=machine_info.get('capabilities', []),
+                    current_task=None,
+                    last_update=datetime.now()
+                )
+                self.task_scheduler.update_machine_state(machine_id, machine_state)
+                self.logger.info(f"✅ 使用默认状态更新机床 {machine_id}: IDLE")
+                updated_machines += 1
                     # 如果没有连接器，使用配置中的默认状态
                     self.logger.debug("未检测到CNC连接器，使用默认状态")
                     machine_state = MachineState(
@@ -787,51 +708,11 @@ class SystemManager:
             }
         }
     
-    def map_machine_status(self, source_status: str, source_system: str = "cnc_simulator") -> str:
-        """将不同系统的机床状态映射到系统内部状态"""
-        # 获取状态映射配置
-        status_mapping = self.config_manager.get_machine_status_mapping(source_system)
-        
-        # 映射状态，如果找不到映射则返回原状态
-        return status_mapping.get(source_status.upper(), source_status.upper())
-    
-    def is_machine_available(self, machine_status: str) -> bool:
-        """检查机床是否可用（可以接受任务）"""
-        internal_status = self.map_machine_status(machine_status)
-        return internal_status in self.available_states
-    
-    def _connect_all_machines(self):
-        """主动连接所有配置的机床"""
-        if not self.cnc_connector:
-            self.logger.warning("CNC连接器不可用，无法连接机床")
-            return
-        
-        machines_config = self.config_manager.get('machines', {})
-        if not machines_config:
-            self.logger.info("配置中未定义任何机床")
-            return
-        
-        self.logger.info(f"尝试连接 {len(machines_config)} 台机床...")
-        
-        for machine_id, machine_info in machines_config.items():
-            host = machine_info.get('ip_address', '127.0.0.1')
-            port = machine_info.get('port', 8193)
-            
-            self.logger.debug(f"正在连接机床 {machine_id} ({host}:{port})")
-            connection_success = self.cnc_connector.connect_machine(host, port)
-            
-            # 禁用实时状态显示以避免干扰用户输入
-            machine_key = f"{host}:{port}"
-            if machine_key in self.cnc_connector.clients:
-                self.cnc_connector.clients[machine_key].show_realtime_status = False
-            
-            if connection_success:
-                self.logger.info(f"✅ 成功连接到机床 {machine_id}")
-            else:
-                self.logger.warning(f"❌ 连接机床 {machine_id} 失败")
-                
-        self.logger.info("机床连接尝试完成")
-
+    def _initialize_cnc_connector(self):
+        """初始化CNC连接器"""
+        # 根据新需求，不再需要CNC连接器
+        self.cnc_connector = None
+        self.logger.info("根据新需求，不初始化CNC连接器")
 
 # 全局系统管理器实例
 _system_manager: Optional[SystemManager] = None

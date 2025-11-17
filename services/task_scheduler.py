@@ -553,35 +553,9 @@ class TaskScheduler:
     
     def _is_machine_online(self, machine_id: str) -> bool:
         """检查机床是否在线"""
-        try:
-            # 获取系统管理器实例
-            from services.system_manager import get_system_manager
-            system_manager = get_system_manager()
-            
-            # 检查CNC连接器是否存在
-            if not system_manager or not system_manager.cnc_connector:
-                self.logger.debug(f"系统管理器或CNC连接器不存在，假设机床 {machine_id} 在线")
-                return True
-            
-            # 获取机床配置信息
-            machines_config = system_manager.config_manager.get('machines', {})
-            if machine_id not in machines_config:
-                self.logger.warning(f"未找到机床 {machine_id} 的配置信息")
-                return False
-            
-            machine_info = machines_config[machine_id]
-            host = machine_info.get('ip_address', '127.0.0.1')
-            port = machine_info.get('port', 8193)
-            
-            # 使用CNC连接器检查机床的实际连接状态
-            is_connected = system_manager.cnc_connector.is_machine_connected(host, port)
-            self.logger.info(f"通过CNC连接器检查机床 {machine_id} (IP: {host}, Port: {port}) 的在线状态: {is_connected}")
-            return is_connected
-            
-        except Exception as e:
-            self.logger.error(f"检查机床 {machine_id} 在线状态时发生异常: {e}")
-            # 发生异常时，保守起见认为机床不在线，避免错误分配任务
-            return False
+        # 根据新需求，不再需要检查机床是否在线，直接返回True
+        self.logger.debug(f"根据新需求，假设机床 {machine_id} 在线")
+        return True
     
     def _check_material_compatibility_and_warn(self, task: ProductionTask, machine_id: str) -> bool:
         """检查材料兼容性并在需要更换材料时警告用户"""

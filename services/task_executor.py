@@ -6,12 +6,15 @@
 import logging
 import time
 import threading
+import csv
+import os
 from typing import Dict, List, Optional
 from datetime import datetime
 
 from models.production_task import ProductionTask, TaskStatus
 from services.task_scheduler import TaskScheduler
 from services.ui_automation import UIAutomation
+from config.config_manager import get_config_manager
 
 
 class TaskExecutor:
@@ -21,6 +24,9 @@ class TaskExecutor:
         self.task_scheduler = task_scheduler
         self.ui_automation = ui_automation
         self.logger = logging.getLogger(__name__)
+        
+        # 获取配置管理器
+        self.config_manager = get_config_manager()
         
         # 执行状态
         self.is_running = False
@@ -152,29 +158,10 @@ class TaskExecutor:
             start_time = time.time()
             self.logger.info(f"执行任务 {task.task_id}: {task.product_model} x {task.order_quantity}")
             
-            # 1. 准备材料
-            if not self._prepare_material(task):
-                self.logger.error(f"任务 {task.task_id} 材料准备失败")
-                return False
-            
-            # 2. 加载程序
-            if not self._load_program(task):
-                self.logger.error(f"任务 {task.task_id} 程序加载失败")
-                return False
-            
-            # 3. 启动加工
-            if not self._start_machining(task):
-                self.logger.error(f"任务 {task.task_id} 加工启动失败")
-                return False
-            
-            # 4. 监控加工进度
-            if not self._monitor_progress(task):
-                self.logger.error(f"任务 {task.task_id} 加工监控失败")
-                return False
-            
-            # 5. 完成加工
-            if not self._complete_machining(task):
-                self.logger.error(f"任务 {task.task_id} 加工完成失败")
+            # 根据新需求，读取平板IP对应的CSV文件，获取机床状态
+            # 并输出以平板IP地址命名的txt文件
+            if not self._process_task_to_tablet(task):
+                self.logger.error(f"任务 {task.task_id} 处理失败")
                 return False
             
             execution_time = time.time() - start_time
@@ -187,13 +174,93 @@ class TaskExecutor:
             self.logger.error(f"任务 {task.task_id} 执行异常: {e}")
             return False
     
+    def _process_task_to_tablet(self, task: ProductionTask) -> bool:
+        """处理任务到平板"""
+        try:
+            # 获取机床配置信息
+            machines_config = self.config_manager.get('machines', {})
+            
+            # 查找分配给该任务的机床
+            assigned_machine_id = task.assigned_machine
+            if not assigned_machine_id:
+                self.logger.error(f"任务 {task.task_id} 未分配机床")
+                return False
+            
+            if assigned_machine_id not in machines_config:
+                self.logger.error(f"未找到机床 {assigned_machine_id} 的配置信息")
+                return False
+            
+            machine_info = machines_config[assigned_machine_id]
+            tablet_ip = machine_info.get('tablet_ip')
+            if not tablet_ip:
+                self.logger.error(f"机床 {assigned_machine_id} 未配置平板IP")
+                return False
+            
+            # 读取平板IP对应的CSV文件，掌握机床状态
+            csv_file_path = f"monitoring/{tablet_ip}.csv"
+            if os.path.exists(csv_file_path):
+                with open(csv_file_path, 'r', encoding='utf-8') as csvfile:
+                    reader = csv.reader(csvfile)
+                    # 读取CSV内容以获取机床状态
+                    rows = list(reader)
+                    self.logger.info(f"从 {csv_file_path} 读取到 {len(rows)} 行数据")
+            else:
+                self.logger.warning(f"未找到CSV文件: {csv_file_path}")
+            
+            # 创建以平板IP地址命名的txt文件
+            txt_file_path = f"monitoring/{tablet_ip}.txt"
+            
+            # 内容格式：指示书编号@型号@数量
+            content = f"{task.instruction_id}@{task.product_model}@{task.order_quantity}"
+            
+            # 写入文件（只有一行内容）
+            with open(txt_file_path, 'w', encoding='utf-8') as txtfile:
+                txtfile.write(content)
+            
+            self.logger.info(f"已创建文件 {txt_file_path}，内容: {content}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"处理任务到平板时出错: {e}")
+            return False
+    
+    def _monitor_progress(self, task: ProductionTask) -> bool:
+        """监控加工进度"""
+        try:
+            self.logger.info(f"监控任务进度: {task.product_model}")
+            
+            # 模拟任务处理过程
+            total_steps = task.order_quantity
+            for step in range(total_steps):
+                if not self.is_running:
+                    self.logger.warning("任务执行器已停止，中断任务处理")
+                    return False
+                
+                # 更新完成数量
+                task.completed_quantity = step + 1
+                
+                # 模拟处理时间
+                time.sleep(0.1)
+                
+                # 记录进度
+                progress = (step + 1) / total_steps * 100
+                if (step + 1) % 5 == 0 or step == total_steps - 1:
+                    self.logger.info(f"任务处理进度: {progress:.1f}% ({step + 1}/{total_steps})")
+            
+            self.logger.info("任务处理完成")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"任务处理监控失败: {e}")
+            return False
+    
     def _prepare_material(self, task: ProductionTask) -> bool:
         """准备材料"""
         try:
             self.logger.info(f"准备材料: {task.material_spec}")
             
             # 模拟材料准备过程
-            time.sleep(2)
+            time.sleep(0.5)
             
             # 更新材料检查状态
             task.material_check = True
@@ -210,7 +277,7 @@ class TaskExecutor:
             self.logger.info(f"加载程序: {task.program_name or '默认程序'}")
             
             # 模拟程序加载过程
-            time.sleep(1)
+            time.sleep(0.5)
             
             # 更新程序可用状态
             task.program_available = True
@@ -224,63 +291,33 @@ class TaskExecutor:
     def _start_machining(self, task: ProductionTask) -> bool:
         """启动加工"""
         try:
-            self.logger.info(f"启动加工: {task.product_model}")
+            self.logger.info(f"启动任务处理: {task.product_model}")
             
-            # 模拟加工启动过程
-            time.sleep(1)
+            # 模拟任务处理启动过程
+            time.sleep(0.5)
             
-            self.logger.info("加工已启动")
+            self.logger.info("任务处理已启动")
             return True
             
         except Exception as e:
-            self.logger.error(f"加工启动失败: {e}")
-            return False
-    
-    def _monitor_progress(self, task: ProductionTask) -> bool:
-        """监控加工进度"""
-        try:
-            self.logger.info(f"监控加工进度: {task.product_model}")
-            
-            # 模拟加工过程
-            total_steps = task.order_quantity
-            for step in range(total_steps):
-                if not self.is_running:
-                    self.logger.warning("任务执行器已停止，中断加工")
-                    return False
-                
-                # 更新完成数量
-                task.completed_quantity = step + 1
-                
-                # 模拟加工时间
-                time.sleep(0.5)
-                
-                # 记录进度
-                progress = (step + 1) / total_steps * 100
-                if (step + 1) % 5 == 0 or step == total_steps - 1:
-                    self.logger.info(f"加工进度: {progress:.1f}% ({step + 1}/{total_steps})")
-            
-            self.logger.info("加工进度监控完成")
-            return True
-            
-        except Exception as e:
-            self.logger.error(f"加工进度监控失败: {e}")
+            self.logger.error(f"任务处理启动失败: {e}")
             return False
     
     def _complete_machining(self, task: ProductionTask) -> bool:
         """完成加工"""
         try:
-            self.logger.info(f"完成加工: {task.product_model}")
+            self.logger.info(f"完成任务处理: {task.product_model}")
             
-            # 模拟加工完成过程
-            time.sleep(1)
+            # 模拟任务处理完成过程
+            time.sleep(0.5)
             
             # 更新完成状态
             task.completed_quantity = task.order_quantity
-            self.logger.info("加工完成")
+            self.logger.info("任务处理完成")
             return True
             
         except Exception as e:
-            self.logger.error(f"加工完成失败: {e}")
+            self.logger.error(f"任务处理完成失败: {e}")
             return False
     
     def get_execution_status(self) -> Dict:
