@@ -129,17 +129,28 @@ class SystemStarterGUI:
         """检查依赖包"""
         self.log_message("正在检查依赖包...")
         
-        # 这里可以添加实际的依赖检查逻辑
-        # 暂时返回True表示检查通过
-        try:
-            import pandas
-            import requests
-            import pyautogui
+        required_packages = {
+            'pandas': 'pandas',
+            'requests': 'requests', 
+            'pyautogui': 'pyautogui'
+        }
+        
+        missing_packages = []
+        
+        for import_name, package_name in required_packages.items():
+            try:
+                __import__(import_name)
+            except ImportError:
+                missing_packages.append(package_name)
+        
+        if not missing_packages:
             self.log_message("✅ 所有依赖包已安装")
             messagebox.showinfo("依赖检查", "所有依赖包已安装")
-        except ImportError as e:
-            self.log_message(f"❌ 缺少依赖包: {e}")
-            messagebox.showerror("依赖检查", f"缺少依赖包: {e}\n请运行: pip install -r requirements.txt")
+        else:
+            missing = ", ".join(missing_packages)
+            message = f"缺少依赖包: {missing}\n请运行: pip install {' '.join(missing_packages)}"
+            self.log_message(f"❌ {message}")
+            messagebox.showerror("依赖检查", message)
     
     def start_system(self):
         """启动系统"""

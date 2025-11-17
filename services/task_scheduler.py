@@ -55,6 +55,11 @@ class TaskScheduler:
             # 打印所有待处理任务ID用于调试
             task_ids = [t.task_id for t in self.pending_tasks]
             self.logger.debug(f"当前待处理任务列表: {task_ids}")
+            
+            # 添加任务后自动触发调度
+            self.logger.info("添加任务后自动触发调度")
+            self.schedule_tasks()
+            
             return True
         except Exception as e:
             self.logger.error(f"添加任务失败: {e}")
@@ -175,6 +180,7 @@ class TaskScheduler:
                     current_available_machines.remove(machine_id)
             else:
                 self.logger.error(f"分配任务 {task.task_id} 到机床 {machine_id} 失败")
+                self.logger.info(f"任务 {task.task_id} 保持在待处理队列中，等待下次调度")
                 # 用户拒绝了分配，但继续处理其他任务
                 # 不移除机床，因为可能可以分配给其他任务
         
@@ -547,36 +553,42 @@ class TaskScheduler:
     
     def _is_machine_online(self, machine_id: str) -> bool:
         """检查机床是否在线"""
-        # 获取系统管理器实例
-        from services.system_manager import get_system_manager
-        system_manager = get_system_manager()
-        
-        # 检查CNC连接器是否存在
-        if not system_manager.cnc_connector:
-            self.logger.warning(f"系统管理器中没有CNC连接器，无法检查机床 {machine_id} 的在线状态")
+        try:
+            # 获取系统管理器实例
+            from services.system_manager import get_system_manager
+            system_manager = get_system_manager()
+            
+            # 检查CNC连接器是否存在
+            if not system_manager or not system_manager.cnc_connector:
+                self.logger.debug(f"系统管理器或CNC连接器不存在，假设机床 {machine_id} 在线")
+                return True
+            
+            # 获取机床配置信息
+            machines_config = system_manager.config_manager.get('machines', {})
+            if machine_id not in machines_config:
+                self.logger.warning(f"未找到机床 {machine_id} 的配置信息")
+                return False
+            
+            machine_info = machines_config[machine_id]
+            host = machine_info.get('ip_address', '127.0.0.1')
+            port = machine_info.get('port', 8193)
+            
+            # 使用CNC连接器检查机床的实际连接状态
+            is_connected = system_manager.cnc_connector.is_machine_connected(host, port)
+            self.logger.info(f"通过CNC连接器检查机床 {machine_id} (IP: {host}, Port: {port}) 的在线状态: {is_connected}")
+            return is_connected
+            
+        except Exception as e:
+            self.logger.error(f"检查机床 {machine_id} 在线状态时发生异常: {e}")
+            # 发生异常时，保守起见认为机床不在线，避免错误分配任务
             return False
-        
-        # 获取机床配置信息
-        machines_config = system_manager.config_manager.get('machines', {})
-        if machine_id not in machines_config:
-            self.logger.warning(f"未找到机床 {machine_id} 的配置信息")
-            return False
-        
-        machine_info = machines_config[machine_id]
-        host = machine_info.get('ip_address', '127.0.0.1')
-        port = machine_info.get('port', 8193)
-        
-        # 检查机床是否连接
-        is_connected = system_manager.cnc_connector.is_machine_connected(host, port)
-        self.logger.debug(f"机床 {machine_id} 连接状态: {is_connected}")
-        return is_connected
     
     def _check_material_compatibility_and_warn(self, task: ProductionTask, machine_id: str) -> bool:
         """检查材料兼容性并在需要更换材料时警告用户"""
         # 获取机床当前材料
         if machine_id not in self.machine_states:
             self.logger.warning(f"未找到机床 {machine_id} 的状态信息")
-            return True  # 如果没有状态信息，继续分配任务
+            return False  # 如果没有状态信息，阻止分配任务
         
         current_material = self.machine_states[machine_id].current_material
         
@@ -597,7 +609,10 @@ class TaskScheduler:
         print(warning_msg)
         user_input = input("输入 'yes' 确认继续分配，其他任意键取消: ").strip().lower()
         
-        return user_input == 'yes'
+        result = user_input == 'yes'
+        if not result:
+            self.logger.info(f"任务 {task.task_id} 因材料不匹配且用户未确认，保持阻塞状态")
+        return result
     
     def complete_task(self, task_id: str):
         """标记任务完成"""

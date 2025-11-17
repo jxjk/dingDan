@@ -10,6 +10,8 @@ import uuid
 from datetime import datetime
 from typing import Dict, List, Optional
 from enum import Enum
+import asyncio
+import functools
 from config.config_manager import get_config_manager
 from services.material_checker import MaterialChecker
 from services.task_scheduler import TaskScheduler
@@ -17,6 +19,7 @@ from services.task_executor import TaskExecutor
 from services.file_monitor import FileMonitorManager
 from services.ui_automation import UIAutomation
 from models.production_task import ProductionTask, TaskStatus, TaskPriority, MachineState
+from cnc_machine_connector import CNCMachineManager
 
 
 class SystemStatus(Enum):
@@ -32,47 +35,35 @@ class SystemManager:
     """系统管理器"""
     
     def __init__(self):
-        self.config_manager = get_config_manager()
+        """初始化系统管理器"""
         self.logger = logging.getLogger(__name__)
+        self.is_initialized = False
+        self.is_running = False
         
-        # 系统组件
-        self.material_checker: Optional[MaterialChecker] = None
-        self.task_scheduler: Optional[TaskScheduler] = None
-        self.task_executor: Optional[TaskExecutor] = None  # 新增
-        self.file_monitor: Optional[FileMonitorManager] = None
-        self.ui_automation: Optional[UIAutomation] = None
+        # 统计信息
+        self.stats = {
+            'tasks_processed': 0,
+            'files_monitored': 0,
+            'errors_occurred': 0
+        }
+        
+        # 配置管理器
+        self.config_manager = get_config_manager()
+        
+        # 初始化核心服务
+        self.material_checker = None
+        self.task_scheduler = None
+        self.task_executor = None
+        self.file_monitor_manager = None
+        self.ui_automation = None
+        self.cnc_connector = None
+        
+        # 定时调度相关
+        self.auto_schedule_timer = None
+        self.auto_schedule_interval = 60  # 60秒
         
         # 系统状态
         self.status = SystemStatus.INITIALIZING
-        self.start_time = None
-        self.error_count = 0
-        self.is_initialized = False  # 添加初始化状态属性
-        
-        # 统计数据
-        self.stats = {
-            'tasks_processed': 0,
-            'tasks_completed': 0,
-            'tasks_failed': 0,
-            'materials_checked': 0,
-            'files_processed': 0
-        }
-        
-        # 状态映射配置
-        self.status_mapping = self.config_manager.get_machine_status_mapping()
-        self.available_states = self.config_manager.get_available_states()
-        
-        # 机床状态更新线程
-        self.machine_monitor_thread: Optional[threading.Thread] = None
-        self.machine_monitor_running = False
-        self.machine_monitor_interval = 10  # 默认10秒更新一次机床状态
-        
-        # CNC连接器
-        self.cnc_connector = None
-        try:
-            from cnc_machine_connector import CNCMachineManager
-            self.cnc_connector = CNCMachineManager()
-        except ImportError:
-            self.logger.warning("CNC连接器不可用")
     
     def initialize_system(self) -> bool:
         """初始化系统"""
@@ -114,8 +105,14 @@ class SystemManager:
             self.task_executor = TaskExecutor(self.task_scheduler, self.ui_automation)
             self.logger.info("✅ 任务执行器初始化成功")
             
+            # 初始化CNC连接器
+            self._initialize_cnc_connector()
+            
             # 主动连接所有配置的机床
             self._connect_all_machines()
+            
+            # 启动定时自动调度
+            self._start_auto_scheduling()
             
             # 更新系统状态
             self.status = SystemStatus.RUNNING
@@ -130,6 +127,39 @@ class SystemManager:
             self.status = SystemStatus.ERROR
             self.is_initialized = False
             return False
+    
+    def _initialize_cnc_connector(self):
+        """初始化CNC连接器"""
+        try:
+            self.cnc_connector = CNCMachineManager()
+            self.logger.info("✅ CNC连接器初始化成功")
+        except Exception as e:
+            self.logger.warning(f"⚠️ CNC连接器初始化失败: {e}")
+            self.cnc_connector = None
+    
+    def _start_auto_scheduling(self):
+        """启动定时自动调度"""
+        def run_auto_schedule():
+            while self.is_running:
+                try:
+                    time.sleep(self.auto_schedule_interval)
+                    if self.is_running:
+                        self.logger.debug("执行定时自动调度")
+                        self.task_scheduler.schedule_tasks()
+                except Exception as e:
+                    self.logger.error(f"定时自动调度出错: {e}")
+        
+        self.is_running = True
+        self.auto_schedule_timer = threading.Thread(target=run_auto_schedule, daemon=True)
+        self.auto_schedule_timer.start()
+        self.logger.info("定时自动调度已启动，每60秒执行一次")
+    
+    def _stop_auto_scheduling(self):
+        """停止定时自动调度"""
+        self.is_running = False
+        if self.auto_schedule_timer:
+            self.auto_schedule_timer.join()
+        self.logger.info("定时自动调度已停止")
     
     def add_new_task(self, instruction_id: str, product_model: str, 
                      material_spec: str, order_quantity: int, 
@@ -336,37 +366,24 @@ class SystemManager:
             self.status = SystemStatus.ERROR
             return False
     
-    def stop_system(self) -> bool:
+    def stop_system(self):
         """停止系统"""
-        try:
-            if self.status == SystemStatus.STOPPED:
-                self.logger.info("系统已停止")
-                return True
-            
-            # 停止机床状态监控
-            self._stop_machine_monitoring()
-            
-            # 断开所有CNC连接
-            if self.cnc_connector:
-                self.cnc_connector.disconnect_all_machines()
-                self.logger.info("所有CNC连接已断开")
-            
-            # 停止任务执行器
-            if self.task_executor:
-                self.task_executor.stop_execution()
-            
-            # 停止文件监控
-            if self.file_monitor:
-                self.file_monitor.stop_monitoring()
-            
-            self.status = SystemStatus.STOPPED
-            
-            self.logger.info("🛑 系统已停止")
-            return True
-            
-        except Exception as e:
-            self.logger.error(f"系统停止失败: {e}")
-            return False
+        self.logger.info("正在停止系统...")
+        self.is_running = False
+        self.status = SystemStatus.STOPPED
+        
+        # 停止定时自动调度
+        self._stop_auto_scheduling()
+        
+        # 停止文件监控
+        if self.file_monitor_manager:
+            self.file_monitor_manager.stop_monitoring()
+        
+        # 停止任务执行器
+        if self.task_executor:
+            self.task_executor.stop()
+        
+        self.logger.info("✅ 系统已停止")
     
     def _start_machine_monitoring(self):
         """启动机床状态监控"""

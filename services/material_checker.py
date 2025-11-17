@@ -1,11 +1,14 @@
 """
-材料检查器模块
-负责材料兼容性和库存检查
+材料检查服务
+提供材料兼容性检查和材料库存管理功能
 """
 
 import logging
-from typing import Dict, List, Optional, Tuple
+import time
+from typing import Dict, List, Any, Tuple
+from models.production_task import ProductionTask
 from services.material_mapper import MaterialMapper
+from config.config_manager import get_config_manager
 
 
 class MaterialChecker:
