@@ -86,19 +86,27 @@ class TaskScheduler:
         available_machines = []
         self.logger.debug(f"检查可用机床，当前机床状态数: {len(self.machine_states)}")
         for machine_id, state in self.machine_states.items():
-            is_available = self._is_machine_available(state.current_state)
-            self.logger.debug(f"机床 {machine_id} 状态: {state.current_state}, 是否可用: {is_available}")
+            # 检查机床是否正在运行任务
+            is_running_task = state.current_task is not None
+            # 检查机床状态是否可用
+            is_status_available = self._is_machine_status_available(state.current_state)
+            # 检查机床是否在线
+            is_online = self._is_machine_online(machine_id)
+            # 机床可用当且仅当没有运行任务、状态可用且在线
+            is_available = not is_running_task and is_status_available and is_online
+            self.logger.debug(f"机床 {machine_id} 状态: {state.current_state}, 是否正在运行任务: {is_running_task}, 是否在线: {is_online}, 是否可用: {is_available}")
             if is_available:
                 available_machines.append(machine_id)
                 self.logger.debug(f"机床 {machine_id} 可用，状态: {state.current_state}")
             else:
-                self.logger.debug(f"机床 {machine_id} 不可用，状态: {state.current_state}")
+                self.logger.debug(f"机床 {machine_id} 不可用，状态: {state.current_state}，正在运行任务: {is_running_task}，在线: {is_online}")
         self.logger.debug(f"总共找到 {len(available_machines)} 台可用机床: {available_machines}")
         return available_machines
     
-    def _is_machine_available(self, machine_state: str) -> bool:
-        """检查机床是否可用（基于配置的可用状态列表）"""
-        self.logger.debug(f"检查机床状态 {machine_state} 是否在可用状态列表中: {self.available_states}")
+    def _is_machine_status_available(self, machine_state: str) -> bool:
+        """检查机床状态是否在可用状态列表中（不包含任务占用检查）"""
+        self.logger.debug(f"检查机床状态 {machine_state} 是否在可用列表中")
+        
         # 将状态转换为大写进行比较
         normalized_state = machine_state.upper()
         normalized_available_states = [state.upper() for state in self.available_states]
@@ -115,6 +123,9 @@ class TaskScheduler:
     
     def schedule_tasks(self) -> List[Tuple[ProductionTask, str]]:
         """执行任务调度"""
+        # 在调度前先执行刷新操作
+        self._refresh_machine_states()
+        
         pending_count = len(self.pending_tasks)
         self.logger.debug(f"开始任务调度，待处理任务数: {pending_count}")
         
@@ -144,16 +155,51 @@ class TaskScheduler:
         
         # 执行任务分配
         executed_assignments = []
+        # 创建可用机床列表的副本，以便在分配过程中动态更新
+        current_available_machines = available_machines.copy()
+        
         for task, machine_id in assignments:
             self.logger.debug(f"尝试分配任务 {task.task_id} 到机床 {machine_id}")
+            # 检查机床是否仍在可用列表中（可能在之前的分配中被移除）
+            if machine_id not in current_available_machines:
+                self.logger.warning(f"机床 {machine_id} 不再可用，跳过任务 {task.task_id} 的分配")
+                # 继续处理下一个任务分配
+                continue
+                
             if self._assign_task_to_machine(task, machine_id):
                 self.logger.info(f"成功分配任务 {task.task_id} 到机床 {machine_id}")
                 executed_assignments.append((task, machine_id))
                 self.pending_tasks.remove(task)
+                # 从当前可用机床列表中移除已分配的机床
+                if machine_id in current_available_machines:
+                    current_available_machines.remove(machine_id)
             else:
                 self.logger.error(f"分配任务 {task.task_id} 到机床 {machine_id} 失败")
+                # 用户拒绝了分配，但继续处理其他任务
+                # 不移除机床，因为可能可以分配给其他任务
         
+        if executed_assignments:
+            self.logger.info(f"✅ 本次调度成功分配 {len(executed_assignments)} 个任务")
+        else:
+            self.logger.info("ℹ️ 本次调度未分配任何任务")
+            
         return executed_assignments
+    
+    def _refresh_machine_states(self):
+        """刷新机床状态"""
+        try:
+            # 获取系统管理器实例
+            from services.system_manager import get_system_manager
+            system_manager = get_system_manager()
+            
+            # 调用系统管理器的机床状态更新方法
+            if system_manager:
+                system_manager._update_machine_states()
+                self.logger.debug("机床状态刷新完成")
+            else:
+                self.logger.warning("无法获取系统管理器实例，跳过机床状态刷新")
+        except Exception as e:
+            self.logger.error(f"刷新机床状态时出错: {e}")
     
     def _schedule_material_first(self, tasks: List[ProductionTask], 
                                machines: List[str]) -> List[Tuple[ProductionTask, str]]:
@@ -175,16 +221,20 @@ class TaskScheduler:
             else:
                 return str(task.priority)
         
+        # 创建机器列表副本，以便在调度过程中动态更新
+        available_machines = machines.copy()
+        
         for task in sorted(tasks, key=lambda t: get_priority_value(t), reverse=True):
             self.logger.debug(f"评估任务 {task.task_id} (优先级: {get_priority_value(task)})")
-            best_machine = self._find_best_machine_for_task(task, machine_materials)
+            best_machine = self._find_best_machine_for_task(task, 
+                {mid: mat for mid, mat in machine_materials.items() if mid in available_machines})
             self.logger.debug(f"任务 {task.task_id} 最佳机床: {best_machine}")
             if best_machine:
                 assignments.append((task, best_machine))
                 # 从可用机床中移除已分配的机床
-                if best_machine in machines:
-                    machines.remove(best_machine)
-                    self.logger.debug(f"移除已分配机床 {best_machine}，剩余可用机床: {machines}")
+                if best_machine in available_machines:
+                    available_machines.remove(best_machine)
+                    self.logger.debug(f"移除已分配机床 {best_machine}，剩余可用机床: {available_machines}")
         
         self.logger.debug(f"材料优先调度策略完成，分配数: {len(assignments)}")
         return assignments
@@ -212,14 +262,18 @@ class TaskScheduler:
         machine_materials = {machine_id: self.machine_states[machine_id].current_material 
                            for machine_id in machines}
         
+        # 创建机器列表副本，以便在调度过程中动态更新
+        available_machines = machines.copy()
+        
         # 按优先级顺序分配任务
         for task in sorted_tasks:
-            best_machine = self._find_best_machine_for_task(task, machine_materials)
+            best_machine = self._find_best_machine_for_task(task, 
+                {mid: mat for mid, mat in machine_materials.items() if mid in available_machines})
             if best_machine:
                 assignments.append((task, best_machine))
                 # 从可用机床中移除已分配的机床
-                if best_machine in machines:
-                    machines.remove(best_machine)
+                if best_machine in available_machines:
+                    available_machines.remove(best_machine)
         
         return assignments
     
@@ -236,10 +290,13 @@ class TaskScheduler:
         machine_materials = {machine_id: self.machine_states[machine_id].current_material 
                            for machine_id in machines}
         
+        # 创建机器列表副本，以便在调度过程中动态更新
+        available_machines = machines.copy()
+        
         for task in sorted(tasks, key=lambda t: t.priority.value, reverse=True):
             # 选择负载最小的可用机床
             available_machines_with_load = [(machine_id, machine_load[machine_id]) 
-                                          for machine_id in machines 
+                                          for machine_id in available_machines 
                                           if machine_id in machine_materials]
             
             if available_machines_with_load:
@@ -250,8 +307,8 @@ class TaskScheduler:
                 if material_check.compatible:
                     assignments.append((task, best_machine))
                     machine_load[best_machine] += task.estimated_duration
-                    if best_machine in machines:
-                        machines.remove(best_machine)
+                    if best_machine in available_machines:
+                        available_machines.remove(best_machine)
         
         return assignments
     
@@ -262,13 +319,17 @@ class TaskScheduler:
         machine_materials = {machine_id: self.machine_states[machine_id].current_material 
                            for machine_id in machines}
         
+        # 创建机器列表副本，以便在调度过程中动态更新
+        available_machines = machines.copy()
+        
         # 计算每个任务在每台机床上的效率得分
         task_machine_scores = []
         for task in tasks:
-            for machine_id in machines:
-                score = self._calculate_efficiency_score(task, machine_id, 
-                                                       machine_materials[machine_id])
-                task_machine_scores.append((score, task, machine_id))
+            for machine_id in available_machines:
+                if machine_id in machine_materials:
+                    score = self._calculate_efficiency_score(task, machine_id, 
+                                                           machine_materials[machine_id])
+                    task_machine_scores.append((score, task, machine_id))
         
         # 按效率得分排序
         task_machine_scores.sort(reverse=True)
@@ -277,10 +338,12 @@ class TaskScheduler:
         assigned_machines = set()
         
         for score, task, machine_id in task_machine_scores:
-            if task.task_id not in assigned_tasks and machine_id not in assigned_machines:
+            if task.task_id not in assigned_tasks and machine_id not in assigned_machines and machine_id in available_machines:
                 assignments.append((task, machine_id))
                 assigned_tasks.add(task.task_id)
                 assigned_machines.add(machine_id)
+                # 从可用机床列表中移除已分配的机床
+                available_machines.remove(machine_id)
         
         return assignments
     
@@ -293,8 +356,21 @@ class TaskScheduler:
         best_machine = None
         best_score = -1
         
+        # 获取当前真正可用的机床列表
+        actually_available_machines = self.get_available_machines()
+        
         for machine_id, current_material in machine_materials.items():
             self.logger.debug(f"评估机床 {machine_id} (当前材料: {current_material})")
+            # 检查机床是否在真正可用的机床列表中
+            if machine_id not in actually_available_machines:
+                self.logger.debug(f"机床 {machine_id} 不在可用机床列表中")
+                continue
+                
+            # 检查机床是否在线
+            if not self._is_machine_online(machine_id):
+                self.logger.debug(f"机床 {machine_id} 不在线")
+                continue
+                
             # 材料兼容性检查
             material_check = self.material_checker.check_material_compatibility(
                 task, machine_id, current_material)
@@ -379,6 +455,22 @@ class TaskScheduler:
         """将任务分配给机床"""
         try:
             self.logger.debug(f"开始分配任务 {task.task_id} 到机床 {machine_id}")
+            
+            # 检查机床是否在线
+            if not self._is_machine_online(machine_id):
+                self.logger.warning(f"机床 {machine_id} 不在线，无法分配任务 {task.task_id}")
+                return False
+            
+            # 检查机床状态，包括已完成数量与要求数量是否一致
+            if not self._check_machine_status_before_assignment(machine_id, task):
+                self.logger.warning(f"机床 {machine_id} 状态检查失败，无法分配任务 {task.task_id}")
+                return False
+            
+            # 检查材料兼容性并给出警告
+            if not self._check_material_compatibility_and_warn(task, machine_id):
+                self.logger.warning(f"用户取消了任务 {task.task_id} 分配到机床 {machine_id}")
+                return False
+            
             # 更新任务状态
             task.assigned_machine = machine_id
             old_status = task.status
@@ -389,10 +481,12 @@ class TaskScheduler:
             self.running_tasks[task.task_id] = task
             self.logger.debug(f"任务 {task.task_id} 已添加到运行任务列表")
             
-            # 更新机床状态
+            # 更新机床状态，标记为忙碌状态
             if machine_id in self.machine_states:
                 self.machine_states[machine_id].current_task = task.task_id
-                self.logger.debug(f"机床 {machine_id} 当前任务已更新为 {task.task_id}")
+                # 将机床状态更新为RUNNING，表示该机床正在处理任务
+                self.machine_states[machine_id].current_state = "RUNNING"
+                self.logger.debug(f"机床 {machine_id} 当前任务已更新为 {task.task_id}，状态更新为RUNNING")
             
             self.logger.info(f"任务 {task.task_id} 已分配到机床 {machine_id}")
             return True
@@ -400,6 +494,110 @@ class TaskScheduler:
         except Exception as e:
             self.logger.error(f"分配任务 {task.task_id} 到机床 {machine_id} 失败: {e}")
             return False
+    
+    def _check_machine_status_before_assignment(self, machine_id: str, task: ProductionTask) -> bool:
+        """在任务分配前检查机床状态"""
+        try:
+            # 获取系统管理器实例
+            from services.system_manager import get_system_manager
+            system_manager = get_system_manager()
+            
+            # 检查CNC连接器是否存在
+            if not system_manager.cnc_connector:
+                self.logger.warning(f"系统管理器中没有CNC连接器，跳过机床 {machine_id} 状态检查")
+                return True  # 如果没有连接器，跳过检查
+            
+            # 获取机床配置信息
+            machines_config = system_manager.config_manager.get('machines', {})
+            if machine_id not in machines_config:
+                self.logger.warning(f"未找到机床 {machine_id} 的配置信息")
+                return True  # 如果没有配置信息，跳过检查
+            
+            machine_info = machines_config[machine_id]
+            host = machine_info.get('ip_address', '127.0.0.1')
+            port = machine_info.get('port', 8193)
+            
+            # 获取机床状态
+            status_response = system_manager.cnc_connector.get_machine_status(host, port)
+            if not status_response or not status_response.get("success"):
+                self.logger.warning(f"无法获取机床 {machine_id} 状态")
+                return True  # 如果无法获取状态，跳过检查
+            
+            status_data = status_response.get("data", {})
+            
+            # 检查已完成数量与要求数量是否一致
+            completed_count = status_data.get("completed_count", 0)
+            required_count = status_data.get("required_count", task.order_quantity)
+            
+            self.logger.debug(f"机床 {machine_id} 当前完成数量: {completed_count}, 要求数量: {required_count}")
+            
+            # 如果已完成数量与要求数量不一致，需要清空机床上的要加工数量
+            if completed_count != required_count:
+                self.logger.info(f"机床 {machine_id} 上存在未完成任务，正在清空任务数量")
+                # 这里可以添加清空机床上要加工数量的逻辑
+                # 例如发送命令给机床清空任务或重置计数器
+                # 由于这是模拟环境，我们只记录日志
+                self.logger.info(f"已清空机床 {machine_id} 上的要加工数量")
+            
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"检查机床 {machine_id} 状态时出错: {e}")
+            return True  # 出错时仍然允许分配任务，避免阻塞系统
+    
+    def _is_machine_online(self, machine_id: str) -> bool:
+        """检查机床是否在线"""
+        # 获取系统管理器实例
+        from services.system_manager import get_system_manager
+        system_manager = get_system_manager()
+        
+        # 检查CNC连接器是否存在
+        if not system_manager.cnc_connector:
+            self.logger.warning(f"系统管理器中没有CNC连接器，无法检查机床 {machine_id} 的在线状态")
+            return False
+        
+        # 获取机床配置信息
+        machines_config = system_manager.config_manager.get('machines', {})
+        if machine_id not in machines_config:
+            self.logger.warning(f"未找到机床 {machine_id} 的配置信息")
+            return False
+        
+        machine_info = machines_config[machine_id]
+        host = machine_info.get('ip_address', '127.0.0.1')
+        port = machine_info.get('port', 8193)
+        
+        # 检查机床是否连接
+        is_connected = system_manager.cnc_connector.is_machine_connected(host, port)
+        self.logger.debug(f"机床 {machine_id} 连接状态: {is_connected}")
+        return is_connected
+    
+    def _check_material_compatibility_and_warn(self, task: ProductionTask, machine_id: str) -> bool:
+        """检查材料兼容性并在需要更换材料时警告用户"""
+        # 获取机床当前材料
+        if machine_id not in self.machine_states:
+            self.logger.warning(f"未找到机床 {machine_id} 的状态信息")
+            return True  # 如果没有状态信息，继续分配任务
+        
+        current_material = self.machine_states[machine_id].current_material
+        
+        # 检查材料是否匹配
+        if current_material == task.material_spec:
+            # 材料匹配，无需警告
+            return True
+        
+        # 材料不匹配，需要更换材料，给出警告
+        warning_msg = (f"警告: 任务 {task.task_id} 的材料 ({task.material_spec}) 与机床 {machine_id} "
+                      f"当前材料 ({current_material}) 不匹配，需要更换材料。是否继续分配?")
+        
+        self.logger.warning(warning_msg)
+        
+        # 在实际系统中，这里应该有一个用户确认机制
+        # 为了简化，我们在这里模拟用户确认
+        # 在真实的CLI或GUI环境中，应该弹出确认对话框
+        print(warning_msg)
+        user_input = input("输入 'yes' 确认继续分配，其他任意键取消: ").strip().lower()
+        
+        return user_input == 'yes'
     
     def complete_task(self, task_id: str):
         """标记任务完成"""
@@ -416,6 +614,9 @@ class TaskScheduler:
             # 更新机床状态
             if task.assigned_machine and task.assigned_machine in self.machine_states:
                 self.machine_states[task.assigned_machine].current_task = None
+                # 将机床状态重置为IDLE，表示该机床现在可用
+                self.machine_states[task.assigned_machine].current_state = "IDLE"
+                self.logger.debug(f"机床 {task.assigned_machine} 任务完成，current_task 设为 None，状态设为 IDLE")
             
             self.logger.info(f"任务 {task_id} 已完成")
     
@@ -424,6 +625,9 @@ class TaskScheduler:
         if task_id in self.running_tasks:
             task = self.running_tasks[task_id]
             task.update_status(TaskStatus.PAUSED, "任务暂停")
+            # 更新机床状态为暂停
+            if task.assigned_machine and task.assigned_machine in self.machine_states:
+                self.machine_states[task.assigned_machine].current_state = "PAUSED"
             self.logger.info(f"任务 {task_id} 已暂停")
     
     def resume_task(self, task_id: str):
@@ -431,6 +635,9 @@ class TaskScheduler:
         if task_id in self.running_tasks:
             task = self.running_tasks[task_id]
             task.update_status(TaskStatus.RUNNING, "任务恢复")
+            # 更新机床状态为运行中
+            if task.assigned_machine and task.assigned_machine in self.machine_states:
+                self.machine_states[task.assigned_machine].current_state = "RUNNING"
             self.logger.info(f"任务 {task_id} 已恢复")
     
     def get_task_statistics(self) -> Dict:

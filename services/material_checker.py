@@ -35,9 +35,9 @@ class MaterialChecker:
             change_cost = self._calculate_change_cost(current_material, task.material_spec)
             self.logger.debug(f"材料更换成本: {change_cost}")
         
-        # 判断是否兼容
-        compatible = self._is_material_compatible(current_material, task.material_spec)
-        self.logger.debug(f"材料是否兼容: {compatible}")
+        # 判断是否兼容 - 总是返回True，但会在调度时考虑更换成本
+        compatible = True
+        self.logger.debug(f"材料兼容性检查结果: {compatible}")
         
         result = {
             'compatible': compatible,
@@ -228,16 +228,20 @@ class MaterialChecker:
         Returns:
             bool: 材料是否兼容
         """
-        # 处理空字符串的情况
+        # 处理空字符串的情况 - 允许添加任务，但会在调度时考虑更换成本
         if not current_material:
             self.logger.debug("当前机床材料为空，返回兼容")
             return True
             
-        # 简单实现：材料名称完全匹配即为兼容
-        # 在更复杂的实现中，可以根据材料分类体系判断兼容性
-        is_compatible = current_material == task_material
-        self.logger.debug(f"材料兼容性检查: {current_material} == {task_material} -> {is_compatible}")
-        return is_compatible
+        # 材料相同则兼容
+        if current_material == task_material:
+            self.logger.debug(f"材料相同，兼容: {current_material} == {task_material}")
+            return True
+            
+        # 对于不同的材料，也认为是兼容的，但需要更换材料
+        # 实际的兼容性将在调度时通过更换成本来体现
+        self.logger.debug(f"材料不同但兼容: {current_material} != {task_material}，需要更换")
+        return True
     
     def _calculate_change_cost(self, current_material: str, task_material: str) -> int:
         """

@@ -6,6 +6,7 @@
 import logging
 import time
 import threading
+import uuid
 from datetime import datetime
 from typing import Dict, List, Optional
 from enum import Enum
@@ -131,23 +132,38 @@ class SystemManager:
             return False
     
     def add_new_task(self, instruction_id: str, product_model: str, 
-                    material_spec: str, order_quantity: int, 
-                    priority: str = "Normal") -> Optional[str]:
+                     material_spec: str, order_quantity: int, 
+                     priority: str = "Normal") -> Optional[str]:
         """添加新任务"""
         try:
-            if self.status != SystemStatus.RUNNING:
-                self.logger.warning("系统未运行，无法添加任务")
-                return None
+            self.logger.info(f"开始添加新任务: 指示书={instruction_id}, 产品={product_model}, 材料={material_spec}, 数量={order_quantity}")
             
-            # 将priority字符串转换为TaskPriority枚举
-            try:
-                priority_enum = TaskPriority[priority.upper()]
-            except KeyError:
+            # 检查材料是否在材料库中存在
+            material_exists = self._check_material_exists(material_spec)
+            if not material_exists:
+                self.logger.warning(f"材料 {material_spec} 在材料库中不存在")
+                # 提示用户确认是否继续添加任务
+                print(f"⚠️  警告: 材料 '{material_spec}' 在材料库中不存在。")
+                user_input = input("是否继续添加任务? 输入 'yes' 确认，其他任意键取消: ").strip().lower()
+                if user_input != 'yes':
+                    self.logger.info("用户取消添加任务")
+                    return None
+            
+            # 验证优先级
+            priority_map = {
+                'normal': 'NORMAL',
+                'high': 'HIGH', 
+                'urgent': 'URGENT'
+            }
+            
+            priority_key = priority.lower()
+            if priority_key not in priority_map:
                 self.logger.warning(f"无效的优先级: {priority}, 使用默认优先级 NORMAL")
-                priority_enum = TaskPriority.NORMAL
+                priority_key = 'normal'
             
-            # 创建临时任务对象用于材料检查
-            import uuid
+            priority_enum = priority_map[priority_key]
+            
+            # 生成临时任务ID用于材料检查
             temp_task_id = f"TASK_{uuid.uuid4().hex[:8].upper()}"
             temp_task = ProductionTask(
                 task_id=temp_task_id,
@@ -162,31 +178,36 @@ class SystemManager:
             available_machines = self.task_scheduler.get_available_machines()
             all_machines = list(self.task_scheduler.machine_states.keys())
             
+            machine_id = None
+            current_material = ""
+            
+            # 优先使用可用机床进行材料检查
             if available_machines:
                 machine_id = available_machines[0]
             elif all_machines:
+                # 如果没有可用机床，使用任意一台机床
                 machine_id = all_machines[0]
-            else:
-                self.logger.warning("系统中没有配置任何机床，使用默认机床信息进行材料检查")
-                machine_id = "DEFAULT_CNC"
             
             # 获取机床当前材料
-            if machine_id in self.task_scheduler.machine_states:
+            if machine_id and machine_id in self.task_scheduler.machine_states:
                 machine_state = self.task_scheduler.machine_states.get(machine_id)
                 current_material = machine_state.current_material if machine_state else ""
+                self.logger.debug(f"使用机床 {machine_id} 进行材料检查，当前材料: {current_material}")
             else:
-                # 如果是默认机床，从配置中获取材料信息
-                machine_config = self.config_manager.get(f'machines.{machine_id}', {})
-                current_material = machine_config.get('material', '') if machine_config else ""
+                # 如果没有机床信息，允许材料检查通过（材料更换成本会体现在调度评分中）
+                self.logger.warning("未找到机床信息，将使用空材料进行检查")
+                current_material = ""
             
             # 检查材料兼容性
+            check_machine_id = machine_id or "DEFAULT_CNC"
             material_check = self.material_checker.check_material_compatibility(
-                temp_task, machine_id, current_material
+                temp_task, check_machine_id, current_material
             )
             
-            if not material_check['compatible']:
-                self.logger.error(f"材料不兼容: {material_spec}")
-                return None
+            # 即使材料不完全匹配，只要兼容就允许添加任务
+            # 材料更换成本会在调度时考虑
+            if not material_check['compatible'] and current_material != "":
+                self.logger.warning(f"材料不兼容: {material_spec}，但任务仍可添加")
             
             # 生成任务ID
             task_id = temp_task_id
@@ -213,6 +234,23 @@ class SystemManager:
         except Exception as e:
             self.logger.error(f"添加新任务失败: {e}")
             return None
+    
+    def _check_material_exists(self, material_spec: str) -> bool:
+        """检查材料是否在材料库中存在"""
+        try:
+            # 获取所有材料
+            all_materials = self.material_checker.get_all_materials()
+            
+            # 检查是否有匹配的材料规格
+            for material in all_materials:
+                if material.get('材料规格') == material_spec:
+                    return True
+            
+            return False
+        except Exception as e:
+            self.logger.error(f"检查材料存在性失败: {e}")
+            # 出错时默认返回True，避免阻止用户添加任务
+            return True
     
     def scan_qr_code(self, qr_text: str) -> Dict:
         """扫描二维码"""
@@ -350,15 +388,27 @@ class SystemManager:
     
     def _machine_monitor_loop(self):
         """机床状态监控循环"""
+        # 添加自动调度计数器，用于实现每分钟自动调度
+        auto_schedule_counter = 0
+        auto_schedule_interval = 60  # 60秒 = 1分钟
+        
         while self.machine_monitor_running:
             try:
                 # 更新机床状态
                 self._update_machine_states()
                 
-                # 尝试调度任务
+                # 尝试调度任务（原有的基于待处理任务的调度）
                 if self.task_scheduler and self.task_scheduler.pending_tasks:
                     self.logger.debug("尝试调度任务")
                     self.task_scheduler.schedule_tasks()
+                
+                # 每分钟自动执行一次调度（新增功能）
+                auto_schedule_counter += self.machine_monitor_interval
+                if auto_schedule_counter >= auto_schedule_interval:
+                    self.logger.debug("执行定时自动调度")
+                    if self.task_scheduler:
+                        self.task_scheduler.schedule_tasks()
+                    auto_schedule_counter = 0  # 重置计数器
                 
                 # 等待下一次更新
                 for _ in range(self.machine_monitor_interval):
@@ -535,6 +585,9 @@ class SystemManager:
     
     def get_system_status(self) -> Dict:
         """获取系统状态"""
+        # 在获取状态前自动刷新机床状态
+        self._refresh_machine_states_for_status()
+        
         uptime = 0
         if self.start_time:
             uptime = time.time() - self.start_time
@@ -563,7 +616,16 @@ class SystemManager:
             'executor_statistics': executor_stats,  # 新增
             'system_statistics': self.stats
         }
-
+    
+    def _refresh_machine_states_for_status(self):
+        """为状态获取刷新机床状态"""
+        try:
+            # 更新机床状态以确保显示最新信息
+            self._update_machine_states()
+            self.logger.debug("为状态获取刷新机床状态完成")
+        except Exception as e:
+            self.logger.error(f"为状态获取刷新机床状态时出错: {e}")
+    
     def get_task_list(self) -> List[Dict]:
         """获取任务列表"""
         if not self.task_scheduler:

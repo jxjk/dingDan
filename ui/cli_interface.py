@@ -167,6 +167,20 @@ class CLIInterface:
                 print(f"  低库存: {material_stats.get('low_stock_count', 0)}")
                 print(f"  严重库存: {material_stats.get('critical_stock_count', 0)}")
                 
+            # 显示机床状态
+            machine_states = self.system_manager.task_scheduler.machine_states if self.system_manager.task_scheduler else {}
+            if machine_states:
+                print(f"\n机床状态 ({len(machine_states)}台):")
+                print(f"{'机床ID':<15} {'状态':<15} {'当前材料':<15} {'当前任务':<20}")
+                print("-" * 65)
+                
+                for machine_id, state in machine_states.items():
+                    # 获取当前任务
+                    current_task = state.current_task if state.current_task else "无"
+                    print(f"{machine_id:<15} {state.current_state:<15} {state.current_material:<15} {current_task:<20}")
+            else:
+                print("\n机床状态: 无连接的机床设备")
+                
         except Exception as e:
             print(f"❌ 获取系统状态失败: {e}")
     
