@@ -8,7 +8,7 @@ import threading
 import time
 from datetime import datetime
 from typing import Dict, List, Optional
-from services.system_manager import SystemManager
+from services.system_manager import SystemManager, get_system_manager
 from config.config_manager import get_config_manager
 
 class CLIInterface:

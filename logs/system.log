@@ -3080,3 +3080,406 @@
 2025-11-17 14:21:32,669 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
 2025-11-17 14:21:32,669 - services.system_manager - INFO - 总共更新了 4 台机床的状态
 2025-11-17 14:21:32,672 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-17 14:38:23,064 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:38:23,093 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:38:23,094 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:38:23,094 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:38:23,095 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:38:23,095 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:38:23,095 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:38:23,096 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:38:23,211 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:38:23,212 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:38:23,315 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:38:23,316 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:38:23,419 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:38:23,420 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:38:28,428 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:38:28,429 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:38:34,444 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:38:34,445 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:38:40,451 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:38:40,452 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:38:40,453 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-17 14:38:40,453 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-17 14:38:40,454 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 14:38:42,837 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:38:42,852 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:38:42,852 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:38:42,853 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:38:42,853 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:38:42,853 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:38:42,854 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:38:42,859 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:38:42,859 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:38:42,859 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:38:42,860 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:38:42,860 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:38:42,861 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:38:42,861 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:38:42,964 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:38:42,964 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:38:43,079 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:38:43,079 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:38:43,204 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:38:43,204 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:38:48,212 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:38:48,213 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:38:54,226 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:38:54,227 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:39:00,237 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:39:00,238 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:39:00,239 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-17 14:39:00,239 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-17 14:39:00,239 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 14:39:00,240 - services.system_manager - INFO - 系统已在运行中
+2025-11-17 14:39:26,343 - services.system_manager - INFO - 开始添加新任务: 指示书=123, 产品=qwe, 材料=S45C, 数量=1
+2025-11-17 14:39:26,346 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:39:26,346 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-17 14:39:26,346 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-17 14:39:26,347 - services.task_scheduler - INFO - 任务 TASK_0E9584B3 已添加到调度队列
+2025-11-17 14:39:26,347 - services.system_manager - INFO - ✅ 任务添加成功: TASK_0E9584B3
+2025-11-17 14:39:57,319 - services.system_manager - INFO - 开始添加新任务: 指示书=234, 产品=SFS, 材料=S45C, 数量=3
+2025-11-17 14:39:57,321 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:39:57,321 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-17 14:39:57,321 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-17 14:39:57,321 - services.task_scheduler - INFO - 任务 TASK_A6223EBD 已添加到调度队列
+2025-11-17 14:39:57,322 - services.system_manager - INFO - ✅ 任务添加成功: TASK_A6223EBD
+2025-11-17 14:40:35,525 - services.system_manager - INFO - 开始添加新任务: 指示书=564, 产品=GED, 材料=AL6061, 数量=3
+2025-11-17 14:40:35,528 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:40:35,528 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-17 14:40:35,528 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'AL6061'}
+2025-11-17 14:40:35,529 - services.task_scheduler - INFO - 任务 TASK_7FBEE571 已添加到调度队列
+2025-11-17 14:40:35,529 - services.system_manager - INFO - ✅ 任务添加成功: TASK_7FBEE571
+2025-11-17 14:40:43,910 - services.system_manager - INFO - ✅ 更新机床 CNC-01 状态: OFF
+2025-11-17 14:40:43,911 - services.system_manager - INFO - ✅ 更新机床 CNC-02 状态: OFF
+2025-11-17 14:40:43,912 - services.system_manager - INFO - ✅ 更新机床 CNC-03 状态: OFF
+2025-11-17 14:40:48,916 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:40:48,917 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:40:54,933 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:40:54,934 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:41:00,945 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:41:00,945 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:41:00,946 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
+2025-11-17 14:41:00,946 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 14:41:00,949 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-17 14:41:12,887 - services.system_manager - INFO - ✅ 更新机床 CNC-01 状态: OFF
+2025-11-17 14:41:12,888 - services.system_manager - INFO - ✅ 更新机床 CNC-02 状态: OFF
+2025-11-17 14:41:12,889 - services.system_manager - INFO - ✅ 更新机床 CNC-03 状态: OFF
+2025-11-17 14:41:17,901 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:41:17,902 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:41:23,907 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:41:23,908 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:41:29,917 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:41:29,918 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:41:29,918 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
+2025-11-17 14:41:29,919 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 14:41:29,919 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:41:29,921 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-17 14:41:29,922 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:41:29,924 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-17 14:41:29,924 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:41:29,924 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'AL6061', 'task_material': 'AL6061'}
+2025-11-17 14:41:29,925 - services.task_scheduler - INFO - 机床 CNC-01 上存在未完成任务，正在清空任务数量
+2025-11-17 14:41:29,926 - services.task_scheduler - INFO - 已清空机床 CNC-01 上的要加工数量
+2025-11-17 14:41:29,926 - services.task_scheduler - INFO - 任务 TASK_0E9584B3 状态从 TaskStatus.PENDING 更新为 TaskStatus.READY
+2025-11-17 14:41:29,927 - services.task_scheduler - INFO - 任务 TASK_0E9584B3 已分配到机床 CNC-01
+2025-11-17 14:41:29,927 - services.task_scheduler - INFO - 成功分配任务 TASK_0E9584B3 到机床 CNC-01
+2025-11-17 14:41:29,928 - services.task_scheduler - INFO - 机床 CNC-03 上存在未完成任务，正在清空任务数量
+2025-11-17 14:41:29,928 - services.task_scheduler - INFO - 已清空机床 CNC-03 上的要加工数量
+2025-11-17 14:41:29,929 - services.task_scheduler - INFO - 任务 TASK_A6223EBD 状态从 TaskStatus.PENDING 更新为 TaskStatus.READY
+2025-11-17 14:41:29,930 - services.task_scheduler - INFO - 任务 TASK_A6223EBD 已分配到机床 CNC-03
+2025-11-17 14:41:29,930 - services.task_scheduler - INFO - 成功分配任务 TASK_A6223EBD 到机床 CNC-03
+2025-11-17 14:41:29,931 - services.task_scheduler - INFO - 机床 CNC-02 上存在未完成任务，正在清空任务数量
+2025-11-17 14:41:29,931 - services.task_scheduler - INFO - 已清空机床 CNC-02 上的要加工数量
+2025-11-17 14:41:29,932 - services.task_scheduler - INFO - 任务 TASK_7FBEE571 状态从 TaskStatus.PENDING 更新为 TaskStatus.READY
+2025-11-17 14:41:29,932 - services.task_scheduler - INFO - 任务 TASK_7FBEE571 已分配到机床 CNC-02
+2025-11-17 14:41:29,932 - services.task_scheduler - INFO - 成功分配任务 TASK_7FBEE571 到机床 CNC-02
+2025-11-17 14:41:29,933 - services.task_scheduler - INFO - ✅ 本次调度成功分配 3 个任务
+2025-11-17 14:41:48,888 - services.system_manager - INFO - ✅ 更新机床 CNC-01 状态: OFF
+2025-11-17 14:41:48,889 - services.system_manager - INFO - ✅ 更新机床 CNC-02 状态: OFF
+2025-11-17 14:41:48,890 - services.system_manager - INFO - ✅ 更新机床 CNC-03 状态: OFF
+2025-11-17 14:41:53,905 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:41:53,906 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:41:59,918 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:41:59,918 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:42:05,933 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:42:05,933 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:42:05,934 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
+2025-11-17 14:42:05,934 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 14:42:05,936 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-17 14:42:33,154 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:42:33,179 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:42:33,179 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:42:33,180 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:42:33,180 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:42:33,181 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:42:33,181 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:42:33,182 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:42:33,297 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:42:33,298 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:42:33,401 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:42:33,401 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:42:33,504 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:42:33,504 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:42:38,519 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:42:38,520 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:42:44,527 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:42:44,527 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:42:50,539 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:42:50,539 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:42:50,540 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-17 14:42:50,540 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-17 14:42:50,541 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 14:43:49,905 - services.system_manager - INFO - 开始添加新任务: 指示书=123, 产品=af, 材料=S45C, 数量=2
+2025-11-17 14:43:49,907 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:43:49,908 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-17 14:43:49,908 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-17 14:43:49,909 - services.task_scheduler - INFO - 任务 TASK_EA64A286 已添加到调度队列
+2025-11-17 14:43:49,909 - services.system_manager - INFO - ✅ 任务添加成功: TASK_EA64A286
+2025-11-17 14:45:48,940 - services.system_manager - INFO - 机床状态监控已停止
+2025-11-17 14:45:48,940 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:45:48,940 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:45:48,941 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:45:48,941 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:45:48,942 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:45:48,942 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:45:48,943 - services.system_manager - INFO - 所有CNC连接已断开
+2025-11-17 14:45:48,943 - services.task_executor - INFO - 任务执行器已停止
+2025-11-17 14:45:48,944 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-17 14:45:48,944 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-17 14:45:57,701 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:45:57,727 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:45:57,727 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:45:57,728 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:45:57,728 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:45:57,729 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:45:57,729 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:45:57,729 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:45:57,842 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:45:57,843 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:45:57,945 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:45:57,945 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:45:58,072 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:45:58,072 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:46:03,084 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:46:03,086 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:09,095 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:46:09,096 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:15,099 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:46:15,100 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:15,101 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-17 14:46:15,101 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-17 14:46:15,101 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 14:46:21,066 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:46:21,082 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:46:21,083 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:21,083 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:46:21,084 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:21,084 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:46:21,085 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:21,091 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:46:21,092 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:46:21,092 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:46:21,093 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:46:21,093 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:46:21,094 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:46:21,094 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:46:21,217 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:46:21,218 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:46:21,340 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:46:21,341 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:46:21,443 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:46:21,444 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:46:26,453 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:46:26,454 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:32,459 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:46:32,460 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:38,477 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:46:38,478 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:46:38,478 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-17 14:46:38,478 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-17 14:46:38,479 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 14:46:38,479 - services.system_manager - INFO - 系统已在运行中
+2025-11-17 14:46:46,458 - services.system_manager - INFO - 开始添加新任务: 指示书=123, 产品=sda, 材料=S45C, 数量=2
+2025-11-17 14:46:46,461 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:46:46,461 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-17 14:46:46,461 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-17 14:46:46,462 - services.task_scheduler - INFO - 任务 TASK_3EFDC149 已添加到调度队列
+2025-11-17 14:46:46,462 - services.system_manager - INFO - ✅ 任务添加成功: TASK_3EFDC149
+2025-11-17 14:47:02,473 - services.system_manager - INFO - ✅ 更新机床 CNC-01 状态: OFF
+2025-11-17 14:47:02,474 - services.system_manager - INFO - ✅ 更新机床 CNC-02 状态: OFF
+2025-11-17 14:47:02,474 - services.system_manager - INFO - ✅ 更新机床 CNC-03 状态: OFF
+2025-11-17 14:47:07,479 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:47:07,480 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:47:13,487 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:47:13,488 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:47:19,492 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:47:19,492 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:47:19,493 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
+2025-11-17 14:47:19,493 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 14:47:19,494 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:47:19,496 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-17 14:47:19,496 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:47:19,497 - services.task_scheduler - INFO - 机床 CNC-01 上存在未完成任务，正在清空任务数量
+2025-11-17 14:47:19,498 - services.task_scheduler - INFO - 已清空机床 CNC-01 上的要加工数量
+2025-11-17 14:47:19,498 - services.task_scheduler - INFO - 任务 TASK_3EFDC149 状态从 TaskStatus.PENDING 更新为 TaskStatus.READY
+2025-11-17 14:47:19,499 - services.task_scheduler - INFO - 任务 TASK_3EFDC149 已分配到机床 CNC-01
+2025-11-17 14:47:19,499 - services.task_scheduler - INFO - 成功分配任务 TASK_3EFDC149 到机床 CNC-01
+2025-11-17 14:47:19,499 - services.task_scheduler - INFO - ✅ 本次调度成功分配 1 个任务
+2025-11-17 14:48:51,598 - services.system_manager - INFO - 机床状态监控已停止
+2025-11-17 14:48:51,599 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:48:51,599 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:48:51,600 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:48:51,600 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:48:51,601 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:48:51,601 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:48:51,602 - services.system_manager - INFO - 所有CNC连接已断开
+2025-11-17 14:48:51,602 - services.task_executor - INFO - 任务执行器已停止
+2025-11-17 14:48:51,603 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-17 14:48:51,603 - services.system_manager - INFO - 🛑 系统已停止
+2025-11-17 14:50:54,219 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:50:54,323 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:50:54,324 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:50:54,325 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:50:54,326 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:50:54,328 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:50:54,329 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:50:54,334 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:50:54,469 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:50:54,471 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:50:54,582 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:50:54,586 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:50:54,759 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:50:54,759 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:50:59,762 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:50:59,764 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:51:05,767 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:51:05,768 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:52:36,860 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:52:36,889 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:52:36,889 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:52:36,889 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:52:36,890 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:52:36,890 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:52:36,891 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:52:36,891 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:52:37,001 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:52:37,001 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:52:37,104 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:52:37,105 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:52:37,220 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:52:37,220 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:52:42,229 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:52:42,229 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:52:48,248 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:52:48,249 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:52:54,265 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:52:54,267 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:52:54,268 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-17 14:52:54,269 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-17 14:52:54,269 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 14:53:01,679 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 14:53:01,704 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:53:01,705 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:53:01,705 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:53:01,705 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:53:01,706 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:53:01,706 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:53:01,711 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 14:53:01,712 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 14:53:01,712 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 14:53:01,713 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 14:53:01,713 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 14:53:01,713 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 14:53:01,714 - services.system_manager - INFO - 尝试连接 4 台机床...
+2025-11-17 14:53:01,816 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8193
+2025-11-17 14:53:01,817 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-01
+2025-11-17 14:53:01,936 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8194
+2025-11-17 14:53:01,937 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-02
+2025-11-17 14:53:02,039 - cnc_machine_connector - INFO - ✅ 成功连接到CNC机床 127.0.0.1:8195
+2025-11-17 14:53:02,040 - services.system_manager - INFO - ✅ 成功连接到机床 CNC-03
+2025-11-17 14:53:07,044 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:53:07,045 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:53:13,047 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:53:13,047 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:53:19,049 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:53:19,049 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:53:19,050 - services.system_manager - WARNING - ❌ 连接机床 CNC-04 失败
+2025-11-17 14:53:19,050 - services.system_manager - INFO - 机床连接尝试完成
+2025-11-17 14:53:19,051 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 14:53:19,051 - services.system_manager - INFO - 系统已在运行中
+2025-11-17 14:53:30,682 - services.system_manager - INFO - 开始添加新任务: 指示书=123, 产品=FGA, 材料=S45C, 数量=3
+2025-11-17 14:53:30,687 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:53:30,687 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-17 14:53:30,688 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-17 14:53:30,689 - services.task_scheduler - INFO - 任务 TASK_256BAE91 已添加到调度队列
+2025-11-17 14:53:30,689 - services.system_manager - INFO - ✅ 任务添加成功: TASK_256BAE91
+2025-11-17 14:53:52,417 - services.system_manager - INFO - 开始添加新任务: 指示书=523, 产品=YWER, 材料=S45C, 数量=3
+2025-11-17 14:53:52,418 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:53:52,418 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-17 14:53:52,419 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-17 14:53:52,419 - services.task_scheduler - INFO - 任务 TASK_20251C6D 已添加到调度队列
+2025-11-17 14:53:52,420 - services.system_manager - INFO - ✅ 任务添加成功: TASK_20251C6D
+2025-11-17 14:54:05,580 - services.system_manager - INFO - ✅ 更新机床 CNC-01 状态: OFF
+2025-11-17 14:54:05,580 - services.system_manager - INFO - ✅ 更新机床 CNC-02 状态: OFF
+2025-11-17 14:54:05,581 - services.system_manager - INFO - ✅ 更新机床 CNC-03 状态: OFF
+2025-11-17 14:54:10,579 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:54:10,579 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:54:16,587 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:54:16,588 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:54:22,597 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:54:22,598 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:54:22,599 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
+2025-11-17 14:54:22,599 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 14:54:22,599 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:54:22,601 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-17 14:54:22,602 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:54:22,603 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-17 14:54:22,604 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:54:22,605 - services.task_scheduler - INFO - 机床 CNC-01 上存在未完成任务，正在清空任务数量
+2025-11-17 14:54:22,605 - services.task_scheduler - INFO - 已清空机床 CNC-01 上的要加工数量
+2025-11-17 14:54:22,606 - services.task_scheduler - INFO - 任务 TASK_256BAE91 状态从 TaskStatus.PENDING 更新为 TaskStatus.READY
+2025-11-17 14:54:22,606 - services.task_scheduler - INFO - 任务 TASK_256BAE91 已分配到机床 CNC-01
+2025-11-17 14:54:22,606 - services.task_scheduler - INFO - 成功分配任务 TASK_256BAE91 到机床 CNC-01
+2025-11-17 14:54:22,607 - services.task_scheduler - INFO - 机床 CNC-03 上存在未完成任务，正在清空任务数量
+2025-11-17 14:54:22,608 - services.task_scheduler - INFO - 已清空机床 CNC-03 上的要加工数量
+2025-11-17 14:54:22,608 - services.task_scheduler - INFO - 任务 TASK_20251C6D 状态从 TaskStatus.PENDING 更新为 TaskStatus.READY
+2025-11-17 14:54:22,609 - services.task_scheduler - INFO - 任务 TASK_20251C6D 已分配到机床 CNC-03
+2025-11-17 14:54:22,609 - services.task_scheduler - INFO - 成功分配任务 TASK_20251C6D 到机床 CNC-03
+2025-11-17 14:54:22,609 - services.task_scheduler - INFO - ✅ 本次调度成功分配 2 个任务
+2025-11-17 14:55:05,725 - services.system_manager - INFO - 开始添加新任务: 指示书=325, 产品=EQW, 材料=S45C, 数量=3
+2025-11-17 14:55:05,726 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-17 14:55:05,728 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-17 14:55:05,728 - services.task_scheduler - INFO - 任务 TASK_44F63B88 已添加到调度队列
+2025-11-17 14:55:05,728 - services.system_manager - INFO - ✅ 任务添加成功: TASK_44F63B88
+2025-11-17 14:55:12,823 - services.system_manager - INFO - ✅ 更新机床 CNC-01 状态: OFF
+2025-11-17 14:55:12,824 - services.system_manager - INFO - ✅ 更新机床 CNC-02 状态: OFF
+2025-11-17 14:55:12,825 - services.system_manager - INFO - ✅ 更新机床 CNC-03 状态: OFF
+2025-11-17 14:55:17,832 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:55:17,833 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:55:23,841 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:55:23,841 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:55:29,849 - cnc_machine_connector - ERROR - ❌ 连接CNC机床失败: timed out
+2025-11-17 14:55:29,849 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:55:29,850 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
+2025-11-17 14:55:29,851 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 14:55:29,852 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:55:29,854 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-17 14:55:29,855 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-17 14:55:29,856 - services.task_scheduler - INFO - 机床 CNC-01 上存在未完成任务，正在清空任务数量
+2025-11-17 14:55:29,856 - services.task_scheduler - INFO - 已清空机床 CNC-01 上的要加工数量
+2025-11-17 14:55:29,857 - services.task_scheduler - INFO - 任务 TASK_44F63B88 状态从 TaskStatus.PENDING 更新为 TaskStatus.READY
+2025-11-17 14:55:29,858 - services.task_scheduler - INFO - 任务 TASK_44F63B88 已分配到机床 CNC-01
+2025-11-17 14:55:29,858 - services.task_scheduler - INFO - 成功分配任务 TASK_44F63B88 到机床 CNC-01
+2025-11-17 14:55:29,859 - services.task_scheduler - INFO - ✅ 本次调度成功分配 1 个任务
+2025-11-17 14:57:04,714 - services.system_manager - INFO - 机床状态监控已停止
+2025-11-17 14:57:04,715 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:57:04,716 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:57:04,721 - cnc_machine_connector - ERROR - 接收数据时出错: [WinError 10038] 在一个非套接字上尝试了一个操作。
+2025-11-17 14:57:04,721 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:57:04,727 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
+2025-11-17 14:57:04,728 - services.system_manager - INFO - 所有CNC连接已断开
+2025-11-17 14:57:04,729 - services.task_executor - INFO - 任务执行器已停止
+2025-11-17 14:57:04,729 - services.file_monitor - WARNING - 文件监控服务未在运行
+2025-11-17 14:57:04,730 - services.system_manager - INFO - 🛑 系统已停止

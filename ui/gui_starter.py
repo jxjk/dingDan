@@ -114,7 +114,10 @@ class SystemStarterGUI:
                   command=self.add_task).grid(row=0, column=2, padx=(0, 10))
         
         ttk.Button(quick_frame, text="扫描二维码", 
-                  command=self.scan_qr).grid(row=0, column=3)
+                  command=self.scan_qr).grid(row=0, column=3, padx=(0, 10))
+        
+        ttk.Button(quick_frame, text="任务调度", 
+                  command=self.schedule_tasks).grid(row=0, column=4, padx=(0, 10))
     
     def log_message(self, message: str):
         """在状态区域显示消息"""
@@ -148,6 +151,35 @@ class SystemStarterGUI:
             self._start_service_mode()
         elif mode == "test":
             self._start_test_mode()
+    
+    def schedule_tasks(self):
+        """执行任务调度"""
+        if not self.system or not self.is_running:
+            messagebox.showwarning("系统状态", "系统未运行，无法执行任务调度")
+            return
+        
+        try:
+            self.log_message("开始执行任务调度...")
+            
+            # 调用系统管理器的任务调度功能
+            assignments = self.system.task_scheduler.schedule_tasks()
+            
+            if assignments:
+                self.log_message(f"✅ 任务调度完成，成功分配 {len(assignments)} 个任务")
+                # 显示分配结果
+                assignment_info = "任务分配结果:\n"
+                for task, machine_id in assignments:
+                    assignment_info += f"  任务 {task.task_id} -> 机床 {machine_id}\n"
+                
+                messagebox.showinfo("任务调度", assignment_info)
+            else:
+                self.log_message("ℹ️ 本次调度未分配任何任务")
+                messagebox.showinfo("任务调度", "本次调度未分配任何任务")
+                
+        except Exception as e:
+            error_msg = f"任务调度失败: {e}"
+            self.log_message(f"❌ {error_msg}")
+            messagebox.showerror("错误", error_msg)
     
     def _start_cli_mode(self):
         """启动命令行界面"""
