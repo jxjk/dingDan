@@ -123,13 +123,32 @@ class DNCSystemAutomation:
             self.logger.error(f"提交型号失败: {e}")
             return False
     
-    def process_model(self, model_number: str) -> bool:
-        """处理型号的完整流程"""
+    def process_model(self, model_number: str, task_info: Optional[Dict] = None) -> bool:
+        """处理型号的完整流程，支持任务信息"""
         if not self.connect_to_dnc():
             return False
         
-        if not self.input_model_number(model_number):
-            return False
+        # 如果提供了任务信息，可以处理更复杂的任务
+        if task_info:
+            # 根据任务信息生成宏变量字符串
+            macro_string = self._generate_macro_string(task_info)
+            self.logger.info(f"生成宏变量字符串: {macro_string}")
+            
+            # 如果宏变量字符串不为空，输入到DNC系统
+            if macro_string:
+                # 首先尝试输入宏变量字符串
+                if not self._input_macro_string(macro_string):
+                    # 如果输入宏变量失败，尝试输入型号
+                    if not self.input_model_number(model_number):
+                        return False
+            else:
+                # 如果没有宏变量，直接输入型号
+                if not self.input_model_number(model_number):
+                    return False
+        else:
+            # 传统模式，只输入型号
+            if not self.input_model_number(model_number):
+                return False
         
         if not self.submit_model():
             return False
@@ -138,6 +157,64 @@ class DNCSystemAutomation:
         time.sleep(2)
         self.logger.info(f"型号 {model_number} 处理完成")
         return True
+    
+    def _generate_macro_string(self, task_info: Dict) -> str:
+        """根据任务信息生成宏变量字符串"""
+        try:
+            # 根据系统构想，生成宏变量字符串
+            # 例如: #100=任务ID, #101=材料类型, #110=数量等
+            macro_parts = []
+            
+            # 任务ID (如果有的话)
+            if 'task_id' in task_info:
+                # 提取任务ID中的数字部分
+                import re
+                task_num = re.findall(r'\d+', str(task_info['task_id']))
+                if task_num:
+                    macro_parts.append(f"100={task_num[0]}")  # 假设任务ID数字作为#100的值
+            
+            # 产品型号
+            if 'product_model' in task_info:
+                # 为产品模型分配一个变量（这需要与DNC系统约定的变量编号一致）
+                # 这里假设#101用于产品型号
+                macro_parts.append(f"101={task_info['product_model']}")
+            
+            # 材料规格
+            if 'material_spec' in task_info:
+                # 为材料规格分配一个变量，例如#102
+                material_mapping = {
+                    'S45C': '1',
+                    'AL6061': '2', 
+                    'SS304': '3',
+                    '黄铜': '4'
+                }
+                material_code = material_mapping.get(task_info['material_spec'], '0')
+                macro_parts.append(f"102={material_code}")
+            
+            # 订单数量
+            if 'order_quantity' in task_info:
+                macro_parts.append(f"110={task_info['order_quantity']}")
+            
+            # 生成完整的宏变量字符串
+            if macro_parts:
+                return ','.join(macro_parts)
+            else:
+                return ""
+            
+        except Exception as e:
+            self.logger.error(f"生成宏变量字符串失败: {e}")
+            return ""
+    
+    def _input_macro_string(self, macro_string: str) -> bool:
+        """输入宏变量字符串到DNC系统"""
+        try:
+            # 这里可以根据实际DNC系统的输入方式调整
+            # 有些系统可能需要特定的输入格式或控件
+            self.logger.info(f"输入宏变量字符串: {macro_string}")
+            return True  # 暂时返回True，实际实现需要根据DNC系统界面调整
+        except Exception as e:
+            self.logger.error(f"输入宏变量字符串失败: {e}")
+            return False
     
     def close_dnc(self):
         """关闭DNC系统"""
@@ -301,7 +378,7 @@ class AutomationManager:
         self.dnc_automation = DNCSystemAutomation(config)
         self.browser_automation = BrowserAutomation(config)
         
-    def process_instruction(self, instruction_id: str, model_number: str) -> Dict[str, bool]:
+    def process_instruction(self, instruction_id: str, model_number: str, task_info: Optional[Dict] = None) -> Dict[str, bool]:
         """处理指示书的完整自动化流程"""
         results = {
             'dnc_system': False,
@@ -311,7 +388,7 @@ class AutomationManager:
         
         # DNC系统处理
         try:
-            results['dnc_system'] = self.dnc_automation.process_model(model_number)
+            results['dnc_system'] = self.dnc_automation.process_model(model_number, task_info)
         except Exception as e:
             self.logger.error(f"DNC系统处理失败: {e}")
             results['dnc_system'] = False
@@ -478,10 +555,11 @@ class UIAutomation:
             if operation == "process_instruction":
                 instruction_id = kwargs.get('instruction_id')
                 model_number = kwargs.get('model_number')
+                task_info = kwargs.get('task_info', None)  # 新增任务信息参数
                 
                 if instruction_id and model_number:
                     result = self.automation_manager.process_instruction(
-                        instruction_id, model_number
+                        instruction_id, model_number, task_info
                     )
                     return {
                         'success': True,

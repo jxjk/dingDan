@@ -4263,3 +4263,56 @@
 2025-11-17 16:41:22,253 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-03: IDLE
 2025-11-17 16:41:22,253 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-04: IDLE
 2025-11-17 16:41:22,253 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-27 12:59:22,413 - services.system_manager - INFO - 开始初始化系统...
+2025-11-27 12:59:22,573 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-27 12:59:22,576 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-27 12:59:22,580 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-27 12:59:22,584 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-27 12:59:22,586 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-27 12:59:22,587 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-27 12:59:22,590 - services.system_manager - INFO - 定时自动调度已启动，每60秒执行一次
+2025-11-27 12:59:22,593 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-27 12:59:36,694 - services.system_manager - INFO - 开始初始化系统...
+2025-11-27 12:59:36,737 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-27 12:59:36,737 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-27 12:59:36,739 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-27 12:59:36,739 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-27 12:59:36,739 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-27 12:59:36,739 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-27 12:59:36,741 - services.system_manager - INFO - 定时自动调度已启动，每60秒执行一次
+2025-11-27 12:59:36,741 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-27 12:59:36,742 - services.system_manager - INFO - 系统已在运行中
+2025-11-27 12:59:53,760 - services.system_manager - INFO - 开始添加新任务: 指示书=123, 产品=we, 材料=S45C, 数量=1
+2025-11-27 12:59:53,796 - services.material_checker - INFO - 获取所有材料: 共 8 种
+2025-11-27 12:59:53,796 - services.system_manager - WARNING - 未找到机床信息，将使用空材料进行检查
+2025-11-27 12:59:53,796 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 0, 'current_material': '', 'task_material': 'S45C'}
+2025-11-27 12:59:53,796 - services.task_scheduler - INFO - 任务 TASK_8CD2A53F 已添加到调度队列
+2025-11-27 12:59:53,796 - services.task_scheduler - INFO - 添加任务后自动触发调度
+2025-11-27 12:59:53,796 - services.system_manager - ERROR - 读取onoff.txt失败: name 'os' is not defined
+2025-11-27 12:59:53,796 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-01: IDLE
+2025-11-27 12:59:53,796 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-02: IDLE
+2025-11-27 12:59:53,796 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-03: IDLE
+2025-11-27 12:59:53,796 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-04: IDLE
+2025-11-27 12:59:53,800 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-27 12:59:53,801 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-27 12:59:53,807 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'AL6061', 'task_material': 'S45C'}
+2025-11-27 12:59:53,807 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-27 12:59:53,807 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': True, 'change_cost': 10, 'current_material': 'SS304', 'task_material': 'S45C'}
+2025-11-27 12:59:53,811 - services.task_scheduler - INFO - 尝试将任务 TASK_8CD2A53F 分配给机床 CNC-01
+2025-11-27 12:59:53,811 - services.material_checker - INFO - 材料兼容性检查结果: {'compatible': True, 'requires_change': False, 'change_cost': 0, 'current_material': 'S45C', 'task_material': 'S45C'}
+2025-11-27 12:59:53,812 - services.task_scheduler - INFO - ✅ 成功将任务 TASK_8CD2A53F 分配给机床 CNC-01
+2025-11-27 12:59:53,812 - services.task_scheduler - INFO - 成功分配任务 TASK_8CD2A53F 到机床 CNC-01
+2025-11-27 12:59:53,813 - services.task_scheduler - INFO - ✅ 本次调度成功分配 1 个任务
+2025-11-27 12:59:53,813 - services.system_manager - INFO - ✅ 任务添加成功: TASK_8CD2A53F
+2025-11-27 13:00:22,591 - services.system_manager - ERROR - 读取onoff.txt失败: name 'os' is not defined
+2025-11-27 13:00:22,592 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-01: IDLE
+2025-11-27 13:00:22,592 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-02: IDLE
+2025-11-27 13:00:22,593 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-03: IDLE
+2025-11-27 13:00:22,594 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-04: IDLE
+2025-11-27 13:00:22,594 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-27 13:00:36,742 - services.system_manager - ERROR - 读取onoff.txt失败: name 'os' is not defined
+2025-11-27 13:00:36,742 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-01: IDLE
+2025-11-27 13:00:36,742 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-02: IDLE
+2025-11-27 13:00:36,742 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-03: IDLE
+2025-11-27 13:00:36,742 - services.system_manager - INFO - ✅ 使用onoff.txt状态更新机床 CNC-04: IDLE
+2025-11-27 13:00:36,742 - services.system_manager - INFO - 总共更新了 4 台机床的状态

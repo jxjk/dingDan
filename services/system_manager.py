@@ -426,6 +426,10 @@ class SystemManager:
         machines_config = self.config_manager.get('machines', {})
         self.logger.debug(f"配置中的机床数量: {len(machines_config)}")
         
+        # 从onoff.txt文件获取实时机床状态
+        file_states = self._get_onoff_states()
+        self.logger.debug(f"从onoff.txt获取的机床状态: {file_states}")
+        
         # 计数器用于跟踪成功更新的机床数量
         updated_machines = 0
         
@@ -433,23 +437,26 @@ class SystemManager:
         for machine_id, machine_info in machines_config.items():
             try:
                 self.logger.debug(f"处理机床 {machine_id}")
-                # 使用配置中的默认状态
-                self.logger.debug("使用默认状态")
+                # 从onoff.txt获取状态，如果不存在则使用默认值
+                current_state = file_states.get(machine_id, "0")  # 默认为0（空闲）
+                # 将数字状态转换为描述性状态
+                descriptive_state = self._convert_state_code(current_state)
+                
                 machine_state = MachineState(
                     machine_id=machine_id,
-                    current_state="IDLE",  # 默认空闲状态
+                    current_state=descriptive_state,
                     current_material=machine_info.get('material', ''),
                     capabilities=machine_info.get('capabilities', []),
                     current_task=None,
                     last_update=datetime.now()
                 )
                 self.task_scheduler.update_machine_state(machine_id, machine_state)
-                self.logger.info(f"✅ 使用默认状态更新机床 {machine_id}: IDLE")
+                self.logger.info(f"✅ 使用onoff.txt状态更新机床 {machine_id}: {descriptive_state}")
                 updated_machines += 1
                     
             except Exception as e:
                 self.logger.error(f"更新机床 {machine_id} 状态失败: {e}")
-                # 即使出错也尝试设置基础状态，确保机床可用
+                # 出错时使用默认状态
                 self.task_scheduler.update_machine_state(
                     machine_id, 
                     MachineState(
@@ -470,6 +477,55 @@ class SystemManager:
         self.logger.debug("当前所有机床状态:")
         for machine_id, state in self.task_scheduler.machine_states.items():
             self.logger.debug(f"  机床 {machine_id}: {state.current_state}")
+    
+    def _get_onoff_states(self) -> Dict[str, str]:
+        """从onoff.txt文件获取机床状态"""
+        try:
+            # 获取onoff.txt文件路径
+            onoff_path = self.config_manager.get('file_monitoring.onoff_file', 'C:/macro/onoff.txt')
+            self.logger.debug(f"从onoff.txt获取机床状态: {onoff_path}")
+            
+            if not os.path.exists(onoff_path):
+                self.logger.warning(f"onoff.txt文件不存在: {onoff_path}")
+                return {}
+            
+            # 读取onoff.txt内容
+            with open(onoff_path, 'r', encoding='utf-8') as f:
+                content = f.read().strip()
+            
+            # 解析内容
+            states = {}
+            for line in content.split('\n'):
+                line = line.strip()
+                if line and '=' in line:
+                    if line.startswith('#'):  # 跳过注释行
+                        continue
+                    machine_id, state = line.split('=', 1)
+                    states[machine_id.strip()] = state.strip()
+                elif line and not '=' in line and len(line) == 1:  # 单个数字表示所有机床状态
+                    # 这种情况下，可能表示全局状态，我们暂时忽略
+                    pass
+            
+            self.logger.debug(f"解析onoff.txt成功: {states}")
+            return states
+            
+        except Exception as e:
+            self.logger.error(f"读取onoff.txt失败: {e}")
+            return {}
+    
+    def _convert_state_code(self, state_code: str) -> str:
+        """将状态码转换为描述性状态"""
+        # 根据系统构想，onoff.txt中0表示空闲，1表示运行
+        if state_code == '0':
+            return 'IDLE'  # 空闲
+        elif state_code == '1':
+            return 'RUNNING'  # 运行
+        elif state_code.upper() in ['ON', 'RUNNING', 'BUSY']:
+            return 'RUNNING'
+        elif state_code.upper() in ['OFF', 'IDLE', 'STANDBY', 'READY']:
+            return 'IDLE'
+        else:
+            return 'UNKNOWN'  # 未知状态
     
     def pause_system(self) -> bool:
         """暂停系统"""
@@ -538,7 +594,7 @@ class SystemManager:
         return {
             'system_status': self.status.value,
             'uptime': uptime,
-            'error_count': self.error_count,
+            'error_count': self.stats['errors_occurred'],
             'task_statistics': task_stats,
             'material_statistics': material_stats,
             'executor_statistics': executor_stats,  # 新增

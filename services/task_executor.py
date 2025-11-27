@@ -158,6 +158,10 @@ class TaskExecutor:
             start_time = time.time()
             self.logger.info(f"执行任务 {task.task_id}: {task.product_model} x {task.order_quantity}")
             
+            # 根据系统构想，通过UI自动化将任务信息输入到DNC系统
+            if not self._input_task_to_dnc(task):
+                self.logger.warning(f"任务 {task.task_id} 输入DNC系统失败，但仍继续执行")
+            
             # 根据新需求，读取平板IP对应的CSV文件，获取机床状态
             # 并输出以平板IP地址命名的txt文件
             if not self._process_task_to_tablet(task):
@@ -174,6 +178,41 @@ class TaskExecutor:
             self.logger.error(f"任务 {task.task_id} 执行异常: {e}")
             return False
     
+    def _input_task_to_dnc(self, task: ProductionTask) -> bool:
+        """通过UI自动化将任务输入到DNC系统"""
+        try:
+            self.logger.info(f"通过UI自动化将任务 {task.task_id} 输入到DNC系统")
+            
+            # 准备任务信息字典
+            task_info = {
+                'task_id': task.task_id,
+                'instruction_id': task.instruction_id,
+                'product_model': task.product_model,
+                'material_spec': task.material_spec,
+                'order_quantity': task.order_quantity,
+                'assigned_machine': task.assigned_machine,
+                'priority': str(task.priority) if task.priority else 'Normal'
+            }
+            
+            # 执行UI操作
+            result = self.ui_automation.execute_operation(
+                "process_instruction",
+                instruction_id=task.instruction_id,
+                model_number=task.product_model,
+                task_info=task_info
+            )
+            
+            if result['success']:
+                self.logger.info(f"任务 {task.task_id} 成功输入到DNC系统")
+                return True
+            else:
+                self.logger.error(f"任务 {task.task_id} 输入到DNC系统失败: {result.get('error', '未知错误')}")
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"输入任务到DNC系统时出错: {e}")
+            return False
+
     def _process_task_to_tablet(self, task: ProductionTask) -> bool:
         """处理任务到平板"""
         try:

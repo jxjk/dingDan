@@ -114,17 +114,24 @@ class TaskScheduler:
         """检查机床状态是否在可用状态列表中（不包含任务占用检查）"""
         self.logger.debug(f"检查机床状态 {machine_state} 是否在可用列表中")
         
-        # 将状态转换为大写进行比较
-        normalized_state = machine_state.upper()
-        normalized_available_states = [state.upper() for state in self.available_states]
-        
-        # 检查是否在可用状态列表中
-        is_available = normalized_state in normalized_available_states
-        
-        # 如果机床状态为UNKNOWN，我们也认为它是可用的（假设它可以被设置为IDLE）
-        if not is_available and normalized_state == "UNKNOWN":
-            is_available = True
+        # 根据系统构想，机床状态应该按照onoff.txt中的定义来处理
+        # 0 表示空闲（OFF），1 表示运行（ON）
+        if machine_state == '0' or machine_state.upper() == 'OFF' or machine_state.upper() == 'IDLE':
+            return True
+        elif machine_state == '1' or machine_state.upper() in ['ON', 'RUNNING', 'BUSY']:
+            return False
+        else:
+            # 将状态转换为大写进行比较
+            normalized_state = machine_state.upper()
+            normalized_available_states = [state.upper() for state in self.available_states]
             
+            # 检查是否在可用状态列表中
+            is_available = normalized_state in normalized_available_states
+            
+            # 如果机床状态为UNKNOWN，我们也认为它是可用的（假设它可以被设置为IDLE）
+            if not is_available and normalized_state == "UNKNOWN":
+                is_available = True
+                
         self.logger.debug(f"机床状态 {machine_state} 可用性检查: {is_available}")
         return is_available
     
