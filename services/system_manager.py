@@ -446,34 +446,24 @@ class SystemManager:
                 self.task_scheduler.update_machine_state(machine_id, machine_state)
                 self.logger.info(f"✅ 使用默认状态更新机床 {machine_id}: IDLE")
                 updated_machines += 1
-                    # 如果没有连接器，使用配置中的默认状态
-                    self.logger.debug("未检测到CNC连接器，使用默认状态")
-                    machine_state = MachineState(
-                        machine_id=machine_id,
-                        current_state="IDLE",  # 默认空闲状态
-                        current_material=machine_info.get('material', ''),
-                        capabilities=machine_info.get('capabilities', []),
-                        current_task=None,
-                        last_update=datetime.now()
-                    )
-                    self.task_scheduler.update_machine_state(machine_id, machine_state)
-                    self.logger.info(f"✅ 使用默认状态更新机床 {machine_id}: IDLE")
-                    updated_machines += 1
                     
             except Exception as e:
                 self.logger.error(f"更新机床 {machine_id} 状态失败: {e}")
-                # 即使出错也要确保机床状态被设置，避免任务调度器认为没有机床
-                machine_state = MachineState(
-                    machine_id=machine_id,
-                    current_state="IDLE",  # 改为IDLE而不是UNKNOWN，确保机床可用
-                    current_material=machine_info.get('material', ''),
-                    capabilities=machine_info.get('capabilities', []),
-                    current_task=None,
-                    last_update=datetime.now()
+                # 即使出错也尝试设置基础状态，确保机床可用
+                self.task_scheduler.update_machine_state(
+                    machine_id, 
+                    MachineState(
+                        machine_id=machine_id,
+                        current_state="IDLE",
+                        current_material=machine_info.get('material', '') if machine_info else '',
+                        capabilities=[],
+                        current_task=None,
+                        last_update=datetime.now()
+                    )
                 )
-                self.task_scheduler.update_machine_state(machine_id, machine_state)
+                self.logger.info(f"✅ 已为机床 {machine_id} 设置基础状态")
                 updated_machines += 1
-                
+        
         self.logger.info(f"总共更新了 {updated_machines} 台机床的状态")
         
         # 打印当前所有机床状态以供调试
@@ -713,6 +703,11 @@ class SystemManager:
         # 根据新需求，不再需要CNC连接器
         self.cnc_connector = None
         self.logger.info("根据新需求，不初始化CNC连接器")
+    
+    def _connect_all_machines(self):
+        """主动连接所有配置的机床"""
+        # 根据新需求，不再需要连接实际机床
+        self.logger.info("根据新需求，不连接实际机床")
 
 # 全局系统管理器实例
 _system_manager: Optional[SystemManager] = None

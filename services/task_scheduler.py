@@ -1,17 +1,19 @@
 """
 任务调度服务
-实现智能任务分配、优先级管理和负载均衡
+负责任务调度、机床状态管理和任务分配
 """
 
 import logging
-import heapq
+import time
+import threading
+import uuid
 from typing import Dict, List, Optional, Tuple
 from datetime import datetime
 from collections import defaultdict
 
+from config.config_manager import get_config_manager
 from models.production_task import ProductionTask, TaskStatus, TaskPriority, MachineState
 from services.material_checker import MaterialChecker
-from config.config_manager import get_config_manager
 
 
 class TaskScheduler:
@@ -460,45 +462,47 @@ class TaskScheduler:
     def _assign_task_to_machine(self, task: ProductionTask, machine_id: str) -> bool:
         """将任务分配给机床"""
         try:
-            self.logger.debug(f"开始分配任务 {task.task_id} 到机床 {machine_id}")
+            self.logger.info(f"尝试将任务 {task.task_id} 分配给机床 {machine_id}")
             
-            # 检查机床是否在线
+            # 检查机床是否在线和可用
             if not self._is_machine_online(machine_id):
-                self.logger.warning(f"机床 {machine_id} 不在线，无法分配任务 {task.task_id}")
+                self.logger.warning(f"机床 {machine_id} 不在线，无法分配任务")
                 return False
             
-            # 检查机床状态，包括已完成数量与要求数量是否一致
-            if not self._check_machine_status_before_assignment(machine_id, task):
-                self.logger.warning(f"机床 {machine_id} 状态检查失败，无法分配任务 {task.task_id}")
+            if not self._is_machine_available(machine_id):
+                self.logger.warning(f"机床 {machine_id} 不可用，无法分配任务")
                 return False
             
-            # 检查材料兼容性并给出警告
-            if not self._check_material_compatibility_and_warn(task, machine_id):
-                self.logger.warning(f"用户取消了任务 {task.task_id} 分配到机床 {machine_id}")
+            # 检查材料兼容性
+            machine_state = self.machine_states.get(machine_id)
+            if not machine_state:
+                self.logger.error(f"未找到机床 {machine_id} 的状态信息")
                 return False
             
-            # 更新任务状态
+            current_material = machine_state.current_material
+            material_check = self.material_checker.check_material_compatibility(
+                task, machine_id, current_material
+            )
+            
+            # 如果材料不兼容且用户未确认，则不允许分配
+            if not material_check['compatible']:
+                if not self._check_material_compatibility_and_warn(task, machine_id):
+                    self.logger.info(f"用户未确认材料更换，任务 {task.task_id} 保持阻塞状态")
+                    return False
+            
+            # 分配任务到机床
             task.assigned_machine = machine_id
-            old_status = task.status
-            task.update_status(TaskStatus.READY, f"已分配到机床 {machine_id}")
-            self.logger.info(f"任务 {task.task_id} 状态从 {old_status} 更新为 {task.status}")
+            task.update_status(TaskStatus.READY, f"任务已分配给机床 {machine_id}")
             
-            # 添加到运行任务列表
-            self.running_tasks[task.task_id] = task
-            self.logger.debug(f"任务 {task.task_id} 已添加到运行任务列表")
+            # 更新机床状态
+            machine_state.current_task = task
+            machine_state.current_state = "BUSY"
             
-            # 更新机床状态，标记为忙碌状态
-            if machine_id in self.machine_states:
-                self.machine_states[machine_id].current_task = task.task_id
-                # 将机床状态更新为RUNNING，表示该机床正在处理任务
-                self.machine_states[machine_id].current_state = "RUNNING"
-                self.logger.debug(f"机床 {machine_id} 当前任务已更新为 {task.task_id}，状态更新为RUNNING")
-            
-            self.logger.info(f"任务 {task.task_id} 已分配到机床 {machine_id}")
+            self.logger.info(f"✅ 成功将任务 {task.task_id} 分配给机床 {machine_id}")
             return True
             
         except Exception as e:
-            self.logger.error(f"分配任务 {task.task_id} 到机床 {machine_id} 失败: {e}")
+            self.logger.error(f"分配任务 {task.task_id} 到机床 {machine_id} 时出错: {e}")
             return False
     
     def _check_machine_status_before_assignment(self, machine_id: str, task: ProductionTask) -> bool:
@@ -557,6 +561,15 @@ class TaskScheduler:
         self.logger.debug(f"根据新需求，假设机床 {machine_id} 在线")
         return True
     
+    def _is_machine_available(self, machine_id: str) -> bool:
+        """检查机床是否可用"""
+        if machine_id not in self.machine_states:
+            self.logger.debug(f"未找到机床 {machine_id} 的状态信息")
+            return False
+        
+        machine_state = self.machine_states[machine_id]
+        return machine_state.current_state in self.available_states
+    
     def _check_material_compatibility_and_warn(self, task: ProductionTask, machine_id: str) -> bool:
         """检查材料兼容性并在需要更换材料时警告用户"""
         # 获取机床当前材料
@@ -579,7 +592,7 @@ class TaskScheduler:
         
         # 在实际系统中，这里应该有一个用户确认机制
         # 为了简化，我们在这里模拟用户确认
-        # 在真实的CLI或GUI环境中，应该弹出确认对话框
+        # 由于这是模拟环境，我们只记录日志
         print(warning_msg)
         user_input = input("输入 'yes' 确认继续分配，其他任意键取消: ").strip().lower()
         

@@ -1,0 +1,53 @@
+@startuml
+!pragma layout smetana
+
+title 系统功能图（TRIZ风格）
+
+actor "人" as Human
+
+rectangle "任务分发系统" as TDS {
+  component "GUI控制模块" as GUI
+  component "任务管理模块" as TM
+  component "状态显示模块" as SD
+  GUI - TM
+  TM - SD
+}
+
+component "DNC系统" as DNC {
+  component "解析器" as Parser
+  component "文件监视器" as DNCWatch
+  Parser - DNCWatch
+}
+
+component "DNC传输软件" as DNCTS {
+  component "文件监视器" as TSWatch
+  component "通信模块" as Comm
+  TSWatch - Comm
+}
+
+component "机床" as Machine {
+  component "控制器" as MC
+  component "状态记录器" as MS
+  MC - MS
+}
+
+file "onoff.txt" as OnOffFile
+file "macro.txt" as MacroFile
+
+Human --> TDS : 输入二维码内容
+TDS --> DNC : 任务字符串\n(通过GUI模拟输入)
+DNC --> MacroFile : 更新宏变量
+DNCTS --> MacroFile : 监视变化
+DNCTS --> Machine : 传输宏变量
+Machine --> DNCTS : 状态反馈\n(运行/停止)
+DNCTS --> OnOffFile : 更新状态
+DNC --> OnOffFile : 监视防止误操作
+TDS --> OnOffFile : 读取状态\n用于任务分配
+TDS --> SD : 更新显示\n任务状态和进度
+
+note right of Human : 手动操作：\n变更材料、取出产品
+note right of DNC : 解析宏变量\n并确保安全操作
+note right of DNCTS : 桥梁作用：\n文件与机床间传输
+note right of Machine : 自动加工\n并记录数据
+
+@enduml

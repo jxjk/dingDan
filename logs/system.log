@@ -4228,3 +4228,38 @@
 2025-11-17 16:07:12,264 - cnc_machine_connector - INFO - 已断开与CNC机床的连接
 2025-11-17 16:07:12,265 - services.system_manager - WARNING - 连接机床 CNC-04 (192.168.1.104:8193) 失败
 2025-11-17 16:07:12,265 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 16:40:18,839 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 16:40:18,865 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 16:40:18,866 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 16:40:18,866 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 16:40:18,867 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 16:40:18,867 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 16:40:18,867 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 16:40:18,868 - services.system_manager - INFO - 定时自动调度已启动，每60秒执行一次
+2025-11-17 16:40:18,869 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 16:40:22,224 - services.system_manager - INFO - 开始初始化系统...
+2025-11-17 16:40:22,248 - services.material_mapper - INFO - 材料映射表加载成功，共 8 条记录
+2025-11-17 16:40:22,249 - services.system_manager - INFO - ✅ 材料检查器初始化成功
+2025-11-17 16:40:22,249 - services.system_manager - INFO - ✅ 任务调度器初始化成功
+2025-11-17 16:40:22,250 - services.system_manager - INFO - ✅ 文件监控器初始化成功
+2025-11-17 16:40:22,250 - services.system_manager - INFO - ✅ UI自动化初始化成功
+2025-11-17 16:40:22,251 - services.system_manager - INFO - ✅ 任务执行器初始化成功
+2025-11-17 16:40:22,251 - services.system_manager - INFO - 定时自动调度已启动，每60秒执行一次
+2025-11-17 16:40:22,252 - services.system_manager - INFO - 🎉 系统初始化完成
+2025-11-17 16:40:22,252 - services.system_manager - INFO - 系统已在运行中
+2025-11-17 16:40:33,345 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-01: IDLE
+2025-11-17 16:40:33,345 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-02: IDLE
+2025-11-17 16:40:33,346 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-03: IDLE
+2025-11-17 16:40:33,346 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-04: IDLE
+2025-11-17 16:40:33,347 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 16:40:33,354 - services.material_checker - INFO - 材料库存报告: 总计8种材料, 低库存0种
+2025-11-17 16:41:18,869 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-01: IDLE
+2025-11-17 16:41:18,870 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-02: IDLE
+2025-11-17 16:41:18,871 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-03: IDLE
+2025-11-17 16:41:18,871 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-04: IDLE
+2025-11-17 16:41:18,872 - services.system_manager - INFO - 总共更新了 4 台机床的状态
+2025-11-17 16:41:22,252 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-01: IDLE
+2025-11-17 16:41:22,252 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-02: IDLE
+2025-11-17 16:41:22,253 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-03: IDLE
+2025-11-17 16:41:22,253 - services.system_manager - INFO - ✅ 使用默认状态更新机床 CNC-04: IDLE
+2025-11-17 16:41:22,253 - services.system_manager - INFO - 总共更新了 4 台机床的状态
